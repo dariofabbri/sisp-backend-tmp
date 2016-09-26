@@ -1,0 +1,22 @@
+datasource.relational:
+  url: jdbc:sqlserver://sisp-db-server.database.windows.net:1433;database=sisp-giudizio;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;ssl=require;
+  username: superuser
+  password: password01!
+  driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  max-wait: 10000
+  max-active: 50
+  max-idle: 50
+  min-idle: 10
+  initial-size: 10
+  test-on-borrow: true
+  test-on-connect: true
+  validation-query: SELECT 1
+  
+logging:
+  level:
+    #org.springframework: DEBUG
+    it.corteconti: DEBUG
+
+application:
+  data:
+    showSql: true
