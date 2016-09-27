@@ -23,19 +23,19 @@ public class CategoriaTipoTipologia {
 	private String codiceLivelloAoo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_CATEGORIA")
+	@JoinColumn(name="CODICE_CATEGORIA", nullable=false)
 	private Categoria categoria;	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_TIPO")
+	@JoinColumn(name="CODICE_TIPO", nullable=false)
 	private Tipo tipo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_TIPOLOGIA")
+	@JoinColumn(name="CODICE_TIPOLOGIA", nullable=false)
 	private Tipologia tipologia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_AMBITO")
+	@JoinColumn(name="CODICE_AMBITO", nullable=false)
 	private Ambito ambito;	
 	
 	public String toString() {

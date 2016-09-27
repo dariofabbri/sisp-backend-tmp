@@ -26,7 +26,7 @@ import it.corteconti.sisp.sample.service.CategoriaTipoTipologiaService;
 public class CategorieResource {
 	
 	@Autowired
-	private CategoriaTipoTipologiaService categoriaService;
+	private CategoriaTipoTipologiaService categoriaTipoTipologiaService;
 	
 	@RequestMapping(value = "/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito   .", response = SezioniDto.class)
@@ -37,7 +37,7 @@ public class CategorieResource {
 			@ApiParam(value = "Specifica l'id di ambito")
 			@PathVariable("ambitoId") String ambitoId){
 		
-		CategoriaArrayDto categoriaAmbitoArray = categoriaService.findOne(id, ambitoId);
+		CategoriaArrayDto categoriaAmbitoArray = categoriaTipoTipologiaService.findOne(id, ambitoId);
 		return new ResponseEntity<CategoriaArrayDto>(categoriaAmbitoArray, HttpStatus.OK);
 	}
 
