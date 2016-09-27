@@ -6,7 +6,7 @@ public class SezioniDto {
 
 	private Long idSezione;
 	private String descrizioneSezione;
-	private Long livelloSezione;
+	private Integer livelloSezione;
 
 	public Long getIdSezione() {
 		return idSezione;
@@ -24,11 +24,11 @@ public class SezioniDto {
 		this.descrizioneSezione = descrizioneSezione;
 	}
 
-	public Long getLivelloSezione() {
+	public Integer getLivelloSezione() {
 		return livelloSezione;
 	}
 
-	public void setLivelloSezione(Long livelloSezione) {
+	public void setLivelloSezione(Integer livelloSezione) {
 		this.livelloSezione = livelloSezione;
 	}
 

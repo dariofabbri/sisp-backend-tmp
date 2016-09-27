@@ -20,7 +20,7 @@ public class Sezioni {
 	private String descrizioneSezione;
 	
 	@Column(name="LIVELLO")
-	private Long livello;
+	private Integer livello;
 	
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -46,11 +46,11 @@ public class Sezioni {
 		this.descrizioneSezione = descrizioneSezione;
 	}
 
-	public Long getLivello() {
+	public Integer getLivello() {
 		return livello;
 	}
 
-	public void setLivello(Long livello) {
+	public void setLivello(Integer livello) {
 		this.livello = livello;
 	}
 
