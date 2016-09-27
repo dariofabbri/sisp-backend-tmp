@@ -33,7 +33,7 @@ public class CategorieResource {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
 	public ResponseEntity<CategoriaArrayDto> getCategorie(
 			@ApiParam(value = "Specifica l'id della sezione")
-			@PathVariable("sezioneId") String id,
+			@PathVariable("sezioneId") Long id,
 			@ApiParam(value = "Specifica l'id di ambito")
 			@PathVariable("ambitoId") String ambitoId){
 		
