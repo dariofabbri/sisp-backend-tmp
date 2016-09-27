@@ -14,10 +14,10 @@ public class CategoriaAssembler {
 		CategoriaArrayDto result = new CategoriaArrayDto();
 		List<CategoriaDto> listaCategorieDto = new ArrayList<CategoriaDto>();
 		
-		for(CategoriaTipoTipologia categoria : lista){
-			CategoriaDto categoriaDto = assembleDto(categoria);
+		lista.forEach(c -> {
+			CategoriaDto categoriaDto = assembleDto(c);
 			listaCategorieDto.add(categoriaDto);
-		}
+		});
 		
 		result.setArray(listaCategorieDto.toArray(new CategoriaDto[0]));
 		
