@@ -23,7 +23,7 @@ import it.corteconti.sisp.sample.service.ThingService;
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: thing")
 public class ThingResource {
-	
+	// mirco
 	@Autowired
 	private ThingService service;
 	
