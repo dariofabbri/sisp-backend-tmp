@@ -28,10 +28,7 @@ public class SezioniResource {
 	
 	@Autowired
 	private SezioniService service;
-	
-	@Autowired
-	private CategoriaTipoTipologiaService categoriaService;
-	
+
 	@RequestMapping(value = "/{sezioneId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo sezione indicata.", response = SezioniDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
@@ -42,19 +39,5 @@ public class SezioniResource {
 		SezioniDto thing = service.findOne(id);
 		return new ResponseEntity<SezioniDto>(thing, HttpStatus.OK);
 	}
-
-	
-	@RequestMapping(value = "/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo sezione indicata.", response = SezioniDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
-	public ResponseEntity<CategoriaArrayDto> getCategorie(
-			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
-			@PathVariable("sezioneId") String sezioneId , @PathVariable("ambitoId") String ambitoId ) {
-		
-		CategoriaArrayDto array = categoriaService.findOne(sezioneId, ambitoId);
-		return new ResponseEntity<CategoriaArrayDto>(array, HttpStatus.OK);
-	}
-	
-	
 
 }

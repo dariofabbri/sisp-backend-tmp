@@ -1,5 +1,6 @@
 package it.corteconti.sisp.sample.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.CategoriaArrayDto;
 import it.corteconti.sisp.sample.dto.SezioniDto;
+import it.corteconti.sisp.sample.service.CategoriaTipoTipologiaService;
 
 @RestController
 @RequestMapping(
@@ -23,16 +25,19 @@ import it.corteconti.sisp.sample.dto.SezioniDto;
 @Api(description = "Categoria")
 public class CategorieResource {
 	
+	@Autowired
+	private CategoriaTipoTipologiaService categoriaService;
+	
 	@RequestMapping(value = "/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito   .", response = SezioniDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
 	public ResponseEntity<CategoriaArrayDto> getCategorie(
 			@ApiParam(value = "Specifica l'id della sezione")
-			@PathVariable("sezioneId") Long id,
+			@PathVariable("sezioneId") String id,
 			@ApiParam(value = "Specifica l'id di ambito")
-			@PathVariable("ambitoId") Long ambitoId){
+			@PathVariable("ambitoId") String ambitoId){
 		
-		CategoriaArrayDto categoriaAmbitoArray = null ;	//TODO da implementare 
+		CategoriaArrayDto categoriaAmbitoArray = categoriaService.findOne(id, ambitoId);
 		return new ResponseEntity<CategoriaArrayDto>(categoriaAmbitoArray, HttpStatus.OK);
 	}
 
