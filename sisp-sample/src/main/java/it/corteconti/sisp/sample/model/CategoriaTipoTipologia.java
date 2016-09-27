@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -21,28 +24,31 @@ public class CategoriaTipoTipologia {
 	@Column(name="CODICE_LIVELLO_AOO")
 	private String codiceLivelloAoo;
 	
-	@Column(name="CODICE_CATEGORIA")
-	private String codiceCategoria;	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CODICE_CATEGORIA")
+	private Categoria categoria;	
 	
 	@Column(name="CODICE_TIPO")
-	private String codiceTipo;
+	private Tipo tipo;
 	
-	@Column(name="CODICE_TIPOLOGIA")
-	private String codiceTipologia;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CODICE_TIPOLOGIA")
+	private Tipologia tipologia;
 	
-	@Column(name="CODICE_AMBITO")
-	private String codiceAmbito;	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CODICE_AMBITO")
+	private Ambito ambito;	
 	
-	public String toString() {
-		return new ToStringBuilder(this)
-				.append("id", id)
-				.append("codiceLivelloAoo", codiceLivelloAoo)
-				.append("codiceCategoria", codiceCategoria)
-				.append("codiceTipo", codiceTipo)
-				.append("codiceTipologia", codiceTipologia)
-				.append("codiceAmbito", codiceAmbito)
-				.toString();
-	}
+//	public String toString() {
+//		return new ToStringBuilder(this)
+//				.append("id", id)
+//				.append("codiceLivelloAoo", codiceLivelloAoo)
+//				.append("codiceCategoria", codiceCategoria)
+//				.append("codiceTipo", codiceTipo)
+//				.append("codiceTipologia", codiceTipologia)
+//				.append("codiceAmbito", codiceAmbito)
+//				.toString();
+//	}
 
 	public Long getId() {
 		return id;
@@ -52,45 +58,7 @@ public class CategoriaTipoTipologia {
 		this.id = id;
 	}
 
-	public String getCodiceLivelloAoo() {
-		return codiceLivelloAoo;
-	}
-
-	public void setCodiceLivelloAoo(String codiceLivelloAoo) {
-		this.codiceLivelloAoo = codiceLivelloAoo;
-	}
-
-	public String getCodiceCategoria() {
-		return codiceCategoria;
-	}
-
-	public void setCodiceCategoria(String codiceCategoria) {
-		this.codiceCategoria = codiceCategoria;
-	}
-
-	public String getCodiceTipo() {
-		return codiceTipo;
-	}
-
-	public void setCodiceTipo(String codiceTipo) {
-		this.codiceTipo = codiceTipo;
-	}
-
-	public String getCodiceTipologia() {
-		return codiceTipologia;
-	}
-
-	public void setCodiceTipologia(String codiceTipologia) {
-		this.codiceTipologia = codiceTipologia;
-	}
-
-	public String getCodiceAmbito() {
-		return codiceAmbito;
-	}
-
-	public void setCodiceAmbito(String codiceAmbito) {
-		this.codiceAmbito = codiceAmbito;
-	}
+	
 	
 	
 	
