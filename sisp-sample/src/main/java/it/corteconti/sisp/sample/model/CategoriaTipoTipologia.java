@@ -1,7 +1,5 @@
 package it.corteconti.sisp.sample.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +26,8 @@ public class CategoriaTipoTipologia {
 	@JoinColumn(name="CODICE_CATEGORIA")
 	private Categoria categoria;	
 	
-	@Column(name="CODICE_TIPO")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CODICE_TIPO")
 	private Tipo tipo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -39,16 +38,16 @@ public class CategoriaTipoTipologia {
 	@JoinColumn(name="CODICE_AMBITO")
 	private Ambito ambito;	
 	
-//	public String toString() {
-//		return new ToStringBuilder(this)
-//				.append("id", id)
-//				.append("codiceLivelloAoo", codiceLivelloAoo)
-//				.append("codiceCategoria", codiceCategoria)
-//				.append("codiceTipo", codiceTipo)
-//				.append("codiceTipologia", codiceTipologia)
-//				.append("codiceAmbito", codiceAmbito)
-//				.toString();
-//	}
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("id", id)
+				.append("codiceLivelloAoo", this.codiceLivelloAoo)
+				.append("codiceCategoria", this.categoria.getCodiceCategoria())
+				.append("codiceTipo", this.tipo.getCodiceTipo())
+				.append("codiceTipologia", this.tipologia.getCodiceTipologia())
+				.append("codiceAmbito", this.ambito.getCodiceAmbito())
+				.toString();
+	}
 
 	public Long getId() {
 		return id;
@@ -58,8 +57,45 @@ public class CategoriaTipoTipologia {
 		this.id = id;
 	}
 
-	
-	
+	public String getCodiceLivelloAoo() {
+		return codiceLivelloAoo;
+	}
+
+	public void setCodiceLivelloAoo(String codiceLivelloAoo) {
+		this.codiceLivelloAoo = codiceLivelloAoo;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Tipologia getTipologia() {
+		return tipologia;
+	}
+
+	public void setTipologia(Tipologia tipologia) {
+		this.tipologia = tipologia;
+	}
+
+	public Ambito getAmbito() {
+		return ambito;
+	}
+
+	public void setAmbito(Ambito ambito) {
+		this.ambito = ambito;
+	}
 	
 	
 }
