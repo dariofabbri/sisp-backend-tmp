@@ -19,7 +19,7 @@ import it.corteconti.sisp.sample.service.SezioniService;
 
 @RestController
 @RequestMapping(
-		value = "/api/v1/sezioni",
+		value = "/giudizio-api/sezioni",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: sezione")
 public class SezioniResource {

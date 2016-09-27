@@ -19,7 +19,7 @@ import it.corteconti.sisp.sample.service.GiudizioService;
 
 @RestController
 @RequestMapping(
-		value = "/api/v1/giudizi",
+		value = "/giudizio-api/giudizi",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: giudizio")
 public class GiudizioResource {
