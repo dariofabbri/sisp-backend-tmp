@@ -14,9 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import it.corteconti.sisp.sample.dto.CategoriaArrayDto;
 import it.corteconti.sisp.sample.dto.SezioniDto;
-import it.corteconti.sisp.sample.service.CategoriaTipoTipologiaService;
 import it.corteconti.sisp.sample.service.SezioniService;
 
 @RestController
@@ -28,7 +26,7 @@ public class SezioniResource {
 	
 	@Autowired
 	private SezioniService service;
-
+	
 	@RequestMapping(value = "/{sezioneId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo sezione indicata.", response = SezioniDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
@@ -39,5 +37,7 @@ public class SezioniResource {
 		SezioniDto thing = service.findOne(id);
 		return new ResponseEntity<SezioniDto>(thing, HttpStatus.OK);
 	}
+	
+	
 
 }
