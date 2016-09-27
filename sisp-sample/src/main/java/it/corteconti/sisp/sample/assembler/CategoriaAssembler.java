@@ -28,9 +28,9 @@ public class CategoriaAssembler {
 	public static CategoriaDto assembleDto(CategoriaTipoTipologia categoria) {
 		CategoriaDto categoriaDto = new CategoriaDto();
 		
-		categoriaDto.setIdCategoria(categoria.getCategoria().getCodiceCategoria());
-		categoriaDto.setDescrizioneCategoria(categoria.getCategoria().getDescrizioneCategoria());
-		categoriaDto.setAmbito(categoria.getAmbito().getDescrizioneAmbito());
+		categoriaDto.setIdCategoria((categoria.getCategoria()!=null)?categoria.getCategoria().getCodiceCategoria():"");
+		categoriaDto.setDescrizioneCategoria((categoria.getCategoria()!=null)?categoria.getCategoria().getDescrizioneCategoria():"");
+		categoriaDto.setAmbito((categoria.getAmbito()!=null)?categoria.getAmbito().getDescrizioneAmbito():"");
 		
 		return categoriaDto;
 	}
