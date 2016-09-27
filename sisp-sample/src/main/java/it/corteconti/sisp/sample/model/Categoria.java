@@ -9,11 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name = "CATEGORIA")
 public class Categoria {
-
-	@Column(name="CODICE_CATEGORIA")
+	
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "CODICE_CATEGORIA")
 	private String codiceCategoria;
 	
 	@Column(name="DESCRIZIONE_CATEGORIA")

@@ -2,13 +2,19 @@ package it.corteconti.sisp.sample.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name = "TIPO")
 public class Tipo {
-
-	@Column(name="CODICE_TIPO")
+	
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "CODICE_TIPO")
 	private String codiceTipo;
 	
 	@Column(name="DESCRIZIONE_TIPO")
