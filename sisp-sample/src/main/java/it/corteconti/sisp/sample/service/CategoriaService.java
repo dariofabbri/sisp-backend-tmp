@@ -36,7 +36,7 @@ public class CategoriaService {
 		if (lista == null || lista.isEmpty()) {
 			LOG.debug("Categorie non trovate.");
 			throw new ResourceNotFoundException(
-					MessageFormat.format("Ambito {0} not found.", idAmbito));
+					MessageFormat.format("Categoria with Ambito {0} and Sezione {1} not found.", idAmbito, idSezione));
 		}
 		
 		List<CategoriaDto> listaCategorieDto = new ArrayList<CategoriaDto>();
