@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
 import it.corteconti.sisp.sample.dao.CategoriaTipoTipologiaRepository;
-import it.corteconti.sisp.sample.dto.CategoriaArrayDto;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.dto.SezioniDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
