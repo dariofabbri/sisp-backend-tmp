@@ -8,31 +8,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
-import it.corteconti.sisp.sample.dao.CategoriaTipoTipologiaRepository;
+import it.corteconti.sisp.sample.dao.CategoriaRepository;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.dto.SezioniDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
-import it.corteconti.sisp.sample.model.CategoriaTipoTipologia;
+import it.corteconti.sisp.sample.model.Categoria;
 
 @Service
-public class CategoriaTipoTipologiaService {
+@Transactional
+public class CategoriaService {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(CategoriaTipoTipologiaService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CategoriaService.class);
 	
 	@Autowired
 	private SezioniService sezioniService;
 	@Autowired
-	private CategoriaTipoTipologiaRepository categoriaTipoTipologiaRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public List<CategoriaDto> findOne(Long idSezione , String idAmbito) {
+	public List<CategoriaDto> findCategorieBySezioneAndAmbito(Long idSezione , String idAmbito) {
 		
 		SezioniDto sezDto = sezioniService.findOne(idSezione);
-		List<CategoriaTipoTipologia> lista = categoriaTipoTipologiaRepository.findByIdAmbitoAndLivelloAoo(idAmbito, ""+sezDto.getLivelloSezione());
-		if(lista == null) {
-			LOG.debug("Nessun oggetto trovato.");
+		List<Categoria> lista = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAoo(idAmbito, ""+sezDto.getLivelloSezione());
+		if (lista == null || lista.isEmpty()) {
+			LOG.debug("Categorie non trovate.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Ambito {0} not found.", idAmbito));
 		}
@@ -45,7 +47,6 @@ public class CategoriaTipoTipologiaService {
 		});
 		
 		return listaCategorieDto;
-		
 	}
 	
 }
