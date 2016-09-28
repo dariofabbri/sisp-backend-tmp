@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "SEZIONI")
-public class Sezioni {
+public class Sezione {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,7 @@ package it.corteconti.sisp.sample.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SezioniDto {
+public class SezioneDto {
 
 	private Long idSezione;
 	private String descrizioneSezione;

@@ -15,7 +15,7 @@ import it.corteconti.sisp.sample.assembler.TipologiaAssembler;
 import it.corteconti.sisp.sample.dao.CategoriaRepository;
 import it.corteconti.sisp.sample.dao.TipologiaRepository;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
-import it.corteconti.sisp.sample.dto.SezioniDto;
+import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Categoria;
@@ -28,14 +28,14 @@ public class TipologiaService {
 	private static final Logger LOG = LoggerFactory.getLogger(TipologiaService.class);
 	
 	@Autowired
-	private SezioniService sezioniService;
+	private SezioneService sezioniService;
 	@Autowired
 	private TipologiaRepository tipologiaRepository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<TipologiaDto> findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito , String idCategoria , String idTipo) {
 		
-		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
+		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		List<Tipologia> lista = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipo(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
 		if (lista == null || lista.isEmpty()) {
 			LOG.debug("Tipologie non trovate.");
@@ -56,7 +56,7 @@ public class TipologiaService {
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<TipologiaDto> findTipologieBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
 		
-		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
+		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		List<Tipologia> lista = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo, idTipologia);
 		if (lista == null || lista.isEmpty()) {
 			LOG.debug("Tipologie non trovate.");

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.corteconti.sisp.sample.assembler.TipoAssembler;
 import it.corteconti.sisp.sample.dao.TipoRepository;
-import it.corteconti.sisp.sample.dto.SezioniDto;
+import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
@@ -24,14 +24,14 @@ public class TipoService {
 	private static final Logger LOG = LoggerFactory.getLogger(TipoService.class);
 	
 	@Autowired
-	private SezioniService sezioniService;
+	private SezioneService sezioniService;
 	@Autowired
 	private TipoRepository tipoRepository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<TipoDto> findTipiBySezioneAndAmbitoAndCategoria(Long idSezione , String idAmbito, String idCategoria) {
 		
-		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
+		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		List<Tipo> lista = tipoRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(idAmbito, 
 				idCategoria, ""+sezDto.getLivelloSezione());
 		if (lista == null || lista.isEmpty()) {
@@ -52,7 +52,7 @@ public class TipoService {
 	
 	public TipoDto getTipiBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito, String idCategoria, String idTipo) {
 		
-		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
+		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		Tipo tipo = tipoRepository.getFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAooAndTipo(idAmbito, 
 				idCategoria, ""+sezDto.getLivelloSezione(), idTipo);
 		if (tipo == null) {

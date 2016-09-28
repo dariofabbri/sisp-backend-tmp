@@ -7,24 +7,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.corteconti.sisp.sample.assembler.SezioniAssembler;
-import it.corteconti.sisp.sample.dao.SezioniRepository;
-import it.corteconti.sisp.sample.dto.SezioniDto;
+import it.corteconti.sisp.sample.assembler.SezioneAssembler;
+import it.corteconti.sisp.sample.dao.SezioneRepository;
+import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
-import it.corteconti.sisp.sample.model.Sezioni;
+import it.corteconti.sisp.sample.model.Sezione;
 
 @Service
-public class SezioniService {
+public class SezioneService {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(SezioniService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SezioneService.class);
 
 	@Autowired
-	private SezioniRepository repository;
+	private SezioneRepository repository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public SezioniDto findSezioniById(Long id) {
+	public SezioneDto findSezioniById(Long id) {
 		
-		Sezioni sezione = repository.findOne(id);
+		Sezione sezione = repository.findOne(id);
 		LOG.debug(MessageFormat.format("Trovata la seguente sezione: {0}", sezione));
 		
 		if(sezione == null) {
@@ -33,6 +33,6 @@ public class SezioniService {
 					MessageFormat.format("Sezione {0} not found.", id));
 		}
 		
-		return SezioniAssembler.assembleDto(sezione);
+		return SezioneAssembler.assembleDto(sezione);
 	}
 }

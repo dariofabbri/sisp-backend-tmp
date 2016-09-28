@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
 import it.corteconti.sisp.sample.dao.CategoriaRepository;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
-import it.corteconti.sisp.sample.dto.SezioniDto;
+import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Categoria;
 
@@ -24,14 +24,14 @@ public class CategoriaService {
 	private static final Logger LOG = LoggerFactory.getLogger(CategoriaService.class);
 	
 	@Autowired
-	private SezioniService sezioniService;
+	private SezioneService sezioniService;
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<CategoriaDto> findCategorieBySezioneAndAmbito(Long idSezione , String idAmbito) {
 		
-		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
+		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		List<Categoria> lista = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAoo(idAmbito, ""+sezDto.getLivelloSezione());
 		if (lista == null || lista.isEmpty()) {
 			LOG.debug("Categorie non trovate.");
@@ -51,7 +51,7 @@ public class CategoriaService {
 
 	public CategoriaDto findByCategorieBySezioneAndAmbitoAndCategoria(Long sezioneId, String ambitoId, String categoriaId) {
 		
-		SezioniDto sezioneDto = sezioniService.findSezioniById(sezioneId);
+		SezioneDto sezioneDto = sezioniService.findSezioniById(sezioneId);
 
 		Categoria categoria = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAooAndIdCategoria(ambitoId, ""+sezioneDto.getIdSezione(), categoriaId);
 		

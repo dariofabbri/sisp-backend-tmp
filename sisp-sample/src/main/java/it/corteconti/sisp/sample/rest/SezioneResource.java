@@ -14,28 +14,28 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import it.corteconti.sisp.sample.dto.SezioniDto;
-import it.corteconti.sisp.sample.service.SezioniService;
+import it.corteconti.sisp.sample.dto.SezioneDto;
+import it.corteconti.sisp.sample.service.SezioneService;
 
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: sezione")
-public class SezioniResource {
+public class SezioneResource {
 	
 	@Autowired
-	private SezioniService service;
+	private SezioneService service;
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo sezione indicata.", response = SezioniDto.class)
+	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo sezione indicata.", response = SezioneDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità sezione indicata"), })
-	public ResponseEntity<SezioniDto> get(
+	public ResponseEntity<SezioneDto> get(
 			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("sezioneId") Long id) {
 		
-		SezioniDto thing = service.findSezioniById(id);
-		return new ResponseEntity<SezioniDto>(thing, HttpStatus.OK);
+		SezioneDto thing = service.findSezioniById(id);
+		return new ResponseEntity<SezioneDto>(thing, HttpStatus.OK);
 	}
 	
 	
