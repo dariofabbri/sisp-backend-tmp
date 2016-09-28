@@ -8,10 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-@Entity(name = "CATEGORIA_TIPO_TIPOLOGIA")
+@Entity
+@Table(name = "CATEGORIA_TIPO_TIPOLOGIA")
 public class CategoriaTipoTipologia {
 
 	@Id
