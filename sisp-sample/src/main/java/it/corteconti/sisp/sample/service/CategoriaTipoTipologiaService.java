@@ -1,6 +1,7 @@
 package it.corteconti.sisp.sample.service;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
 import it.corteconti.sisp.sample.dao.CategoriaTipoTipologiaRepository;
-import it.corteconti.sisp.sample.dto.CategoriaArrayDto;
+import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.dto.SezioniDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.CategoriaTipoTipologia;
@@ -26,7 +27,7 @@ public class CategoriaTipoTipologiaService {
 	private CategoriaTipoTipologiaRepository categoriaTipoTipologiaRepository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public CategoriaArrayDto findOne(Long idSezione , String idAmbito) {
+	public List<CategoriaDto> findOne(Long idSezione , String idAmbito) {
 		
 		SezioniDto sezDto = sezioniService.findOne(idSezione);
 		List<CategoriaTipoTipologia> lista = categoriaTipoTipologiaRepository.findByIdAmbitoAndLivelloAoo(idAmbito, ""+sezDto.getLivelloSezione());
@@ -35,7 +36,16 @@ public class CategoriaTipoTipologiaService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Ambito {0} not found.", idAmbito));
 		}
-		return CategoriaAssembler.assembleArrayDto(lista);
+		
+		List<CategoriaDto> listaCategorieDto = new ArrayList<CategoriaDto>();
+		
+		lista.forEach(c -> {
+			CategoriaDto categoriaDto = CategoriaAssembler.assembleDto(c);
+			listaCategorieDto.add(categoriaDto);
+		});
+		
+		return listaCategorieDto;
+		
 	}
 	
 }
