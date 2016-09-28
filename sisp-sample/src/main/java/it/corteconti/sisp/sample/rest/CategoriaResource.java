@@ -30,7 +30,7 @@ public class CategoriaResource {
 	private CategoriaService categoriaService;
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito.", response = CategoriaDto.class, responseContainer="List")
+	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categorie indicata"), })
 	public ResponseEntity<List<CategoriaDto>> getCategorie(
 			@ApiParam(value = "Specifica l'id sezione")
@@ -40,6 +40,23 @@ public class CategoriaResource {
 
 		List<CategoriaDto> listaCategoriaAmbito = categoriaService.findCategorieBySezioneAndAmbito(sezioneId, ambitoId);
 		return new ResponseEntity<List<CategoriaDto>>(listaCategoriaAmbito, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}", method = RequestMethod.GET)
+	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categoria indicata"), })
+	public ResponseEntity<CategoriaDto> getCategoria(
+			@ApiParam(value = "Specifica l'id sezione")
+			@PathVariable("sezioneId") Long sezioneId,
+			@ApiParam(value = "Specifica l'id ambito")
+			@PathVariable("ambitoId") String ambitoId,
+			@ApiParam(value = "Specifica l'id della categoria")
+			@PathVariable("categoriaId") String categoriaId){
+
+
+		CategoriaDto categoriaDto =  categoriaService.findByCategorieBySezioneAndAmbitoAndCategoria(sezioneId, ambitoId, categoriaId);
+		return new ResponseEntity<CategoriaDto>(categoriaDto, HttpStatus.OK);
 
 	}
 
