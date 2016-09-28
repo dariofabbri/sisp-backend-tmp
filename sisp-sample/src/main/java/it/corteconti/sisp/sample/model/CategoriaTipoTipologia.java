@@ -8,10 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-@Entity(name = "CATEGORIA_TIPO_TIPOLOGIA")
+@Entity
+@Table(name = "CATEGORIA_TIPO_TIPOLOGIA")
 public class CategoriaTipoTipologia {
 
 	@Id
@@ -23,19 +25,19 @@ public class CategoriaTipoTipologia {
 	private String codiceLivelloAoo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_CATEGORIA", nullable=false)
+	@JoinColumn(name="CODICE_CATEGORIA")
 	private Categoria categoria;	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_TIPO", nullable=false)
+	@JoinColumn(name="CODICE_TIPO")
 	private Tipo tipo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_TIPOLOGIA", nullable=false)
+	@JoinColumn(name="CODICE_TIPOLOGIA")
 	private Tipologia tipologia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="CODICE_AMBITO", nullable=false)
+	@JoinColumn(name="CODICE_AMBITO")
 	private Ambito ambito;	
 	
 	public String toString() {

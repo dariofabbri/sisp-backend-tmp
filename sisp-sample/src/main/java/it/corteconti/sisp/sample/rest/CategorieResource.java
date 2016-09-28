@@ -15,7 +15,6 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.CategoriaArrayDto;
-import it.corteconti.sisp.sample.dto.SezioniDto;
 import it.corteconti.sisp.sample.service.CategoriaTipoTipologiaService;
 
 @RestController
@@ -29,15 +28,15 @@ public class CategorieResource {
 	private CategoriaTipoTipologiaService categoriaTipoTipologiaService;
 	
 	@RequestMapping(value = "/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito   .", response = SezioniDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit√† sezione indicata"), })
+	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito.", response = CategoriaArrayDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'† sezione indicata"), })
 	public ResponseEntity<CategoriaArrayDto> getCategorie(
 			@ApiParam(value = "Specifica l'id della sezione")
-			@PathVariable("sezioneId") Long id,
+			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica l'id di ambito")
 			@PathVariable("ambitoId") String ambitoId){
 		
-		CategoriaArrayDto categoriaAmbitoArray = categoriaTipoTipologiaService.findOne(id, ambitoId);
+		CategoriaArrayDto categoriaAmbitoArray = categoriaTipoTipologiaService.findOne(sezioneId, ambitoId);
 		return new ResponseEntity<CategoriaArrayDto>(categoriaAmbitoArray, HttpStatus.OK);
 	}
 
