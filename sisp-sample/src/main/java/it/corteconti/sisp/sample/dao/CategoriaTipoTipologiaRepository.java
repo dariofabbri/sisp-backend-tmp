@@ -11,6 +11,7 @@ public interface CategoriaTipoTipologiaRepository extends CrudRepository<Categor
 	
 	
 	@Query("FROM CategoriaTipoTipologia ctt LEFT JOIN FETCH ctt.categoria c LEFT JOIN FETCH ctt.ambito a WHERE a.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2")
-	public List<CategoriaTipoTipologia> findByIdAmbitoAndLivelloAoo(String idAmbito, String livelloAoo);
+	//@Query("SELECT a FROM CategoriaTipoTipologia a WHERE a.ambito.codiceAmbito=?1 AND a.codiceLivelloAoo=?2")
+	public List<CategoriaTipoTipologia> findByIdAmbitoAndLivelloAoo(String codiceAmbito, String codiceLivelloAoo);
 	
 }
