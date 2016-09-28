@@ -21,7 +21,7 @@ import it.corteconti.sisp.sample.service.CategoriaService;
 
 @RestController
 @RequestMapping(
-		value = "/giudizio-api/sezioni",
+		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "CategoriaResource")
 public class CategoriaResource {
@@ -29,7 +29,7 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService categoriaService;
 	
-	@RequestMapping(value = "/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
+	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito.", response = CategoriaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categorie indicata"), })
 	public ResponseEntity<List<CategoriaDto>> getCategorie(
