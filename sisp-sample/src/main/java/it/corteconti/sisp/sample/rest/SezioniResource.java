@@ -34,7 +34,7 @@ public class SezioniResource {
 			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("sezioneId") Long id) {
 		
-		SezioniDto thing = service.findOne(id);
+		SezioniDto thing = service.findSezioniById(id);
 		return new ResponseEntity<SezioniDto>(thing, HttpStatus.OK);
 	}
 	

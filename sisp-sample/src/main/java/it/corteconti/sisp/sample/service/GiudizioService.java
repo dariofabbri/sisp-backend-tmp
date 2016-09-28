@@ -22,7 +22,7 @@ public class GiudizioService {
 	private GiudizioRepository repository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public GiudizioDto findOne(Long id) {
+	public GiudizioDto findGiudizioById(Long id) {
 		
 		Giudizio giudizio = repository.findOne(id);
 		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio));

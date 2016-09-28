@@ -31,7 +31,7 @@ public class CategoriaService {
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<CategoriaDto> findCategorieBySezioneAndAmbito(Long idSezione , String idAmbito) {
 		
-		SezioniDto sezDto = sezioniService.findOne(idSezione);
+		SezioniDto sezDto = sezioniService.findSezioniById(idSezione);
 		List<Categoria> lista = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAoo(idAmbito, ""+sezDto.getLivelloSezione());
 		if (lista == null || lista.isEmpty()) {
 			LOG.debug("Categorie non trovate.");

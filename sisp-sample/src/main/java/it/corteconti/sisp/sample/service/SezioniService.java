@@ -22,7 +22,7 @@ public class SezioniService {
 	private SezioniRepository repository;
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public SezioniDto findOne(Long id) {
+	public SezioniDto findSezioniById(Long id) {
 		
 		Sezioni sezione = repository.findOne(id);
 		LOG.debug(MessageFormat.format("Trovata la seguente sezione: {0}", sezione));

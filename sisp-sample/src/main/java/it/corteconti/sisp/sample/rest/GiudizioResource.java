@@ -34,7 +34,7 @@ public class GiudizioResource {
 			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("id") Long id) {
 		
-		GiudizioDto thing = service.findOne(id);
+		GiudizioDto thing = service.findGiudizioById(id);
 		return new ResponseEntity<GiudizioDto>(thing, HttpStatus.OK);
 	}
 	
