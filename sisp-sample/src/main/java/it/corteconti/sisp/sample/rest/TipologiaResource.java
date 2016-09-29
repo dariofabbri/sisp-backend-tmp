@@ -23,15 +23,15 @@ import it.corteconti.sisp.sample.service.TipologiaService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "TipologiaResource")
+@Api(description = "Risorsa di esempio: tipologia")
 public class TipologiaResource {
 	
 	@Autowired
 	private TipologiaService tipologiaService;
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione , idAmbito , idCategoria e idTipo.", response = TipologiaDto.class, responseContainer="List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' tipologia indicata"), })
+	@ApiOperation(value = "", notes = "Restituisce le entità di tipologia in base a : idSezione , idAmbito , idCategoria e idTipo.", response = TipologiaDto.class, responseContainer="List")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
 	public ResponseEntity<List<TipologiaDto>> getTipologieBySezioneAmbitoCategoriaTipo(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
@@ -42,14 +42,14 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipo")
 			@PathVariable("tipoId") String tipoId){
 
-		List<TipologiaDto> listaTipologiaAmbito = tipologiaService.findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
-		return new ResponseEntity<List<TipologiaDto>>(listaTipologiaAmbito, HttpStatus.OK);
+		List<TipologiaDto> listaTipologia = tipologiaService.findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
+		return new ResponseEntity<List<TipologiaDto>>(listaTipologia, HttpStatus.OK);
 
 	}
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione , idAmbito , idCategoria , idTipo e idTipologia.", response = TipologiaDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' tipologia indicata"), })
+	@ApiOperation(value = "", notes = "Restituisce l'entità di tipologia in base a : idSezione , idAmbito , idCategoria , idTipo e idTipologia.", response = TipologiaDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
 	public ResponseEntity<TipologiaDto> getTipologiaBySezioneAmbitoCategoriaTipoIdTipologia(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
@@ -62,8 +62,8 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipologia")
 			@PathVariable("tipologiaId") String tipologiaId){
 
-		TipologiaDto tipologiaAmbito = tipologiaService.findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
-		return new ResponseEntity<TipologiaDto>(tipologiaAmbito, HttpStatus.OK);
+		TipologiaDto tipologia = tipologiaService.findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
+		return new ResponseEntity<TipologiaDto>(tipologia, HttpStatus.OK);
 
 	}
 
