@@ -32,7 +32,7 @@ public class Application {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.paths(PathSelectors.regex("/api.*"))
+				.paths(PathSelectors.regex("/giudizio-api.*"))
 				.build();
 	}
 	
