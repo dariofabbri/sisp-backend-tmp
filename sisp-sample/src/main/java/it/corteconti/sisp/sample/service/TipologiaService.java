@@ -10,15 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
 import it.corteconti.sisp.sample.assembler.TipologiaAssembler;
-import it.corteconti.sisp.sample.dao.CategoriaRepository;
 import it.corteconti.sisp.sample.dao.TipologiaRepository;
-import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
-import it.corteconti.sisp.sample.model.Categoria;
 import it.corteconti.sisp.sample.model.Tipologia;
 
 @Service

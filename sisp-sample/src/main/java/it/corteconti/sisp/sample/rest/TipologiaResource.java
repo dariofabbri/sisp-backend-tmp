@@ -16,9 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
-import it.corteconti.sisp.sample.service.CategoriaService;
 import it.corteconti.sisp.sample.service.TipologiaService;
 
 @RestController

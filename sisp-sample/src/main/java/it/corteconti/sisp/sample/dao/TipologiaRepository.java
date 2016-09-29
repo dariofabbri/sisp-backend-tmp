@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import it.corteconti.sisp.sample.model.Categoria;
 import it.corteconti.sisp.sample.model.Tipologia;
 
 public interface TipologiaRepository extends CrudRepository<Tipologia, Long> {
