@@ -14,6 +14,6 @@ public interface TipologiaRepository extends CrudRepository<Tipologia, Long> {
 	public List<Tipologia> findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipo(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo);
 	
 	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 AND ctt.tipologia.codiceTipologia=?5")
-	public List<Tipologia> findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo, String codiceTipologia);
+	public Tipologia findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo, String codiceTipologia);
 
 }

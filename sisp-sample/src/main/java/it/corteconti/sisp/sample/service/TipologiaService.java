@@ -54,24 +54,19 @@ public class TipologiaService {
 	}
 	
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
-	public List<TipologiaDto> findTipologieBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
+	public TipologiaDto findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
 		
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
-		List<Tipologia> lista = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo, idTipologia);
-		if (lista == null || lista.isEmpty()) {
-			LOG.debug("Tipologie non trovate.");
+		Tipologia tipologia = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo, idTipologia);
+		if (tipologia == null ) {
+			LOG.debug("Tipologia non trovata.");
 			throw new ResourceNotFoundException(
-					MessageFormat.format("Tipologie with Sezione {0} and Ambito {1} and Categoria {2} and Tipo {3} and Tipologia {4} not found.", idSezione, idAmbito, idCategoria, idTipo, idTipologia));
+					MessageFormat.format("Tipologia with Sezione {0} and Ambito {1} and Categoria {2} and Tipo {3} and Tipologia {4} not found.", idSezione, idAmbito, idCategoria, idTipo, idTipologia));
 		}
 		
-		List<TipologiaDto> listaTipologieDto = new ArrayList<TipologiaDto>();
+		TipologiaDto tipologiaDto = TipologiaAssembler.assembleDto(tipologia);
 		
-		lista.forEach(t -> {
-			TipologiaDto tipologiaDto = TipologiaAssembler.assembleDto(t);
-			listaTipologieDto.add(tipologiaDto);
-		});
-		
-		return listaTipologieDto;
+		return tipologiaDto;
 	}
 	
 }
