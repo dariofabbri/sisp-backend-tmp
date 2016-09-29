@@ -13,6 +13,11 @@ import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Giudizio;
 
+/**
+ * Service Entit� <em>it.corteconti.sisp.sample.model.Giudizio</em> 
+ * @version 1.0
+ */
+
 @Service
 public class GiudizioService {
 	
@@ -21,25 +26,29 @@ public class GiudizioService {
 	@Autowired
 	private GiudizioRepository repository;
 	
-	//@HystrixCommand(fallbackMethod = "findOneFallback")
+	/**
+	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em></p>
+	 * @param id			id dell'entit� Giudizio
+	 * @return				<em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */
 	public GiudizioDto findGiudizioById(Long id) {
-		
+
+		// -- Recupero entit� Giudizio a fronte dell'id			
 		Giudizio giudizio = repository.findOne(id);
-		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio));
 		
+		// -- Verifica valorizzazione oggetto
 		if(giudizio == null) {
+			// logging	
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Giudizio {0} not found.", id));
 		}
 		
+		// logging	
+		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio));
+		
+		// -- Assembler, Giudizio -> GiudizioDto			
 		return GiudizioAssembler.assembleDto(giudizio);
 	}
 	
-//	public ThingDto findOneFallback(Long id) {
-//		
-//		LOG.info("Circuit breaker: findOneFallback");
-//		
-//		throw new RuntimeException("Circuit breaker");
-//	}
 }

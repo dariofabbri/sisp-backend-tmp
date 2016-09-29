@@ -17,6 +17,11 @@ import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.service.SezioneService;
 
+/**
+ * Rest Entitï¿½ <em>it.corteconti.sisp.sample.model.Sezione</em>
+ * @version 1.0
+ */
+
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
@@ -27,14 +32,19 @@ public class SezioneResource {
 	@Autowired
 	private SezioneService service;
 	
+	/**
+	 * Ritorna una stringa JSON che rappresenta un oggetto Sezione
+	 * @param sezioneId
+	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>
+	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entita' Sezione.", response = SezioneDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' Sezione indicata"), })
+	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entita'ï¿½Sezione.", response = SezioneDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'ï¿½Sezione indicata"), })
 	public ResponseEntity<SezioneDto> get(
-			@ApiParam(value = "Specifica l'id dell'entita' da ritornare")
-			@PathVariable("sezioneId") Long id) {
+			@ApiParam(value = "Specifica l'id dell'entita'ï¿½da ritornare")
+			@PathVariable("sezioneId") Long sezioneId) {
 		
-		SezioneDto thing = service.findSezioniById(id);
+		SezioneDto thing = service.findSezioniById(sezioneId);
 		return new ResponseEntity<SezioneDto>(thing, HttpStatus.OK);
 	}
 	

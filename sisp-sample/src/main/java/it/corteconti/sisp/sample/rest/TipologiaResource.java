@@ -19,6 +19,11 @@ import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.service.TipologiaService;
 
+/**
+ * Rest Entit� <em>it.corteconti.sisp.sample.model.Tipologia</em>
+ * @version 1.0
+ */
+
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
@@ -29,6 +34,14 @@ public class TipologiaResource {
 	@Autowired
 	private TipologiaService tipologiaService;
 	
+	/**
+	 * Ritorna una stringa JSON che rappresenta una lista di oggetti Tipologia
+	 * @param sezioneId
+	 * @param ambitoId
+	 * @param categoriaId
+	 * @param tipoId 
+	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
+	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce le entità di tipologia in base a : idSezione , idAmbito , idCategoria e idTipo.", response = TipologiaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
@@ -47,6 +60,15 @@ public class TipologiaResource {
 
 	}
 	
+	/**
+	 * Ritorna una stringa JSON che rappresenta un oggetto Tipologia
+	 * @param sezioneId
+	 * @param ambitoId
+	 * @param categoriaId
+	 * @param tipoId
+	 * @param tipologiaId 
+	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
+	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce l'entità di tipologia in base a : idSezione , idAmbito , idCategoria , idTipo e idTipologia.", response = TipologiaDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })

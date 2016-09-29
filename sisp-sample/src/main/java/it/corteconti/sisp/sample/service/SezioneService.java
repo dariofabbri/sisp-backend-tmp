@@ -13,6 +13,11 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Sezione;
 
+/**
+ * Service Entit� <em>it.corteconti.sisp.sample.model.Sezione</em> 
+ * @version 1.0
+ */
+
 @Service
 public class SezioneService {
 	
@@ -21,18 +26,28 @@ public class SezioneService {
 	@Autowired
 	private SezioneRepository repository;
 	
-	//@HystrixCommand(fallbackMethod = "findOneFallback")
+	/**
+	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em></p>
+	 * @param idSezione		id dell'entit� Sezione
+	 * @return				<em>it.corteconti.sisp.sample.dto.SezioneDto</em>
+	 */
 	public SezioneDto findSezioniById(Long id) {
 		
+		// -- Recupero entit� Sezione a fronte dell'id			
 		Sezione sezione = repository.findOne(id);
-		LOG.debug(MessageFormat.format("Trovata la seguente sezione: {0}", sezione));
 		
+		// -- Verifica valorizzazione oggetto
 		if(sezione == null) {
+			// logging	
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Sezione {0} not found.", id));
 		}
 		
+		// logging	
+		LOG.debug(MessageFormat.format("Trovata la seguente sezione: {0}", sezione));
+		
+		// -- Assembler, Sezione -> SezioneDto		
 		return SezioneAssembler.assembleDto(sezione);
 	}
 }

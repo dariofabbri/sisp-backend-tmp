@@ -17,6 +17,11 @@ import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.service.GiudizioService;
 
+/**
+ * Rest Entitï¿½ <em>it.corteconti.sisp.sample.model.Giudizio</em>
+ * @version 1.0
+ */
+
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
@@ -27,11 +32,16 @@ public class GiudizioResource {
 	@Autowired
 	private GiudizioService service;
 	
+	/**
+	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
+	 * @param id
+	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entita' Giudizio.", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' Giudizio indicata"), })
+	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entita'ï¿½Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'ï¿½Giudizio indicata"), })
 	public ResponseEntity<GiudizioDto> get(
-			@ApiParam(value = "Specifica l'id dell'entita' da ritornare")
+			@ApiParam(value = "Specifica l'id dell'entita'ï¿½da ritornare")
 			@PathVariable("id") Long id) {
 		
 		GiudizioDto thing = service.findGiudizioById(id);
