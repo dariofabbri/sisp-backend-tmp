@@ -21,17 +21,17 @@ import it.corteconti.sisp.sample.service.GiudizioService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "Risorsa di esempio: giudizio")
+@Api(description = "giudizioResource")
 public class GiudizioResource {
 	
 	@Autowired
 	private GiudizioService service;
 	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Restituisce l'entit√† di tipo giudizio indicata.", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit√† giudizio indicata"), })
+	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entita'†Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'†Giudizio indicata"), })
 	public ResponseEntity<GiudizioDto> get(
-			@ApiParam(value = "Specifica l'id dell'entit√† da ritornare")
+			@ApiParam(value = "Specifica l'id dell'entita'†da ritornare")
 			@PathVariable("id") Long id) {
 		
 		GiudizioDto thing = service.findGiudizioById(id);
