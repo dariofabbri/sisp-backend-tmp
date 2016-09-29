@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.service.SezioneService;
 
 /**
- * Rest Entit� <em>it.corteconti.sisp.sample.model.Sezione</em>
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Sezione</em>
  * @version 1.0
  */
 
@@ -38,16 +38,13 @@ public class SezioneResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entita'�Sezione.", response = SezioneDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'�Sezione indicata"), })
+	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entità Sezione.", response = SezioneDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione indicata"), })
 	public ResponseEntity<SezioneDto> get(
-			@ApiParam(value = "Specifica l'id dell'entita'�da ritornare")
+			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("sezioneId") Long sezioneId) {
 		
 		SezioneDto thing = service.findSezioniById(sezioneId);
 		return new ResponseEntity<SezioneDto>(thing, HttpStatus.OK);
 	}
-	
-	
-
 }

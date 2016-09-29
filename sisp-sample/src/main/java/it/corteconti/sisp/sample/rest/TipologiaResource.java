@@ -20,10 +20,9 @@ import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.service.TipologiaService;
 
 /**
- * Rest Entit� <em>it.corteconti.sisp.sample.model.Tipologia</em>
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
  * @version 1.0
  */
-
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
@@ -55,7 +54,11 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipo")
 			@PathVariable("tipoId") String tipoId){
 
-		List<TipologiaDto> listaTipologia = tipologiaService.findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
+		List<TipologiaDto> listaTipologia = tipologiaService.findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(
+				sezioneId, 
+				ambitoId, 
+				categoriaId, 
+				tipoId);
 		return new ResponseEntity<List<TipologiaDto>>(listaTipologia, HttpStatus.OK);
 
 	}
@@ -69,8 +72,11 @@ public class TipologiaResource {
 	 * @param tipologiaId 
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */	
-	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Restituisce l'entità di tipologia in base a : idSezione , idAmbito , idCategoria , idTipo e idTipologia.", response = TipologiaDto.class)
+	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", 
+			method = RequestMethod.GET)
+	@ApiOperation(value = "", 
+		notes = "Restituisce l'entità di tipologia in base a : idSezione , idAmbito , idCategoria , idTipo e idTipologia.", 
+		response = TipologiaDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
 	public ResponseEntity<TipologiaDto> getTipologiaBySezioneAmbitoCategoriaTipoIdTipologia(
 			@ApiParam(value = "Specifica l'id sezione")
@@ -82,11 +88,9 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipo")
 			@PathVariable("tipoId") String tipoId,			
 			@ApiParam(value = "Specifica l'id tipologia")
-			@PathVariable("tipologiaId") String tipologiaId){
+			@PathVariable("tipologiaId") String tipologiaId) {
 
 		TipologiaDto tipologia = tipologiaService.findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
 		return new ResponseEntity<TipologiaDto>(tipologia, HttpStatus.OK);
-
 	}
-
 }

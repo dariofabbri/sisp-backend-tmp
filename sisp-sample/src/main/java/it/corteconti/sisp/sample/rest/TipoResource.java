@@ -20,7 +20,7 @@ import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.service.TipoService;
 
 /**
- * Rest Entit‡ <em>it.corteconti.sisp.sample.model.Tipo</em>
+ * Rest Entit√† <em>it.corteconti.sisp.sample.model.Tipo</em>
  * @version 1.0
  */
 @RestController
@@ -41,8 +41,8 @@ public class TipoResource {
 	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista di entita'†Tipo.", response = TipoDto.class, responseContainer="List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'†Tipo indicata"), })
+	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista di entit√† Tipo.", response = TipoDto.class, responseContainer="List")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit√† Tipo indicata"), })
 	public ResponseEntity<List<TipoDto>> getList(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
@@ -64,8 +64,8 @@ public class TipoResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce l'entita'†Tipo.", response = TipoDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'†Tipo indicata"), })
+	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce l'entit√† Tipo.", response = TipoDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit√† Tipo indicata"), })
 	public ResponseEntity<TipoDto> get(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
@@ -79,7 +79,4 @@ public class TipoResource {
 		TipoDto dto = tipoService.getTipiBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
 		return new ResponseEntity<TipoDto>(dto, HttpStatus.OK);
 	}
-	
-	
-
 }

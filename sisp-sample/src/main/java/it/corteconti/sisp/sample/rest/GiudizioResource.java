@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.service.GiudizioService;
 
 /**
- * Rest Entit� <em>it.corteconti.sisp.sample.model.Giudizio</em>
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Giudizio</em>
  * @version 1.0
  */
 
@@ -38,16 +38,13 @@ public class GiudizioResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entita'�Giudizio.", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita'�Giudizio indicata"), })
+	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio indicata"), })
 	public ResponseEntity<GiudizioDto> get(
-			@ApiParam(value = "Specifica l'id dell'entita'�da ritornare")
+			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("id") Long id) {
 		
 		GiudizioDto thing = service.findGiudizioById(id);
 		return new ResponseEntity<GiudizioDto>(thing, HttpStatus.OK);
 	}
-	
-	
-
 }

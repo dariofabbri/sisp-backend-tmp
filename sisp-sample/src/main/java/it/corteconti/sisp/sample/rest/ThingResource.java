@@ -1,5 +1,7 @@
 package it.corteconti.sisp.sample.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +27,8 @@ import it.corteconti.sisp.sample.service.ThingService;
 @Api(description = "Risorsa di esempio: thing")
 public class ThingResource {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(ThingResource.class);
+	
 	@Autowired
 	private ThingService service;
 	
@@ -40,21 +44,20 @@ public class ThingResource {
 	}
 	
 	/**
-	 * Crea l'entit‡ Thing
+	 * Crea l'entit√† Thing
 	 * @param thingDto
 	 * @param ucBuilder
 	 * @return
 	 */
 	@RequestMapping(value = "/thing", method = RequestMethod.POST)
-	@ApiOperation(value = "", notes = "Creazione entit‡ Thing", response = ThingDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit‡ creata"), })
+	@ApiOperation(value = "", notes = "Creazione entit√† Thing", response = ThingDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entit√† creata"), })
 	public ResponseEntity<ThingDto> save(
 			@ApiParam(value = "Oggetto Thing da creare")
 			@RequestBody ThingDto thingDto) {
 		
-		
-		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getDescription());
-		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getLastUpdate());
+		LOG.debug("THING" + thingDto.getDescription());
+		LOG.debug("THING" + thingDto.getLastUpdate());
 		
 		service.save(thingDto);
 		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
