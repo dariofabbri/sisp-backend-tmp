@@ -19,4 +19,15 @@ public class ThingAssembler {
 		
 		return dto;
 	}
+	
+	public static Thing disassembleDto(ThingDto thingDto) {
+		
+		Thing thing = new Thing();
+		
+		thing.setId(thingDto.getId());
+		thing.setDescription(thingDto.getDescription());
+		thing.setLastUpdate(thingDto.getLastUpdate());
+		
+		return thing;
+	}
 }

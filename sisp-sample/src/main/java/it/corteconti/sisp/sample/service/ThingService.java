@@ -36,6 +36,17 @@ public class ThingService {
 		return ThingAssembler.assembleDto(thing);
 	}
 	
+	public void save(ThingDto thingDto) {
+		
+		if (thingDto == null) {
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Non è possibile salvare l'oggetto {0}", Thing.class.getName() ));
+		}
+		
+		Thing thing = repository.save(ThingAssembler.disassembleDto(thingDto));
+		thingDto.setId(thing.getId());
+	}
+	
 //	public ThingDto findOneFallback(Long id) {
 //		
 //		LOG.info("Circuit breaker: findOneFallback");

@@ -1,7 +1,6 @@
 package it.corteconti.sisp.sample.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +20,7 @@ import it.corteconti.sisp.sample.service.ThingService;
 
 @RestController
 @RequestMapping(
-		value = "/api/v1/things",//giudizio-api
+		value = "/giudizio-api",//api/v1/things
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: thing")
 public class ThingResource {
@@ -41,22 +39,24 @@ public class ThingResource {
 		return new ResponseEntity<ThingDto>(thing, HttpStatus.OK);
 	}
 	
+	/**
+	 * Crea l'entità Thing
+	 * @param thingDto
+	 * @param ucBuilder
+	 * @return
+	 */
 	@RequestMapping(value = "/thing", method = RequestMethod.POST)
-	@ApiOperation(value = "", notes = "Creazione entita' Thing", response = ThingDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = ""), })
-	public ResponseEntity<Void> save(
+	@ApiOperation(value = "", notes = "Creazione entità Thing", response = ThingDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità creata"), })
+	public ResponseEntity<ThingDto> save(
 			@ApiParam(value = "Oggetto Thing da creare")
-			@RequestBody ThingDto thingDto,
-			UriComponentsBuilder ucBuilder) {
+			@RequestBody ThingDto thingDto) {
 		
 		
 		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getDescription());
 		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getLastUpdate());
 		
-		thingDto.setId(new Long(3));
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/giudizio-api/thing/{id}").buildAndExpand(thingDto.getId()).toUri());
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		service.save(thingDto);
+		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
 	}
 }
