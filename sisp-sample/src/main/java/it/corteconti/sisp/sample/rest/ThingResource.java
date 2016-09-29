@@ -52,6 +52,7 @@ public class ThingResource {
 		
 		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getDescription());
 		System.out.println(">>>>>>>>>>>>>>>  THING" + thingDto.getLastUpdate());
+		
 		thingDto.setId(new Long(3));
 		
 		HttpHeaders headers = new HttpHeaders();
