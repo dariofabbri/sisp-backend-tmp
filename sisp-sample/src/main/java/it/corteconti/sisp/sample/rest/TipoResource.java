@@ -23,14 +23,14 @@ import it.corteconti.sisp.sample.service.TipoService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "Risorsa di esempio: sezione")
+@Api(description = "TipoResource")
 public class TipoResource {
 	
 	@Autowired
 	private TipoService tipoService;
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista entita' Tipo indicata.", response = TipoDto.class, responseContainer="List")
+	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista di entita' Tipo.", response = TipoDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' Tipo indicata"), })
 	public ResponseEntity<List<TipoDto>> getList(
 			@ApiParam(value = "Specifica l'id sezione")
@@ -45,7 +45,7 @@ public class TipoResource {
 	}
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, idTipo restituisce l'entita' Tipo indicata.", response = TipoDto.class)
+	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce l'entita' Tipo.", response = TipoDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' Tipo indicata"), })
 	public ResponseEntity<TipoDto> get(
 			@ApiParam(value = "Specifica l'id sezione")
