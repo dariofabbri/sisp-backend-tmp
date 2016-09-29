@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
 
 /**
- * Service Entità <em>it.corteconti.sisp.sample.model.Tipo</em> 
+ * Service Entità <em>it.corteconti.sisp.sample.model.Tipo</em>
  * @version 1.0
  */
 @Service
