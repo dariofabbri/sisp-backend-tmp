@@ -30,7 +30,7 @@ public class TipoResource {
 	private TipoService tipoService;
 	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista entita' Tipo indicata.", response = TipoDto.class)
+	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, restituisce una lista entita' Tipo indicata.", response = TipoDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' Tipo indicata"), })
 	public ResponseEntity<List<TipoDto>> getList(
 			@ApiParam(value = "Specifica l'id sezione")
