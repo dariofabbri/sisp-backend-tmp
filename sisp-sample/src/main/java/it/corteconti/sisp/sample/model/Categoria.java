@@ -8,7 +8,11 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.GenericGenerator;
-
+/**
+ * 
+ * La classe rappresenta una categoria
+ *
+ */
 @Entity
 @Table(name = "CATEGORIA")
 public class Categoria {

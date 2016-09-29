@@ -29,6 +29,13 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	
+	/**
+	 * <p>Ritorna una stringa JSON rapprenseta una lista di categorie<p>
+	 * @param sezioneId
+	 * @param ambitoId
+	 * @return Response HTTP, JSON listaCategorie
+	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categorie indicata"), })
@@ -42,9 +49,15 @@ public class CategoriaResource {
 		return new ResponseEntity<List<CategoriaDto>>(listaCategoriaAmbito, HttpStatus.OK);
 
 	}
-	
+	/**
+	 * <p>Ritorna una stringa JSON rapprenseta una categoria<p>
+	 * @param sezioneId
+	 * @param ambitoId
+	 * @param categoriaId
+	 * @return Response HTTP, JSON categoria
+	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class)
+	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito e idCategoria ritorna la categoria selezionata.", response = CategoriaDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categoria indicata"), })
 	public ResponseEntity<CategoriaDto> getCategoria(
 			@ApiParam(value = "Specifica l'id sezione")

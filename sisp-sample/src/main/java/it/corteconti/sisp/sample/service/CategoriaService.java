@@ -28,6 +28,12 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
+	/**
+	 * <p>Cerca una Lista di oggetti categoria dato id della sezione e id dell'ambito<p>
+	 * @param idSezione
+	 * @param idAmbito
+	 * @return listaCategorieDto
+	 */
 	//@HystrixCommand(fallbackMethod = "findOneFallback")
 	public List<CategoriaDto> findCategorieBySezioneAndAmbito(Long idSezione , String idAmbito) {
 		
@@ -48,7 +54,14 @@ public class CategoriaService {
 		
 		return listaCategorieDto;
 	}
-
+	
+	/**
+	 * <p>cerca una categoria dato id della sesione , id dell'ambito e id della categoria<p>
+	 * @param sezioneId
+	 * @param ambitoId
+	 * @param categoriaId
+	 * @return categoriaDto
+	 */
 	public CategoriaDto findByCategorieBySezioneAndAmbitoAndCategoria(Long sezioneId, String ambitoId, String categoriaId) {
 		
 		SezioneDto sezioneDto = sezioniService.findSezioniById(sezioneId);
