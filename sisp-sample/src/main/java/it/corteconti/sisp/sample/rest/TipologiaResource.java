@@ -20,7 +20,7 @@ import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.service.TipologiaService;
 
 /**
- * Rest Entitï¿½ <em>it.corteconti.sisp.sample.model.Tipologia</em>
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
  * @version 1.0
  */
 
@@ -28,7 +28,7 @@ import it.corteconti.sisp.sample.service.TipologiaService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "Risorsa di esempio: tipologia")
+@Api(description = "tipologiaResource")
 public class TipologiaResource {
 	
 	@Autowired
