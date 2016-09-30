@@ -1,10 +1,13 @@
 package it.corteconti.sisp.sample.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -23,6 +26,9 @@ public class Sezione {
 	
 	@Column(name="LIVELLO")
 	private Integer livello;
+	
+	@ManyToMany(mappedBy = "sezioni")
+	private Set<Contatore> contatori;
 	
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -56,6 +62,13 @@ public class Sezione {
 		this.livello = livello;
 	}
 
+	public Set<Contatore> getContatori() {
+		return contatori;
+	}
+
+	public void setContatori(Set<Contatore> contatori) {
+		this.contatori = contatori;
+	}
 	
 	
 }
