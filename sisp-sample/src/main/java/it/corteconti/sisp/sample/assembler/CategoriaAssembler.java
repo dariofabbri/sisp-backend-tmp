@@ -3,14 +3,17 @@ package it.corteconti.sisp.sample.assembler;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.model.Categoria;
 
+/**
+ * Assembler Entità <em>it.corteconti.sisp.sample.model.Categoria</em>
+ * @version 1.0
+ */
 public class CategoriaAssembler {
 	
 	/**
-	 * <p>Passato per parametro un oggetto di tipo Categoria, assembla un oggetto di tipo CategoriaDto<p>
-	 * @param categoria
-	 * @return categoriaDto
+	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
+	 * @param categoria	Entità <em>it.corteconti.sisp.sample.model.Categoria</em>
+	 * @return 			<em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
 	 */
-	
 	public static CategoriaDto assembleDto(Categoria categoria) {
 		CategoriaDto categoriaDto = new CategoriaDto();
 		

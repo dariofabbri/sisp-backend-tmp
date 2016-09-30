@@ -7,7 +7,6 @@ import it.corteconti.sisp.sample.model.Tipologia;
  * Assembler Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
  * @version 1.0
  */
-
 public class TipologiaAssembler {
 
 	/**
