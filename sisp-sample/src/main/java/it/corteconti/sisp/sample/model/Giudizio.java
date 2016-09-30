@@ -5,14 +5,21 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Entità relativa alla tabella <em>GIUDIZIO</em>
+ * @versione 1.0
+ */
 @Entity
 @Table(name = "GIUDIZIO")
 public class Giudizio {
@@ -39,6 +46,18 @@ public class Giudizio {
 	
 	@ManyToMany(mappedBy="listaGiudizi")
 	private List<Oggetto> listaOggetti;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CATEGORIA_CODICE_CATEGORIA")
+	private Categoria categoria;	
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="TIPO_CODICE_TIPO")
+	private Tipo tipo;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="TIPOLOGIA_CODICE_TIPOLOGIA")
+	private Tipologia tipologia;
 	
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -107,4 +126,30 @@ public class Giudizio {
 		this.listaOggetti = listaOggetti;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Tipologia getTipologia() {
+		return tipologia;
+	}
+
+	public void setTipologia(Tipologia tipologia) {
+		this.tipologia = tipologia;
+	}
+
+	
+	
 }
