@@ -14,7 +14,8 @@ import javax.persistence.Table;
 
 /**
  * 
- * Classe che modella la tabbella Oggetto
+ * <p>La classe rappresenta l'entità oggetto<p>
+ * @version 1.0
  *
  */
 @Entity

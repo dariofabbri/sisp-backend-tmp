@@ -31,10 +31,10 @@ public class CategoriaResource {
 	
 	
 	/**
-	 * <p>Ritorna una stringa JSON rapprenseta una lista di categorie<p>
+	 * <p>Ritorna una stringa JSON rapprenseta una lista di oggetti di tipo <em>it.corteconti.sisp.sample.dto.CategoriaDto</em><p>
 	 * @param sezioneId
 	 * @param ambitoId
-	 * @return Response HTTP, JSON listaCategorie
+	 * @return Response HTTP, JSON <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
@@ -50,11 +50,11 @@ public class CategoriaResource {
 	}
 
 	/**
-	 * <p>Ritorna una stringa JSON rappresentante una categoria<p>
+	 * <p>Ritorna una stringa JSON rappresentante un oggetto di tipo  <em>it.corteconti.sisp.sample.dto.CategoriaDto</em><p>
 	 * @param sezioneId
 	 * @param ambitoId
 	 * @param categoriaId
-	 * @return Response HTTP, JSON categoria
+	 * @return Response HTTP, JSON <em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito e idCategoria ritorna la categoria selezionata.", response = CategoriaDto.class)

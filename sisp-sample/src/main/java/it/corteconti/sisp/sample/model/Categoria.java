@@ -8,7 +8,8 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * 
- * La classe rappresenta una categoria
+ * <p>La classe rappresenta l'entità categoria<p>
+ * @version 1.0
  *
  */
 @Entity

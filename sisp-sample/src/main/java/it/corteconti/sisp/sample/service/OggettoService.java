@@ -18,7 +18,8 @@ import it.corteconti.sisp.sample.model.Oggetto;
 
 /**
  * 
- * Classe service per l'entità oggetto
+ * Service Entità <em>it.corteconti.sisp.sample.model.Oggetto</em>
+ * @version 1.0
  *
  */
 @Service
@@ -31,9 +32,9 @@ public class OggettoService {
 	private OggettoRepository oggettoRepository;
 	
 	/**
-	 * ritorna una lista di oggetti dto per id della sezione
+	 * <p>ritorna una lista di oggetti dto per id della sezione<p>
 	 * @param sezioneId
-	 * @return
+	 * @return <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
 	public List<OggettoDto> findOggettoBySezione(Long sezioneId) {
 		
@@ -58,10 +59,10 @@ public class OggettoService {
 	}
 	
 	/**
-	 * ritorna una oggetto per id della sezione e dell'oggetto
+	 * <p>ritorna una oggetto per id della sezione e dell'oggetto<p>
 	 * @param sezioneId
 	 * @param idOggetto
-	 * @return
+	 * @return <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
 	 */
 	public OggettoDto findOggettoBySezioneAndIdOggetto(Long sezioneId, Long idOggetto) {
 		

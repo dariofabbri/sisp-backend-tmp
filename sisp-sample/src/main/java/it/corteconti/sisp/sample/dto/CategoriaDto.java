@@ -1,7 +1,8 @@
 package it.corteconti.sisp.sample.dto;
 /**
  * 
- * <p>DTO che rappresenta un oggetto di tipo categoria<p>
+ * <p>Dto che rappresenta un oggetto di tipo Oggetto<p>
+ * @version 1.0
  *
  */
 public class CategoriaDto {

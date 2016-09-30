@@ -5,7 +5,7 @@ import it.corteconti.sisp.sample.model.Oggetto;
 
 public class OggettoAssembler {
 /**
- * <p>assembla un OggettoDto dato per parametro un Oggetto <p>
+ * <p>Assembla un OggettoDto dato per parametro un Oggetto <p>
  * @param oggetto
  * @return oggettoDto
  */

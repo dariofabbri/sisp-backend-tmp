@@ -31,11 +31,11 @@ public class OggettoResource {
 	
 
 	/**
-	 * <p>Ritorna una stringa JSON rapprenseta una lista di oggetti<p>
+	 * <p>Ritorna una stringa JSON che rappresenta una lista di oggetti di tipo <em>it.corteconti.sisp.sample.dto.OggettoDto</em><p>
 	 * @param sezioneId
 	 * @param ambitoId
 	 * @param categoriaId
-	 * @return Response HTTP, JSON lista oggetti
+	 * @return Response HTTP, JSON <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/oggetti", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione ritorna una lista di oggetti.", response = OggettoDto.class, responseContainer="List")
@@ -50,11 +50,11 @@ public class OggettoResource {
 	}
 	
 	/**
-	 * <p>Ritorna una stringa JSON rapprenseta oggetto<p>
+	 * <p>Ritorna una stringa JSON che rapprensenta un oggetto di tipo <em>it.corteconti.sisp.sample.dto.OggettoDto</em><p>
 	 * @param sezioneId
 	 * @param ambitoId
 	 * @param categoriaId
-	 * @return Response HTTP, JSON lista oggetti
+	 * @return Response HTTP, JSON <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/oggetti/{idOggetto}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e oggettoId ritorna un oggetto.", response = OggettoDto.class)

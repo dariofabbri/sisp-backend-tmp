@@ -7,13 +7,19 @@ import org.springframework.data.repository.CrudRepository;
 
 import it.corteconti.sisp.sample.model.Categoria;
 
+/**
+ * Repository per Entità <em>it.corteconti.sisp.sample.model.Categoria</em>
+ * @version 1.0
+ *
+ */
+
 public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
 	
 	/**
 	 * <p>Ritorna una lista di di oggetti Categoria<p>
 	 * @param codiceAmbito
 	 * @param codiceLivelloAoo
-	 * @return listaCategorie
+	 * @return <em>java.util.List<it.corteconti.sisp.sample.model.Categoria></em>
 	 */
 	
 	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2")
@@ -24,7 +30,7 @@ public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
 	 * @param codiceAmbito
 	 * @param codiceLivelloAoo
 	 * @param categoriaId
-	 * @return categoria
+	 * @return <em>it.corteconti.sisp.sample.model.Categoria</em>
 	 */
 	
 	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2 AND ctt.categoria.codiceCategoria=?3")
