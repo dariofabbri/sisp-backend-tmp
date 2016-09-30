@@ -41,7 +41,7 @@ public class SezioneResource {
 	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entità Sezione.", response = SezioneDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione"), })
 	public ResponseEntity<SezioneDto> get(
-			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
+			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId) {
 		
 		SezioneDto thing = service.findSezioniById(sezioneId);
