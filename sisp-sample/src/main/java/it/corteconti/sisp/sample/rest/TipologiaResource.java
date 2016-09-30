@@ -44,7 +44,7 @@ public class TipologiaResource {
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce le entità di tipologia in base a : idSezione , idAmbito , idCategoria e idTipo.", response = TipologiaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
-	public ResponseEntity<List<TipologiaDto>> getTipologieBySezioneAmbitoCategoriaTipo(
+	public ResponseEntity<List<TipologiaDto>> getTipologie(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica l'id ambito")
@@ -54,7 +54,7 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipo")
 			@PathVariable("tipoId") String tipoId){
 
-		List<TipologiaDto> listaTipologia = tipologiaService.findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(
+		List<TipologiaDto> listaTipologia = tipologiaService.getTipologie(
 				sezioneId, 
 				ambitoId, 
 				categoriaId, 
@@ -78,7 +78,7 @@ public class TipologiaResource {
 		notes = "Restituisce l'entità di tipologia in base a : idSezione , idAmbito , idCategoria , idTipo e idTipologia.", 
 		response = TipologiaDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità tipologia indicata"), })
-	public ResponseEntity<TipologiaDto> getTipologiaBySezioneAmbitoCategoriaTipoIdTipologia(
+	public ResponseEntity<TipologiaDto> getTipologia(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica l'id ambito")
@@ -90,7 +90,7 @@ public class TipologiaResource {
 			@ApiParam(value = "Specifica l'id tipologia")
 			@PathVariable("tipologiaId") String tipologiaId) {
 
-		TipologiaDto tipologia = tipologiaService.findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
+		TipologiaDto tipologia = tipologiaService.getTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
 		return new ResponseEntity<TipologiaDto>(tipologia, HttpStatus.OK);
 	}
 }

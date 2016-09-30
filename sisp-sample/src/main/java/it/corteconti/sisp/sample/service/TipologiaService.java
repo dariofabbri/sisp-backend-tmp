@@ -41,7 +41,7 @@ public class TipologiaService {
 	 * @param idTipo		id dell'entità Tipo
 	 * @return				<em>java.util.List<it.corteconti.sisp.sample.dto.TipologiaDto></em>
 	 */
-	public List<TipologiaDto> findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito , String idCategoria , String idTipo) {
+	public List<TipologiaDto> getTipologie(Long idSezione , String idAmbito , String idCategoria , String idTipo) {
 
 		// -- Recupero entità Sezione a fronte dell'id		
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
@@ -78,7 +78,7 @@ public class TipologiaService {
 	 * @param idTipologia	id dell'entità Tipologia
 	 * @return				<em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */
-	public TipologiaDto findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
+	public TipologiaDto getTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
 		
 		// -- Recupero entità Sezione a fronte dell'id		
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
