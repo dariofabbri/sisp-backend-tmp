@@ -13,10 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * 
- * <p>La classe rappresenta l'entità oggetto<p>
- * @version 1.0
- *
+ * Entità relativa alla tabella <em>OGGETTO</em>
+ * @versione 1.0
  */
 @Entity
 @Table(name = "OGGETTO")
