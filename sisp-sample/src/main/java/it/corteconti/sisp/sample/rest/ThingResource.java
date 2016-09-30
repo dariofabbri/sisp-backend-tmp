@@ -86,4 +86,22 @@ public class ThingResource {
 		service.update(thingDto);
 		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
 	}
+	
+	/**
+	 * DELETE example
+	 * @param thingDto
+	 * @return
+	 */
+	@RequestMapping(value = "/thing/delete/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "", notes = "Cancellazione entità Thing", response = ThingDto.class)
+	//@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità cancellata"), })
+	public ResponseEntity<ThingDto> delete(
+			@ApiParam(value = "Oggetto Thing da cancellare")
+			@PathVariable("id") long id) {
+		
+		LOG.debug("-- Thing -> id: [" + id + "]");		
+		service.delete(id);
+		return new ResponseEntity<ThingDto>(HttpStatus.NO_CONTENT);
+	}
+	
 }

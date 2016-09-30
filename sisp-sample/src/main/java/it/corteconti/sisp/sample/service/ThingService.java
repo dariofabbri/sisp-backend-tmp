@@ -73,28 +73,25 @@ public class ThingService {
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(tmp.getId());
 		
+		// -- Update
 		if (tmp.getDescription() != null && !tmp.getDescription().equals(""))
 			thingDb.setDescription(tmp.getDescription());
 		if (tmp.getLastUpdate() != null)
 			thingDb.setLastUpdate(tmp.getLastUpdate());
-		// -- Update
-		
 	}
 	
 	/**
 	 * Richiamato dalla DELETE
 	 * @param thingDto
 	 */
-	public void delete(ThingDto thingDto) {
+	public void delete(Long id) {
 		
-		if (thingDto == null || thingDto.getId() == null) {
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} uneditable, not found", thingDto.getId() ));
-		}
-		
-		Thing tmp = ThingAssembler.disassembleDto(thingDto);
 		// -- Recupero entità
-		Thing thingDb = this.repository.findOne(tmp.getId());
+		Thing thingDb = this.repository.findOne(id);
+		if (thingDb == null || thingDb.getId() == null) {
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Thing {0} uneditable, not found", id ));
+		}
 		// -- Delete
 		this.repository.delete(thingDb);
 	}
