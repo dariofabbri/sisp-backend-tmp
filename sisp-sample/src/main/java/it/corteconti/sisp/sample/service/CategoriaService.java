@@ -44,7 +44,7 @@ public class CategoriaService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Categoria with Ambito {0} and Sezione {1} not found.", idAmbito, idSezione));
 		}
-		
+		LOG.debug("lista Categoria recuperata, contiene "+ lista.size()+" elementi.");
 		List<CategoriaDto> listaCategorieDto = new ArrayList<CategoriaDto>();
 		
 		lista.forEach(c -> {
@@ -73,6 +73,8 @@ public class CategoriaService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Categoria {0} not found.", categoriaId));
 		}
+		
+		LOG.debug("Entità Categoria recuperata, id : "+ categoria.getCodiceCategoria());
 		
 		return CategoriaAssembler.assembleDto(categoria);
 		

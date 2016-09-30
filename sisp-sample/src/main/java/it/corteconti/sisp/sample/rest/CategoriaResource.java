@@ -23,7 +23,7 @@ import it.corteconti.sisp.sample.service.CategoriaService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "CategoriaResource")
+@Api(description = "Servizio entità Categoria")
 public class CategoriaResource {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class CategoriaResource {
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entita' categorie indicata"), })
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Categoria"), })
 	public ResponseEntity<List<CategoriaDto>> getCategorie(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,
@@ -58,7 +58,7 @@ public class CategoriaResource {
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito e idCategoria ritorna la categoria selezionata.", response = CategoriaDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità categoria indicata"), })
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità categoria"), })
 	public ResponseEntity<CategoriaDto> getCategoria(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId,

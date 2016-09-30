@@ -48,6 +48,7 @@ public class OggettoService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Non esistono oggetti per la sezione {0}.", sezioneId));
 		}
+		LOG.debug("lista Oggetto recuperata, contiene "+ listaOggetti.size() +" elementi.");
 		
 		listaOggetti.forEach( o ->{
 			OggettoDto oggettoDto = OggettoAssembler.assembleDto(o);
@@ -74,6 +75,8 @@ public class OggettoService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Non esite oggetto {0} per la sezione {1}.", idOggetto, sezioneId ));
 		}
+		
+		LOG.debug("Entità Oggetto recuperata, id : "+ oggetto.getCodiceOggetto());
 		
 		return OggettoAssembler.assembleDto(oggetto);
 		
