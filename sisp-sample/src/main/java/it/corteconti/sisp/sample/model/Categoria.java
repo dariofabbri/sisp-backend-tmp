@@ -6,11 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
 /**
- * 
- * <p>La classe rappresenta l'entità categoria<p>
- * @version 1.0
- *
+ * Entità relativa alla tabella <em>CATEGORIA</em>
+ * @versione 1.0
  */
 @Entity
 @Table(name = "CATEGORIA")

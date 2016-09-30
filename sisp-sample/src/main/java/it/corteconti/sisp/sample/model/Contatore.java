@@ -13,6 +13,10 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Entità relativa alla tabella <em>CONTATORI</em>
+ * @versione 1.0
+ */
 @Entity
 @Table(name = "CONTATORI")
 public class Contatore {
