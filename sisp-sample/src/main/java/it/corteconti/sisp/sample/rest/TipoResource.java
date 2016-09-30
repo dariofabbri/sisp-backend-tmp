@@ -35,9 +35,9 @@ public class TipoResource {
 	
 	/**
 	 * Ritorna una stringa JSON che rappresenta una lista di oggetti Tipo
-	 * @param sezioneId
-	 * @param ambitoId
-	 * @param categoriaId
+	 * @param sezioneId		id dell'entità Sezione
+	 * @param ambitoId		id dell'entità Ambito
+	 * @param categoriaId	id dell'entità Categoria
 	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi", method = RequestMethod.GET)
@@ -57,10 +57,10 @@ public class TipoResource {
 	
 	/**
 	 * Ritorna una stringa JSON che rappresenta un oggetto Tipo
-	 * @param sezioneId
-	 * @param ambitoId
-	 * @param categoriaId
-	 * @param tipoId
+	 * @param sezioneId		id dell'entità Sezione
+	 * @param ambitoId		id dell'entità Ambito
+	 * @param categoriaId	id dell'entità Categoria
+	 * @param tipoId		id dell'entità Tipo
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}", method = RequestMethod.GET)
