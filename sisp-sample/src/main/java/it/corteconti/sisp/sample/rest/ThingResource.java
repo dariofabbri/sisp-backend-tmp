@@ -22,7 +22,7 @@ import it.corteconti.sisp.sample.service.ThingService;
 
 @RestController
 @RequestMapping(
-		value = "/giudizio-api",//api/v1/things
+		value = "/api/v1/things",//giudizio-api
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Risorsa di esempio: thing")
 public class ThingResource {
@@ -32,6 +32,11 @@ public class ThingResource {
 	@Autowired
 	private ThingService service;
 	
+	/**
+	 * GET example
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Restituisce l'entità di tipo thing indicata.", response = ThingDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità thing indicata"), })
@@ -44,9 +49,8 @@ public class ThingResource {
 	}
 	
 	/**
-	 * Crea l'entità Thing
+	 * POST example
 	 * @param thingDto
-	 * @param ucBuilder
 	 * @return
 	 */
 	@RequestMapping(value = "/thing", method = RequestMethod.POST)
@@ -56,10 +60,30 @@ public class ThingResource {
 			@ApiParam(value = "Oggetto Thing da creare")
 			@RequestBody ThingDto thingDto) {
 		
-		LOG.debug("THING" + thingDto.getDescription());
-		LOG.debug("THING" + thingDto.getLastUpdate());
+		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
+		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
 		service.save(thingDto);
+		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
+	}
+	
+	/**
+	 * PUT example
+	 * @param thingDto
+	 * @return
+	 */
+	@RequestMapping(value = "/thing/update", method = RequestMethod.PUT)
+	@ApiOperation(value = "", notes = "Modifica entità Thing", response = ThingDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità modificata"), })
+	public ResponseEntity<ThingDto> update(
+			@ApiParam(value = "Oggetto Thing da modificare")
+			@RequestBody ThingDto thingDto) {
+		
+		LOG.debug("-- Thing -> id: [" + thingDto.getId() + "]");
+		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
+		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
+		
+		service.update(thingDto);
 		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
 	}
 }
