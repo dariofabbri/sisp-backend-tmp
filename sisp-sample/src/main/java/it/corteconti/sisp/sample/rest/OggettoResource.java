@@ -18,7 +18,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.OggettoDto;
 import it.corteconti.sisp.sample.service.OggettoService;
-
+/**
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Oggetto</em>
+ * @version 1.0
+ */
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",

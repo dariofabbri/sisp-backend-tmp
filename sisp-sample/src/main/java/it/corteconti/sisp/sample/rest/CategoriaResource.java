@@ -18,11 +18,14 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.service.CategoriaService;
-
+/**
+ * Rest Entità <em>it.corteconti.sisp.sample.model.Categoria</em>
+ * @version 1.0
+ */
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
-		produces = { MediaType.APPLICATION_JSON_VALUE  })
+		produces = { MediaType.APPLICATION_JSON_VALUE })
 @Api(description = "Servizio entità Categoria")
 public class CategoriaResource {
 	
@@ -31,7 +34,7 @@ public class CategoriaResource {
 	
 	
 	/**
-	 * <p>Ritorna una stringa JSON rapprenseta una lista di oggetti di tipo <em>it.corteconti.sisp.sample.dto.CategoriaDto</em><p>
+	 * <p>Ritorna una stringa JSON che rappresenta una lista di oggetti di tipo <em>it.corteconti.sisp.sample.dto.CategoriaDto</em><p>
 	 * @param sezioneId
 	 * @param ambitoId
 	 * @return Response HTTP, JSON <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
