@@ -24,7 +24,7 @@ public interface TipologiaRepository extends CrudRepository<Tipologia, Long> {
 	 * @return listaTipologie
 	 */
 	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 ")
-	public List<Tipologia> findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipo(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo);
+	public List<Tipologia> getTipologie(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo);
 	
 	
 	
@@ -38,6 +38,6 @@ public interface TipologiaRepository extends CrudRepository<Tipologia, Long> {
 	 * @return tipologia
 	 */
 	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 AND ctt.tipologia.codiceTipologia=?5")
-	public Tipologia findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo, String codiceTipologia);
+	public Tipologia getTipologia(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo, String codiceTipologia);
 
 }

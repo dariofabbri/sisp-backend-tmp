@@ -47,7 +47,7 @@ public class TipologiaService {
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		
 		// -- Recupero lista entità Tipologia a fronte del livello AOO, id ambito, id categoria, id tipo
-		List<Tipologia> lista = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipo(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
+		List<Tipologia> lista = tipologiaRepository.getTipologie(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
 		
 		// -- Verifica valorizzazione della lista		
 		if (lista == null || lista.isEmpty()) {
@@ -84,7 +84,7 @@ public class TipologiaService {
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		
 		// -- Recupero  Tipologia a fronte del livello AOO, id ambito, id categoria, id tipo, id tipologia		
-		Tipologia tipologia = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipoAndIdTipologia(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo, idTipologia);
+		Tipologia tipologia = tipologiaRepository.getTipologia(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo, idTipologia);
 		
 		// -- Verifica valorizzazione oggetto		
 		if (tipologia == null ) {
