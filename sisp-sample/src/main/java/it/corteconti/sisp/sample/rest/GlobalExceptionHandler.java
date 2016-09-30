@@ -1,5 +1,10 @@
 package it.corteconti.sisp.sample.rest;
 
+import it.corteconti.sisp.sample.dto.ErrorDto;
+import it.corteconti.sisp.sample.dto.ValidationErrorDto;
+import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
+import it.corteconti.sisp.sample.exception.ValidationException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -9,9 +14,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import it.corteconti.sisp.sample.dto.ErrorDto;
-import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -23,7 +25,7 @@ public class GlobalExceptionHandler {
 	@ResponseBody ErrorDto
 	handleNotFound(HttpServletRequest req, Exception ex) {
 
-		LOG.error(ex.getMessage());
+		LOG.error("Risorsa non trovata.", ex);
 	    return new ErrorDto(ex.getMessage());
 	} 
 
@@ -35,4 +37,18 @@ public class GlobalExceptionHandler {
 		LOG.error("Rilevata una runtime exception non gestita.", ex);
 	    return new ErrorDto(ex.getMessage());
 	} 
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ValidationException.class)
+	@ResponseBody ValidationErrorDto
+	handleBadRequest(HttpServletRequest req, ValidationException ex) {
+
+		LOG.error("Errore di validazione rilevato.", ex);
+		
+		ValidationErrorDto dto = new ValidationErrorDto();
+		dto.setMessage(ex.getMessage());
+		dto.setValidationErrors(ex.getValidationErrors());
+	    return dto;
+	}
+	
 }
