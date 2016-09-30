@@ -17,7 +17,6 @@ import it.corteconti.sisp.sample.model.Sezione;
  * Service Entità <em>it.corteconti.sisp.sample.model.Sezione</em> 
  * @version 1.0
  */
-
 @Service
 public class SezioneService {
 	
