@@ -1,6 +1,6 @@
 package it.corteconti.sisp.sample.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,7 @@ public class Sezione {
 	private Integer livello;
 	
 	@ManyToMany(mappedBy = "sezioni")
-	private Set<Contatore> contatori;
+	private List<Contatore> contatori;
 	
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -62,11 +62,11 @@ public class Sezione {
 		this.livello = livello;
 	}
 
-	public Set<Contatore> getContatori() {
+	public List<Contatore> getContatori() {
 		return contatori;
 	}
 
-	public void setContatori(Set<Contatore> contatori) {
+	public void setContatori(List<Contatore> contatori) {
 		this.contatori = contatori;
 	}
 	

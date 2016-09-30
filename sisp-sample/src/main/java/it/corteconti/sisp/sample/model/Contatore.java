@@ -1,6 +1,6 @@
 package it.corteconti.sisp.sample.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,7 @@ public class Contatore {
     @JoinTable(name = "SEZIONI_CONTATORI", 
              joinColumns = { @JoinColumn(name = "CODICE_CONTATORE") }, 
              inverseJoinColumns = { @JoinColumn(name = "CODICE_SEZIONE") })
-    private Set<Sezione> sezioni;
+    private List<Sezione> sezioni;
 	
 	
 	public String toString() {
@@ -55,11 +55,11 @@ public class Contatore {
 		this.valoreContatore = valoreContatore;
 	}
 	
-	public Set<Sezione> getSezioni() {
+	public List<Sezione> getSezioni() {
 		return sezioni;
 	}
 	
-	public void setSezioniContatori(Set<Sezione> sezioni) {
+	public void setSezioniContatori(List<Sezione> sezioni) {
 		this.sezioni = sezioni;
 	}
 	
