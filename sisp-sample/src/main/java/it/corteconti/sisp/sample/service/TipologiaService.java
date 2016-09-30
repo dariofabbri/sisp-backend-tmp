@@ -57,6 +57,9 @@ public class TipologiaService {
 					MessageFormat.format("Tipologie with Sezione {0} and Ambito {1} and Categoria {2} and Tipo {3} not found.", idSezione, idAmbito, idCategoria, idTipo));
 		}
 		
+		// logging
+		LOG.debug(MessageFormat.format("Numero tipologie trovate: {0}", lista.size() ));
+		
 		// -- Lista di ritorno
 		List<TipologiaDto> listaTipologieDto = new ArrayList<TipologiaDto>();
 		
@@ -93,6 +96,9 @@ public class TipologiaService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Tipologia with Sezione {0} and Ambito {1} and Categoria {2} and Tipo {3} and Tipologia {4} not found.", idSezione, idAmbito, idCategoria, idTipo, idTipologia));
 		}
+		
+		// logging	
+		LOG.debug(MessageFormat.format("Trovata la seguente tipologia: {0}", tipologia.getDescrizioneTipologia() ));
 		
 		// Dto di ritorno		
 		TipologiaDto tipologiaDto = TipologiaAssembler.assembleDto(tipologia);

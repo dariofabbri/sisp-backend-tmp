@@ -31,7 +31,7 @@ public class GiudizioService {
 	 * @param id			id dell'entità Giudizio
 	 * @return				<em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
-	public GiudizioDto findGiudizioById(Long id) {
+	public GiudizioDto getGiudizio(Long id) {
 
 		// -- Recupero entità Giudizio a fronte dell'id			
 		Giudizio giudizio = repository.findOne(id);
@@ -45,7 +45,7 @@ public class GiudizioService {
 		}
 		
 		// logging	
-		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio));
+		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio.getDescrizione()));
 		
 		// -- Assembler, Giudizio -> GiudizioDto			
 		return GiudizioAssembler.assembleDto(giudizio);

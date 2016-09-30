@@ -40,11 +40,11 @@ public class GiudizioResource {
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
-	public ResponseEntity<GiudizioDto> get(
+	public ResponseEntity<GiudizioDto> getGiudizio(
 			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("id") Long id) {
 		
-		GiudizioDto thing = service.findGiudizioById(id);
+		GiudizioDto thing = service.getGiudizio(id);
 		return new ResponseEntity<GiudizioDto>(thing, HttpStatus.OK);
 	}
 }
