@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
 
 /**
- * Service Entità <em>it.corteconti.sisp.sample.model.Tipo</em>
+ * Service EntitÃ  <em>it.corteconti.sisp.sample.model.Tipo</em>
  * @version 1.0
  */
 @Service
@@ -35,16 +35,16 @@ public class TipoService {
 	
 	/**
 	 * <p>Ritorna una lista di dto <em>it.corteconti.sisp.sample.dto.TipoDto</em></p>
-	 * @param idSezione		id dell'entità Sezione
-	 * @param idAmbito		id dell'entità Ambito
-	 * @param idCategoria	id dell'entità Categoria
+	 * @param idSezione		id dell'entitÃ  Sezione
+	 * @param idAmbito		id dell'entitÃ  Ambito
+	 * @param idCategoria	id dell'entitÃ  Categoria
 	 * @return				<em>java.util.List<it.corteconti.sisp.sample.dto.TipoDto></em>
 	 */
 	public List<TipoDto> findTipiBySezioneAndAmbitoAndCategoria(Long idSezione, String idAmbito, String idCategoria) {
 		
-		// -- Recupero entità Sezione a fronte dell'id
+		// -- Recupero entitï¿½ Sezione a fronte dell'id
 		SezioneDto sezDto = sezioneService.findSezioniById(idSezione);
-		// -- Recupero lista entità Tipo a fronte dell'id ambito, id categoria, livello AOO
+		// -- Recupero lista entitï¿½ Tipo a fronte dell'id ambito, id categoria, livello AOO
 		List<Tipo> lista = tipoRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(idAmbito, 
 				idCategoria, ""+sezDto.getLivelloSezione());
 		// -- Verifica valorizzazione della lista
@@ -69,16 +69,16 @@ public class TipoService {
 	}
 	
 	/**
-	 * <p>Ritorna il dto dell'entità <em>it.corteconti.sisp.sample.model.Tipo</em></p>
-	 * @param idSezione		id dell'entità Sezione
-	 * @param idAmbito		id dell'entità Ambito
-	 * @param idCategoria	id dell'entità Categoria
-	 * @param idTipo		id dell'entità Tipo
+	 * <p>Ritorna il dto dell'entitï¿½ <em>it.corteconti.sisp.sample.model.Tipo</em></p>
+	 * @param idSezione		id dell'entitÃ  Sezione
+	 * @param idAmbito		id dell'entitÃ  Ambito
+	 * @param idCategoria	id dell'entitÃ  Categoria
+	 * @param idTipo		id dell'entitÃ  Tipo
 	 * @return				<em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	public TipoDto getTipiBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito, String idCategoria, String idTipo) {
 		
-		// -- Recupero entità Sezione a fronte dell'id
+		// -- Recupero entitï¿½ Sezione a fronte dell'id
 		SezioneDto sezDto = sezioneService.findSezioniById(idSezione);
 		// -- Recupero Tipo a fronte dell'id ambito, id categoria, livello AOO, id tipo
 		Tipo tipo = tipoRepository.getFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAooAndTipo(idAmbito, 
