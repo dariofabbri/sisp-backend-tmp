@@ -26,7 +26,7 @@ import it.corteconti.sisp.sample.service.SezioneService;
 @RequestMapping(
 		value = "/giudizio-api",
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
-@Api(description = "SezioneResource")
+@Api(description = "Servizio entità Sezione")
 public class SezioneResource {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class SezioneResource {
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entità Sezione.", response = SezioneDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione indicata"), })
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione"), })
 	public ResponseEntity<SezioneDto> get(
 			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
 			@PathVariable("sezioneId") Long sezioneId) {
