@@ -1,12 +1,14 @@
 package it.corteconti.sisp.sample.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -34,6 +36,9 @@ public class Giudizio {
 	
 	@Column(name="AOO")
 	private Long aoo;
+	
+	@ManyToMany(mappedBy="listaGiudizi")
+	private List<Oggetto> listaOggetti;
 	
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -93,6 +98,13 @@ public class Giudizio {
 	public void setAoo(Long aoo) {
 		this.aoo = aoo;
 	}
-	
-	
+
+	public List<Oggetto> getListaOggetti() {
+		return listaOggetti;
+	}
+
+	public void setListaOggetti(List<Oggetto> listaOggetti) {
+		this.listaOggetti = listaOggetti;
+	}
+
 }
