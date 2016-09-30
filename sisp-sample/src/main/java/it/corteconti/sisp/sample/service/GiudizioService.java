@@ -14,7 +14,7 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Giudizio;
 
 /**
- * Service Entit� <em>it.corteconti.sisp.sample.model.Giudizio</em> 
+ * Service Entità <em>it.corteconti.sisp.sample.model.Giudizio</em> 
  * @version 1.0
  */
 
@@ -28,12 +28,12 @@ public class GiudizioService {
 	
 	/**
 	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em></p>
-	 * @param id			id dell'entit� Giudizio
+	 * @param id			id dell'entità Giudizio
 	 * @return				<em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
 	public GiudizioDto findGiudizioById(Long id) {
 
-		// -- Recupero entit� Giudizio a fronte dell'id			
+		// -- Recupero entità Giudizio a fronte dell'id			
 		Giudizio giudizio = repository.findOne(id);
 		
 		// -- Verifica valorizzazione oggetto

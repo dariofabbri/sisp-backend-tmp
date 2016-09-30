@@ -42,9 +42,9 @@ public class TipoService {
 	 */
 	public List<TipoDto> findTipiBySezioneAndAmbitoAndCategoria(Long idSezione, String idAmbito, String idCategoria) {
 		
-		// -- Recupero entit� Sezione a fronte dell'id
+		// -- Recupero entità Sezione a fronte dell'id
 		SezioneDto sezDto = sezioneService.findSezioniById(idSezione);
-		// -- Recupero lista entit� Tipo a fronte dell'id ambito, id categoria, livello AOO
+		// -- Recupero lista entità Tipo a fronte dell'id ambito, id categoria, livello AOO
 		List<Tipo> lista = tipoRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(idAmbito, 
 				idCategoria, ""+sezDto.getLivelloSezione());
 		// -- Verifica valorizzazione della lista
@@ -69,7 +69,7 @@ public class TipoService {
 	}
 	
 	/**
-	 * <p>Ritorna il dto dell'entit� <em>it.corteconti.sisp.sample.model.Tipo</em></p>
+	 * <p>Ritorna il dto dell'entità <em>it.corteconti.sisp.sample.model.Tipo</em></p>
 	 * @param idSezione		id dell'entità Sezione
 	 * @param idAmbito		id dell'entità Ambito
 	 * @param idCategoria	id dell'entità Categoria
@@ -78,7 +78,7 @@ public class TipoService {
 	 */
 	public TipoDto getTipiBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito, String idCategoria, String idTipo) {
 		
-		// -- Recupero entit� Sezione a fronte dell'id
+		// -- Recupero entità Sezione a fronte dell'id
 		SezioneDto sezDto = sezioneService.findSezioniById(idSezione);
 		// -- Recupero Tipo a fronte dell'id ambito, id categoria, livello AOO, id tipo
 		Tipo tipo = tipoRepository.getFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAooAndTipo(idAmbito, 
