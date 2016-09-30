@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipologia;
 
 /**
- * Service Entit� <em>it.corteconti.sisp.sample.model.Tipologia</em> 
+ * Service Entità <em>it.corteconti.sisp.sample.model.Tipologia</em> 
  * @version 1.0
  */
 
@@ -35,18 +35,18 @@ public class TipologiaService {
 	
 	/**
 	 * <p>Ritorna una lista di dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em></p>
-	 * @param idSezione		id dell'entit� Sezione
-	 * @param idAmbito		id dell'entit� Ambito
-	 * @param idCategoria	id dell'entit� Categoria
-	 * @param idTipo		id dell'entit� Tipo
+	 * @param idSezione		id dell'entità Sezione
+	 * @param idAmbito		id dell'entità Ambito
+	 * @param idCategoria	id dell'entità Categoria
+	 * @param idTipo		id dell'entità Tipo
 	 * @return				<em>java.util.List<it.corteconti.sisp.sample.dto.TipologiaDto></em>
 	 */
 	public List<TipologiaDto> findTipologieBySezioneAndAmbitoAndCategoriaAndTipo(Long idSezione , String idAmbito , String idCategoria , String idTipo) {
 
-		// -- Recupero entit� Sezione a fronte dell'id		
+		// -- Recupero entità Sezione a fronte dell'id		
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		
-		// -- Recupero lista entit� Tipologia a fronte del livello AOO, id ambito, id categoria, id tipo
+		// -- Recupero lista entità Tipologia a fronte del livello AOO, id ambito, id categoria, id tipo
 		List<Tipologia> lista = tipologiaRepository.findFromTipologiaByLivelloAooAndIdAmbitoAndIdCategoriaAndIdTipo(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
 		
 		// -- Verifica valorizzazione della lista		
@@ -71,16 +71,16 @@ public class TipologiaService {
 	
 	/**
 	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em></p>
-	 * @param idSezione		id dell'entit� Sezione
-	 * @param idAmbito		id dell'entit� Ambito
-	 * @param idCategoria	id dell'entit� Categoria
-	 * @param idTipo		id dell'entit� Tipo
-	 * @param idTipologia	id dell'entit� Tipologia
+	 * @param idSezione		id dell'entità Sezione
+	 * @param idAmbito		id dell'entità Ambito
+	 * @param idCategoria	id dell'entità Categoria
+	 * @param idTipo		id dell'entità Tipo
+	 * @param idTipologia	id dell'entità Tipologia
 	 * @return				<em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */
 	public TipologiaDto findTipologiaBySezioneAndAmbitoAndCategoriaAndTipoAndIdTipologia(Long idSezione , String idAmbito , String idCategoria , String idTipo , String idTipologia) {
 		
-		// -- Recupero entit� Sezione a fronte dell'id		
+		// -- Recupero entità Sezione a fronte dell'id		
 		SezioneDto sezDto = sezioniService.findSezioniById(idSezione);
 		
 		// -- Recupero  Tipologia a fronte del livello AOO, id ambito, id categoria, id tipo, id tipologia		

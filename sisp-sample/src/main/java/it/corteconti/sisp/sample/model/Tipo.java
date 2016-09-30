@@ -7,6 +7,10 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Entità relativa alla tabella <em>TIPO</em>
+ * @versione 1.0
+ */
 @Entity
 @Table(name = "TIPO")
 public class Tipo {

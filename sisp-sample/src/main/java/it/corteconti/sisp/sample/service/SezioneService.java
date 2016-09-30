@@ -14,7 +14,7 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Sezione;
 
 /**
- * Service Entit� <em>it.corteconti.sisp.sample.model.Sezione</em> 
+ * Service Entità <em>it.corteconti.sisp.sample.model.Sezione</em> 
  * @version 1.0
  */
 
@@ -28,12 +28,12 @@ public class SezioneService {
 	
 	/**
 	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em></p>
-	 * @param idSezione		id dell'entit� Sezione
+	 * @param idSezione		id dell'entità Sezione
 	 * @return				<em>it.corteconti.sisp.sample.dto.SezioneDto</em>
 	 */
 	public SezioneDto findSezioniById(Long id) {
 		
-		// -- Recupero entit� Sezione a fronte dell'id			
+		// -- Recupero entità Sezione a fronte dell'id			
 		Sezione sezione = repository.findOne(id);
 		
 		// -- Verifica valorizzazione oggetto
