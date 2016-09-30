@@ -11,8 +11,8 @@ public class SezioneAssembler {
 
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>
-	 * @param tipo	Entità <em>it.corteconti.sisp.sample.model.Sezione</em>
-	 * @return 		<em>it.corteconti.sisp.sample.dto.SezioneDto</em>
+	 * @param sezione	Entità <em>it.corteconti.sisp.sample.model.Sezione</em>
+	 * @return 			<em>it.corteconti.sisp.sample.dto.SezioneDto</em>
 	 */
 	public static SezioneDto assembleDto(Sezione sezione) {
 		

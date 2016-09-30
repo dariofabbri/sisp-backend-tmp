@@ -11,8 +11,8 @@ public class TipologiaAssembler {
 
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
-	 * @param tipo	Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
-	 * @return 		<em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
+	 * @param tipologia	Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
+	 * @return 			<em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */
 	public static TipologiaDto assembleDto(Tipologia tipologia) {
 		TipologiaDto tipologiaDto = new TipologiaDto();

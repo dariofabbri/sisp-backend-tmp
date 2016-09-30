@@ -11,8 +11,8 @@ public class OggettoAssembler {
 	
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
-	 * @param tipo	Entità <em>it.corteconti.sisp.sample.model.Oggetto</em>
-	 * @return 		<em>it.corteconti.sisp.sample.dto.OggettoDto</em>
+	 * @param oggetto	Entità <em>it.corteconti.sisp.sample.model.Oggetto</em>
+	 * @return 			<em>it.corteconti.sisp.sample.dto.OggettoDto</em>
 	 */
 	public static OggettoDto assembleDto(Oggetto oggetto) {
 		OggettoDto oggettoDto = null;
