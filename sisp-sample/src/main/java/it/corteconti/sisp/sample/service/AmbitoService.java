@@ -11,18 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.corteconti.sisp.sample.assembler.AmbitoAssembler;
-import it.corteconti.sisp.sample.assembler.CategoriaAssembler;
-import it.corteconti.sisp.sample.assembler.TipologiaAssembler;
 import it.corteconti.sisp.sample.dao.AmbitoRepository;
-import it.corteconti.sisp.sample.dao.CategoriaRepository;
 import it.corteconti.sisp.sample.dto.AmbitoDto;
-import it.corteconti.sisp.sample.dto.CategoriaDto;
-import it.corteconti.sisp.sample.dto.SezioneDto;
-import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Ambito;
-import it.corteconti.sisp.sample.model.Categoria;
-import it.corteconti.sisp.sample.model.Tipologia;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Ambito</em>
