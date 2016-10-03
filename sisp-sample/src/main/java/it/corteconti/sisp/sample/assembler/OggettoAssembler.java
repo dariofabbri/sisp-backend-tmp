@@ -27,5 +27,20 @@ public class OggettoAssembler {
 		
 		return oggettoDto;
 	}
+	
+	/**
+	 * Ritorna l'entità <em>it.corteconti.sisp.sample.model.Oggetto</em>
+	 * @param dto	dto <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
+	 * @return		<em>it.corteconti.sisp.sample.model.Oggetto</em>
+	 */
+	public static Oggetto disassembleDto(OggettoDto dto) {
+		
+		Oggetto oggetto = new Oggetto();
+		
+		oggetto.setCodiceOggetto(dto.getIdOggetto());
+		oggetto.setDescrizioneOggetto(dto.getDescrizioneOggetto());
+		
+		return oggetto;
+	}
 
 }

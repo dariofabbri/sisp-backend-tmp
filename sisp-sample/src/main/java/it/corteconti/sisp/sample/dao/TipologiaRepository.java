@@ -12,7 +12,7 @@ import it.corteconti.sisp.sample.model.Tipologia;
  * @version 1.0
  */
 
-public interface TipologiaRepository extends CrudRepository<Tipologia, Long> {
+public interface TipologiaRepository extends CrudRepository<Tipologia, String> {
 	
 	
 	/**

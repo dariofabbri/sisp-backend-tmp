@@ -2,6 +2,7 @@ package it.corteconti.sisp.sample.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,10 +32,10 @@ public class Oggetto {
     @JoinColumn(name="CODICE_SEZIONE")
 	private Sezione sezione;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "GIUDIZIO_OGGETTO", 
-             joinColumns = { @JoinColumn(name = "CODICE_OGGETTO") }, 
-             inverseJoinColumns = { @JoinColumn(name = "ID_GIUDIZIO") })
+             joinColumns = { @JoinColumn(name = "CODICE_OGGETTO", referencedColumnName="CODICE_OGGETTO") }, 
+             inverseJoinColumns = { @JoinColumn(name = "ID_GIUDIZIO", referencedColumnName="ID_GIUDIZIO") })
 	private List<Giudizio> listaGiudizi;
 	
 	public Long getCodiceOggetto() {

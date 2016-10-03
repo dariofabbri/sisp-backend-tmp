@@ -15,6 +15,7 @@ public class CategoriaAssembler {
 	 * @return 			<em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
 	 */
 	public static CategoriaDto assembleDto(Categoria categoria) {
+		
 		CategoriaDto categoriaDto = new CategoriaDto();
 		
 		categoriaDto.setIdCategoria(categoria.getCodiceCategoria());
@@ -22,6 +23,21 @@ public class CategoriaAssembler {
 		
 		return categoriaDto;
 	}
-
-
+	
+	/**
+	 * Ritorna un'entità <em>it.corteconti.sisp.sample.model.Categoria</em>
+	 * @param dto	dto <em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
+	 * @return		<em>it.corteconti.sisp.sample.model.Categoria</em>
+	 */
+	public static Categoria disassembleDto(CategoriaDto dto) {
+		
+		Categoria categoria = new Categoria();
+		
+		categoria.setCodiceCategoria(dto.getIdCategoria());
+		categoria.setDescrizioneCategoria(dto.getDescrizioneCategoria());
+		
+		return categoria;
+	}
+	
+	
 }

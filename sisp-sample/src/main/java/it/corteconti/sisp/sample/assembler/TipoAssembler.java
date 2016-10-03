@@ -15,12 +15,28 @@ public class TipoAssembler {
 	 * @return 		<em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 */
 	public static TipoDto assembleDto(Tipo tipo) {
+		
 		TipoDto tipoDto = new TipoDto();
 		
 		tipoDto.setIdTipo(tipo.getCodiceTipo());
 		tipoDto.setDescrizioneTipo(tipo.getDescrizioneTipo());
 		
 		return tipoDto;
+	}
+	
+	/**
+	 * Ritorna un'entità <em>it.corteconti.sisp.sample.model.Tipo</em>
+	 * @param dto	dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
+	 * @return		<em>it.corteconti.sisp.sample.model.Tipo</em>
+	 */
+	public static Tipo disassembleDto(TipoDto dto) {
+		
+		Tipo tipo = new Tipo();
+		
+		tipo.setCodiceTipo(dto.getIdTipo());
+		tipo.setDescrizioneTipo(dto.getDescrizioneTipo());
+		
+		return tipo;
 	}
 
 }

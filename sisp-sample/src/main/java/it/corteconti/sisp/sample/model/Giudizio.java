@@ -41,11 +41,11 @@ public class Giudizio {
 	@Column(name="NOTE")
 	private String note;
 	
-	@Column(name="AOO")
-	private Long aoo;
+	@Column(name="TESTO_QUESITO")
+	private String testoQuesito;
 	
-	@ManyToMany(mappedBy="listaGiudizi")
-	private List<Oggetto> listaOggetti;
+	@Column(name="RIFERIMENTO_ATTO")
+	private String riferimentoAtto;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CATEGORIA_CODICE_CATEGORIA")
@@ -59,6 +59,13 @@ public class Giudizio {
 	@JoinColumn(name="TIPOLOGIA_CODICE_TIPOLOGIA")
 	private Tipologia tipologia;
 	
+	@Column(name="CODICE_SEZIONE")
+	private Long idSezione;
+	
+	@ManyToMany(mappedBy="listaGiudizi")
+	private List<Oggetto> listaOggetti;
+	
+	
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", id)
@@ -66,7 +73,13 @@ public class Giudizio {
 				.append("dataApertura", dataApertura)
 				.append("descrizione", descrizione)
 				.append("note", note)
-				.append("aoo", aoo)
+				.append("testoQuesito", testoQuesito)
+				.append("riferimentoAtto", riferimentoAtto)
+				.append("idSezione", idSezione)
+				.append("idCategoria", categoria.getCodiceCategoria())
+				.append("idTipo", tipo.getCodiceTipo())
+				.append("idTipologia", tipologia.getCodiceTipologia())
+				.append("size listaOggetti", listaOggetti.size())
 				.toString();
 	}
 
@@ -110,12 +123,28 @@ public class Giudizio {
 		this.note = note;
 	}
 
-	public Long getAoo() {
-		return aoo;
+	public String getTestoQuesito() {
+		return testoQuesito;
 	}
 
-	public void setAoo(Long aoo) {
-		this.aoo = aoo;
+	public void setTestoQuesito(String testoQuesito) {
+		this.testoQuesito = testoQuesito;
+	}
+
+	public String getRiferimentoAtto() {
+		return riferimentoAtto;
+	}
+
+	public void setRiferimentoAtto(String riferimentoAtto) {
+		this.riferimentoAtto = riferimentoAtto;
+	}
+
+	public Long getIdSezione() {
+		return idSezione;
+	}
+
+	public void setIdSezione(Long idSezione) {
+		this.idSezione = idSezione;
 	}
 
 	public List<Oggetto> getListaOggetti() {
@@ -149,7 +178,6 @@ public class Giudizio {
 	public void setTipologia(Tipologia tipologia) {
 		this.tipologia = tipologia;
 	}
-
 	
 	
 }

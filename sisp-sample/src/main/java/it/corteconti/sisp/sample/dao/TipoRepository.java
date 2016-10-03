@@ -11,7 +11,7 @@ import it.corteconti.sisp.sample.model.Tipo;
  * Repository Entità <em>it.corteconti.sisp.sample.model.Tipo</em>
  * @version 1.0
  */
-public interface TipoRepository extends CrudRepository<Tipo, Long> {
+public interface TipoRepository extends CrudRepository<Tipo, String> {
 	
 	/**
 	 * Ritorna una lista di entità <em>it.corteconti.sisp.sample.model.Tipo</em>

@@ -13,7 +13,7 @@ import it.corteconti.sisp.sample.model.Categoria;
  *
  */
 
-public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
+public interface CategoriaRepository extends CrudRepository<Categoria, String> {
 	
 	/**
 	 * <p>Ritorna una lista di di oggetti Categoria<p>
