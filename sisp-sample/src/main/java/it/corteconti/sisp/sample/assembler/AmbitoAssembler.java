@@ -1,9 +1,7 @@
 package it.corteconti.sisp.sample.assembler;
 
 import it.corteconti.sisp.sample.dto.AmbitoDto;
-import it.corteconti.sisp.sample.dto.CategoriaDto;
 import it.corteconti.sisp.sample.model.Ambito;
-import it.corteconti.sisp.sample.model.Categoria;
 
 /**
  * Assembler Entità <em>it.corteconti.sisp.sample.model.Ambito</em>

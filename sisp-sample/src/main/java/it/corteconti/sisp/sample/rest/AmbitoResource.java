@@ -2,6 +2,8 @@ package it.corteconti.sisp.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,9 +19,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.AmbitoDto;
-import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.service.AmbitoService;
-import it.corteconti.sisp.sample.service.TipoService;
 
 /**
  * Rest Entità <em>it.corteconti.sisp.sample.model.Ambito</em>
@@ -31,6 +31,8 @@ import it.corteconti.sisp.sample.service.TipoService;
 		produces = { MediaType.APPLICATION_JSON_VALUE  })
 @Api(description = "Servizio entità Ambito")
 public class AmbitoResource {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(AmbitoResource.class);
 	
 	@Autowired
 	private AmbitoService ambitoService;
@@ -59,6 +61,8 @@ public class AmbitoResource {
 	public ResponseEntity<AmbitoDto> getAmbito(
 			@ApiParam(value = "Specifica l'id ambito")
 			@PathVariable("ambitoId") String ambitoId) {
+		
+		LOG.debug("-- Ambito -> ambitoId:  [" + ambitoId + "]");
 		
 		AmbitoDto dto = ambitoService.getAmbito(ambitoId);
 		return new ResponseEntity<AmbitoDto>(dto, HttpStatus.OK);
