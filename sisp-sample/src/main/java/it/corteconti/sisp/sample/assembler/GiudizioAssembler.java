@@ -79,6 +79,7 @@ public class GiudizioAssembler {
 		return dto;
 	}
 	
+	
 	/**
 	 * Ritorna un'entità <em>it.corteconti.sisp.sample.model.Giudizio</em>
 	 * @param dto	dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
