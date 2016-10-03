@@ -8,17 +8,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class GiudizioDto {
 
 	private Long idGiudizio;
-	private Long numero;
+	private Long numeroGiudizio;
 	private Date dataApertura;
 	private String descrizione;
 	private String note;
-	private SezioneDto sezioneDto;
+	private SezioneDto sezione;
 	private String testoQuesito;
 	private String riferimentoAtto;
-	private CategoriaDto categoriaDto;
-	private TipoDto tipoDto;
-	private TipologiaDto tipologiaDto;
-	private List<OggettoDto> oggettoDtoList;
+	private CategoriaDto categoria;
+	private TipoDto tipo;
+	private TipologiaDto tipologia;
+	private List<OggettoDto> oggetti;
 	
 	
 	
@@ -28,11 +28,11 @@ public class GiudizioDto {
 	public void setIdGiudizio(Long idGiudizio) {
 		this.idGiudizio = idGiudizio;
 	}
-	public Long getNumero() {
-		return numero;
+	public Long getNumeroGiudizio() {
+		return numeroGiudizio;
 	}
-	public void setNumero(Long numero) {
-		this.numero = numero;
+	public void setNumeroGiudizio(Long numeroGiudizio) {
+		this.numeroGiudizio = numeroGiudizio;
 	}
 	public Date getDataApertura() {
 		return dataApertura;
@@ -52,11 +52,11 @@ public class GiudizioDto {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public SezioneDto getSezioneDto() {
-		return sezioneDto;
+	public SezioneDto getSezione() {
+		return sezione;
 	}
-	public void setSezioneDto(SezioneDto sezioneDto) {
-		this.sezioneDto = sezioneDto;
+	public void setSezioneDto(SezioneDto sezione) {
+		this.sezione = sezione;
 	}
 	public String getTestoQuesito() {
 		return testoQuesito;
@@ -70,46 +70,46 @@ public class GiudizioDto {
 	public void setRiferimentoAtto(String riferimentoAtto) {
 		this.riferimentoAtto = riferimentoAtto;
 	}
-	public CategoriaDto getCategoriaDto() {
-		return categoriaDto;
+	public CategoriaDto getCategoria() {
+		return categoria;
 	}
-	public void setCategoriaDto(CategoriaDto categoriaDto) {
-		this.categoriaDto = categoriaDto;
+	public void setCategoriaDto(CategoriaDto categoria) {
+		this.categoria = categoria;
 	}
-	public TipoDto getTipoDto() {
-		return tipoDto;
+	public TipoDto getTipo() {
+		return tipo;
 	}
-	public void setTipoDto(TipoDto tipoDto) {
-		this.tipoDto = tipoDto;
+	public void setTipoDto(TipoDto tipo) {
+		this.tipo = tipo;
 	}
-	public TipologiaDto getTipologiaDto() {
-		return tipologiaDto;
+	public TipologiaDto getTipologia() {
+		return tipologia;
 	}
-	public void setTipologiaDto(TipologiaDto tipologiaDto) {
-		this.tipologiaDto = tipologiaDto;
+	public void setTipologiaDto(TipologiaDto tipologia) {
+		this.tipologia = tipologia;
 	}
-	public List<OggettoDto> getOggettoDtoList() {
-		return oggettoDtoList;
+	public List<OggettoDto> getOggetti() {
+		return oggetti;
 	}
-	public void setOggettoDtoList(List<OggettoDto> oggettoDtoList) {
-		this.oggettoDtoList = oggettoDtoList;
+	public void setOggettoDtoList(List<OggettoDto> oggetti) {
+		this.oggetti = oggetti;
 	}
 
 	
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("idGiudizio", idGiudizio)
-				.append("numero", numero)
+				.append("numero", numeroGiudizio)
 				.append("dataApertura", dataApertura)
 				.append("descrizione", descrizione)
 				.append("note", note)
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", sezioneDto.getIdSezione())
-				.append("idCategoria", categoriaDto.getIdCategoria())
-				.append("idTipo", tipoDto.getIdTipo())
-				.append("idTipologia", tipologiaDto.getIdTipologia())
-				.append("size oggettoDtoList", oggettoDtoList.size())
+				.append("idSezione", sezione.getIdSezione())
+				.append("idCategoria", categoria.getIdCategoria())
+				.append("idTipo", tipo.getIdTipo())
+				.append("idTipologia", tipologia.getIdTipologia())
+				.append("size oggettoDtoList", oggetti.size())
 				.toString();
 	}
 	

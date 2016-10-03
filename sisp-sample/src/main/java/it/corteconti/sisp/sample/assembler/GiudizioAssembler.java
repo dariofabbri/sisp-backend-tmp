@@ -33,7 +33,7 @@ public class GiudizioAssembler {
 		if ( giudizio.getId() != null && giudizio.getId().longValue() != 0 )
 			dto.setIdGiudizio(giudizio.getId());
 		if ( giudizio.getNumero() != null && giudizio.getNumero().longValue() != 0 )
-			dto.setNumero(giudizio.getNumero());
+			dto.setNumeroGiudizio(giudizio.getNumero());
 		if ( giudizio.getDataApertura() != null )
 			dto.setDataApertura(giudizio.getDataApertura());
 		if ( giudizio.getDescrizione() != null && !giudizio.getDescrizione().equals("") )
@@ -90,8 +90,8 @@ public class GiudizioAssembler {
 		
 		if ( dto.getIdGiudizio() != null && dto.getIdGiudizio().longValue() != 0 )
 			giudizio.setId(dto.getIdGiudizio());
-		if ( dto.getNumero() != null && dto.getNumero().longValue() != 0 )
-			giudizio.setNumero(dto.getNumero());
+		if ( dto.getNumeroGiudizio() != null && dto.getNumeroGiudizio().longValue() != 0 )
+			giudizio.setNumero(dto.getNumeroGiudizio());
 		if ( dto.getDataApertura() != null )
 			giudizio.setDataApertura(dto.getDataApertura());
 		if ( dto.getDescrizione() != null && !dto.getDescrizione().equals("") )
@@ -102,28 +102,28 @@ public class GiudizioAssembler {
 			giudizio.setTestoQuesito(dto.getTestoQuesito());
 		if ( dto.getRiferimentoAtto() != null && !dto.getRiferimentoAtto().equals("") )
 			giudizio.setRiferimentoAtto(dto.getRiferimentoAtto());
-		if ( dto.getSezioneDto().getIdSezione() != null && dto.getSezioneDto().getIdSezione().longValue() != 0 )
-			giudizio.setIdSezione(dto.getSezioneDto().getIdSezione());
+		if ( dto.getSezione().getIdSezione() != null && dto.getSezione().getIdSezione().longValue() != 0 )
+			giudizio.setIdSezione(dto.getSezione().getIdSezione());
 		// -- Categoria
-		if ( dto.getCategoriaDto() != null ) {
-			Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoriaDto());
+		if ( dto.getCategoria() != null ) {
+			Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoria());
 			giudizio.setCategoria(categoria);
 		}
 		// -- Tipo
-		if ( dto.getTipoDto() != null ) {
-			Tipo tipo = TipoAssembler.disassembleDto(dto.getTipoDto());
+		if ( dto.getTipo() != null ) {
+			Tipo tipo = TipoAssembler.disassembleDto(dto.getTipo());
 			giudizio.setTipo(tipo);
 		}
 		// -- Tipologia
-		if ( dto.getTipologiaDto() != null ) {
-			Tipologia tipologia = TipologiaAssembler.disassembleDto(dto.getTipologiaDto());
+		if ( dto.getTipologia() != null ) {
+			Tipologia tipologia = TipologiaAssembler.disassembleDto(dto.getTipologia());
 			giudizio.setTipologia(tipologia);
 		}
 		// -- Lista Oggetti
-		if ( dto.getOggettoDtoList() != null && dto.getOggettoDtoList().size() > 0 ) {
+		if ( dto.getOggetti() != null && dto.getOggetti().size() > 0 ) {
 			List<Oggetto> oggettoList = new ArrayList<Oggetto>();
 			
-			for ( OggettoDto oggettoDto : dto.getOggettoDtoList() ) {
+			for ( OggettoDto oggettoDto : dto.getOggetti() ) {
 				Oggetto oggetto = OggettoAssembler.disassembleDto(oggettoDto);
 				oggettoList.add(oggetto);
 			}
