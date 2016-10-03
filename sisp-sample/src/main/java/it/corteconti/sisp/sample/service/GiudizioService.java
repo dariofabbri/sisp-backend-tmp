@@ -29,7 +29,6 @@ import it.corteconti.sisp.sample.model.Sezione;
  * Service Entità <em>it.corteconti.sisp.sample.model.Giudizio</em> 
  * @version 1.0
  */
-
 @Service
 @Transactional
 public class GiudizioService {
@@ -77,19 +76,28 @@ public class GiudizioService {
 		return GiudizioAssembler.assembleDto(giudizio);
 	}
 	
-	
-	public GiudizioDto save(GiudizioDto dto) {
+	/**
+	 * Esegue la creazione dell'entità Giudizio
+	 * @param dto 
+	 * @param idSezione	id dell'entità Sezione
+	 * @param idAmbito	id dell'entità Ambito
+	 * @return			dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */
+	public GiudizioDto save(GiudizioDto dto, Long idSezione, String idAmbito) {
 		
 		// -- TODO IMPLEMENTARE VALIDAZIONE !!!
+		
 		
 		/* Recupero del NUMERO in base alla Sezione
 		 * NUMERO -> 'VALORE_CONTATORE' (Tabella 'CONTATORI')
 		 */
 		Long numero;
-		Sezione sezione = this.sezioneRepository.findOne(dto.getSezioneDto().getIdSezione());
+		Sezione sezione = this.sezioneRepository.findOne(idSezione);
+		LOG.debug("-- [Sezione] -> [" + sezione.toString() + "]");
 		
 		Contatore contatore = sezione.getContatori().get(0);
 		numero = contatore.getValoreContatore();
+		LOG.debug("-- [Contatore] -> valore Db [" + numero + "]");
 		numero++;
 		
 		// -- Update Contatore (incremento di uno il valore del contatore)
@@ -100,14 +108,16 @@ public class GiudizioService {
 		Giudizio giudizio = GiudizioAssembler.disassembleDto(dto);
 		// -- NUMERO
 		giudizio.setNumero(numero);
+		// -- Id Sezione
+		giudizio.setIdSezione(idSezione);
 		// -- Tipologiche
-//		if ( giudizio.getCategoria() != null && giudizio.getCategoria().getCodiceCategoria() != null )
-//			giudizio.setCategoria(this.categoriaRepository.findOne(giudizio.getCategoria().getCodiceCategoria()));
-//		if ( giudizio.getTipo() != null && giudizio.getTipo().getCodiceTipo() != null )
-//			giudizio.setTipo(this.tipoRepository.findOne(giudizio.getTipo().getCodiceTipo()));
-//		if ( giudizio.getTipologia() != null && giudizio.getTipologia().getCodiceTipologia() != null )
-//			giudizio.setTipologia(this.tipologiaRepository.findOne(giudizio.getTipologia().getCodiceTipologia()));
-//		// -- Lista Oggetto
+		if ( giudizio.getCategoria() != null && giudizio.getCategoria().getCodiceCategoria() != null )
+			giudizio.setCategoria(this.categoriaRepository.findOne(giudizio.getCategoria().getCodiceCategoria()));
+		if ( giudizio.getTipo() != null && giudizio.getTipo().getCodiceTipo() != null )
+			giudizio.setTipo(this.tipoRepository.findOne(giudizio.getTipo().getCodiceTipo()));
+		if ( giudizio.getTipologia() != null && giudizio.getTipologia().getCodiceTipologia() != null )
+			giudizio.setTipologia(this.tipologiaRepository.findOne(giudizio.getTipologia().getCodiceTipologia()));
+		// -- Lista Oggetto
 		List<Oggetto> ret = new ArrayList<Oggetto>();
 		if ( giudizio.getListaOggetti() != null && giudizio.getListaOggetti().size() > 0 ) {
 			
@@ -120,7 +130,6 @@ public class GiudizioService {
 		
 		// -- Save
 		Giudizio giudizioNew = this.giudizioRepository.save(giudizio);
-		giudizioNew.setListaOggetti(ret);
 		// -- Ritorno dto
 		return GiudizioAssembler.assembleDto(giudizioNew);
 	}

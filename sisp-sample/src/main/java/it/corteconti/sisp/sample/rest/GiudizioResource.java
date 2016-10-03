@@ -1,5 +1,7 @@
 package it.corteconti.sisp.sample.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,6 +31,9 @@ import it.corteconti.sisp.sample.service.GiudizioService;
 @Api(description = "Servizio entità Giudizio")
 public class GiudizioResource {
 	
+	
+	private static final Logger LOG = LoggerFactory.getLogger(GiudizioResource.class);
+	
 	@Autowired
 	private GiudizioService service;
 	
@@ -51,21 +56,28 @@ public class GiudizioResource {
 	
 	/**
 	 * Crea un'entità Giudizio
-	 * @param giudizioDto l'oggetto dto da creare
+	 * @param sezioneId		id dell'entità Sezione
+	 * @param ambitoId		id dell'entità Ambito
+	 * @param giudizioDto	dto Giudizio
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
-	@RequestMapping(value = "/giudizio", method = RequestMethod.POST)
+	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/giudizi", method = RequestMethod.POST)
 	@ApiOperation(value = "", notes = "Creazione entità Giudizio", response = GiudizioDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità creata"), })
 	public ResponseEntity<GiudizioDto> save(
-			@ApiParam(value = "Oggetto Giudizio da creare")
+			@ApiParam(value = "Specifica l'id sezione")
+			@PathVariable("sezioneId") Long sezioneId,
+			@ApiParam(value = "Specifica l'id ambito")
+			@PathVariable("ambitoId") String ambitoId,
+			@ApiParam(value = "Specifica il dto giudizio")
 			@RequestBody GiudizioDto giudizioDto) {
 		
-		//LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
-		//LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
-		
-		service.save(giudizioDto);
-		return new ResponseEntity<GiudizioDto>(giudizioDto, HttpStatus.OK);
+		LOG.debug("-- [Giudizio, POST] -> START -----------------------------------------");
+		LOG.debug("-- [GiudizioDto] -> REQ: [" + giudizioDto.toString() + "]");
+		GiudizioDto dto = service.save(giudizioDto, sezioneId, ambitoId);
+		LOG.debug("-- [GiudizioDto] -> RES: [" + dto.toString() + "]");
+		LOG.debug("-- [Giudizio, POST] -> END   -----------------------------------------");
+		return new ResponseEntity<GiudizioDto>(dto, HttpStatus.OK);
 	}
 	
 	
