@@ -88,6 +88,28 @@ public class ThingResource {
 	}
 	
 	/**
+	 * PATCH example
+	 * @param thingDto
+	 * @return
+	 */
+	@RequestMapping(value = "/thing/patch/{id}", method = RequestMethod.PATCH)
+	@ApiOperation(value = "", notes = "Modifica entità Thing", response = ThingDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità modificata"), })
+	public ResponseEntity<ThingDto> patchThingForDescription(
+			@ApiParam(value = "description")
+			@RequestBody ThingDto thingDto,
+			@ApiParam(value = "id")
+			@PathVariable("id") Long id) {
+		
+		
+		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
+		LOG.debug("-- Thing -> id: [" + id + "]");
+		
+		ThingDto result = service.patchThingForDescription(id,thingDto.getDescription());
+		return new ResponseEntity<ThingDto>(result, HttpStatus.OK);
+	}
+	
+	/**
 	 * DELETE example
 	 * @param thingDto
 	 * @return
@@ -103,5 +125,6 @@ public class ThingResource {
 		service.delete(id);
 		return new ResponseEntity<ThingDto>(HttpStatus.OK);
 	}
+	
 	
 }

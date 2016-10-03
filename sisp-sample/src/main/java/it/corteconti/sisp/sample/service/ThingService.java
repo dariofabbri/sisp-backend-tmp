@@ -95,6 +95,24 @@ public class ThingService {
 		// -- Delete
 		this.repository.delete(thingDb);
 	}
+	/**
+	 * service per il HTTP method patch
+	 * @param id
+	 * @param description
+	 * @return
+	 */
+
+	public ThingDto patchThingForDescription(Long id, String description) {
+		
+		Thing thingDb = this.repository.findOne(id);
+		thingDb.setDescription(description);
+		
+		return ThingAssembler.assembleDto(thingDb);
+		
+	}
+	
+     
+	
 	
 //	public ThingDto findOneFallback(Long id) {
 //		
