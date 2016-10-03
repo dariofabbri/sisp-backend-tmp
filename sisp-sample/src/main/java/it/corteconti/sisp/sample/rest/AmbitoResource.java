@@ -17,9 +17,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import it.corteconti.sisp.sample.dto.AmbitoDto;
-import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.service.AmbitoService;
-import it.corteconti.sisp.sample.service.TipoService;
 
 /**
  * Rest Entità <em>it.corteconti.sisp.sample.model.Ambito</em>
