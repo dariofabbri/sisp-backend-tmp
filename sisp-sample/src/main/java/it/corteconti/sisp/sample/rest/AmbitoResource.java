@@ -2,6 +2,8 @@ package it.corteconti.sisp.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +32,8 @@ import it.corteconti.sisp.sample.service.AmbitoService;
 @Api(description = "Servizio entità Ambito")
 public class AmbitoResource {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(AmbitoResource.class);
+	
 	@Autowired
 	private AmbitoService ambitoService;
 	
@@ -57,6 +61,8 @@ public class AmbitoResource {
 	public ResponseEntity<AmbitoDto> getAmbito(
 			@ApiParam(value = "Specifica l'id ambito")
 			@PathVariable("ambitoId") String ambitoId) {
+		
+		LOG.debug("-- Ambito -> ambitoId:  [" + ambitoId + "]");
 		
 		AmbitoDto dto = ambitoService.getAmbito(ambitoId);
 		return new ResponseEntity<AmbitoDto>(dto, HttpStatus.OK);

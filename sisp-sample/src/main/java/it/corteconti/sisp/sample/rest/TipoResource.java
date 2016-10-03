@@ -2,6 +2,8 @@ package it.corteconti.sisp.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +32,8 @@ import it.corteconti.sisp.sample.service.TipoService;
 @Api(description = "Servizio entità Tipo")
 public class TipoResource {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(TipoResource.class);
+	
 	@Autowired
 	private TipoService tipoService;
 	
@@ -50,6 +54,10 @@ public class TipoResource {
 			@PathVariable("ambitoId") String ambitoId,
 	        @ApiParam(value = "Specifica l'id categoria")
 	        @PathVariable("categoriaId") String categoriaId) {
+		
+		LOG.debug("-- Tipo -> sezioneId:  [" + sezioneId + "]");
+		LOG.debug("-- Tipo -> ambitoId:   [" + ambitoId + "]");
+		LOG.debug("-- Tipo -> categoriaId:[" + categoriaId + "]");		
 		
 		List<TipoDto> listaTipi = tipoService.findTipiBySezioneAndAmbitoAndCategoria(sezioneId, ambitoId, categoriaId);
 		return new ResponseEntity<List<TipoDto>>(listaTipi, HttpStatus.OK);
@@ -75,6 +83,11 @@ public class TipoResource {
 	        @PathVariable("categoriaId") String categoriaId,
 	        @ApiParam(value = "Specifica l'id tipo")
 	        @PathVariable("tipoId") String tipoId) {
+		
+		LOG.debug("-- Tipo -> sezioneId:  [" + sezioneId + "]");
+		LOG.debug("-- Tipo -> ambitoId:   [" + ambitoId + "]");
+		LOG.debug("-- Tipo -> categoriaId:[" + categoriaId + "]");
+		LOG.debug("-- Tipo -> tipoId:     [" + tipoId + "]");		
 		
 		TipoDto dto = tipoService.getTipiBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
 		return new ResponseEntity<TipoDto>(dto, HttpStatus.OK);

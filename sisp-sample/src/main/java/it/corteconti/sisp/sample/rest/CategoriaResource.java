@@ -2,6 +2,8 @@ package it.corteconti.sisp.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,6 +31,8 @@ import it.corteconti.sisp.sample.service.CategoriaService;
 @Api(description = "Servizio entità Categoria")
 public class CategoriaResource {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(CategoriaResource.class);
+	
 	@Autowired
 	private CategoriaService categoriaService;
 	
@@ -47,6 +51,9 @@ public class CategoriaResource {
 			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica l'id ambito")
 			@PathVariable("ambitoId") String ambitoId){
+		
+		LOG.debug("-- Categoria -> sezioneId: [" + sezioneId + "]");
+		LOG.debug("-- Categoria -> ambitoId:  [" + ambitoId + "]");
 
 		List<CategoriaDto> listaCategoriaAmbito = categoriaService.findCategorieBySezioneAndAmbito(sezioneId, ambitoId);
 		return new ResponseEntity<List<CategoriaDto>>(listaCategoriaAmbito, HttpStatus.OK);
@@ -69,7 +76,10 @@ public class CategoriaResource {
 			@PathVariable("ambitoId") String ambitoId,
 			@ApiParam(value = "Specifica l'id della categoria")
 			@PathVariable("categoriaId") String categoriaId){
-
+		
+		LOG.debug("-- Categoria -> sezioneId:    [" + sezioneId + "]");
+		LOG.debug("-- Categoria -> ambitoId:     [" + ambitoId + "]");
+		LOG.debug("-- Categoria -> categoriaId:  [" + categoriaId + "]");		
 
 		CategoriaDto categoriaDto =  categoriaService.findByCategorieBySezioneAndAmbitoAndCategoria(sezioneId, ambitoId, categoriaId);
 		return new ResponseEntity<CategoriaDto>(categoriaDto, HttpStatus.OK);

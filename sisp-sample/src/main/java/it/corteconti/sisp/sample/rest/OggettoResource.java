@@ -2,6 +2,8 @@ package it.corteconti.sisp.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,6 +31,8 @@ import it.corteconti.sisp.sample.service.OggettoService;
 @Api(description = "Servizio entità Oggetto")
 public class OggettoResource {
 	
+	private static final Logger LOG = LoggerFactory.getLogger(OggettoResource.class);
+	
 	@Autowired
 	private OggettoService oggettoService;
 	
@@ -46,6 +50,8 @@ public class OggettoResource {
 	public ResponseEntity<List<OggettoDto>> getOggetti(
 			@ApiParam(value = "Specifica l'id sezione")
 			@PathVariable("sezioneId") Long sezioneId){
+		
+		LOG.debug("-- Oggetto -> sezioneId: [" + sezioneId + "]");
 
 		List<OggettoDto> listaOggetti = oggettoService.findOggettoBySezione(sezioneId);
 		return new ResponseEntity<List<OggettoDto>>(listaOggetti, HttpStatus.OK);
@@ -67,6 +73,9 @@ public class OggettoResource {
 			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica l'id oggetto")
 			@PathVariable("idOggetto") Long idOggetto){
+		
+		LOG.debug("-- Oggetto -> sezioneId: [" + sezioneId + "]");
+		LOG.debug("-- Oggetto -> idOggetto: [" + idOggetto + "]");		
 
 		OggettoDto oggetto = oggettoService.findOggettoBySezioneAndIdOggetto(sezioneId,idOggetto);
 		return new ResponseEntity<OggettoDto>(oggetto, HttpStatus.OK);
