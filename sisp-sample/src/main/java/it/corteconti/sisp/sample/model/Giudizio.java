@@ -3,6 +3,7 @@ package it.corteconti.sisp.sample.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -62,7 +64,10 @@ public class Giudizio {
 	@Column(name="CODICE_SEZIONE")
 	private Long idSezione;
 	
-	@ManyToMany(mappedBy="listaGiudizi")
+	 @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	  @JoinTable(name = "GIUDIZIO_OGGETTO",
+	        joinColumns = @JoinColumn(name = "ID_GIUDIZIO", referencedColumnName = "ID_GIUDIZIO"),
+	        inverseJoinColumns = @JoinColumn(name = "CODICE_OGGETTO", referencedColumnName = "CODICE_OGGETTO"))
 	private List<Oggetto> listaOggetti;
 	
 	
