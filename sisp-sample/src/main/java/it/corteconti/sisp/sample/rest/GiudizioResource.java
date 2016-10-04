@@ -3,6 +3,7 @@ package it.corteconti.sisp.sample.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,21 +39,21 @@ public class GiudizioResource {
 	@Autowired
 	private GiudizioService service;
 	
-	/**
-	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
-	 * @param idGiudizio id dell'entità Giudizio
-	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
-	 */	
-	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
-	public ResponseEntity<GiudizioDto> getGiudizio(
-			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
-			@PathVariable("id") Long idGiudizio) {
-		
-		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
-		return new ResponseEntity<GiudizioDto>(giudizio, HttpStatus.OK);
-	}
+//	/**
+//	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
+//	 * @param idGiudizio id dell'entità Giudizio
+//	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+//	 */	
+//	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
+//	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
+//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
+//	public ResponseEntity<GiudizioDto> getGiudizio(
+//			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
+//			@PathVariable("id") Long idGiudizio) {
+//		
+//		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
+//		return new ResponseEntity<GiudizioDto>(giudizio, HttpStatus.OK);
+//	}
 	
 	
 	/**
@@ -70,14 +72,17 @@ public class GiudizioResource {
 			@ApiParam(value = "Specifica l'id ambito")
 			@PathVariable("ambitoId") String ambitoId,
 			@ApiParam(value = "Specifica il dto giudizio")
-			@RequestBody GiudizioDto giudizioDto) {
+			@RequestBody GiudizioDto giudizioDto,
+			UriComponentsBuilder ucBuilder) {
 		
 		LOG.debug("-- [Giudizio, POST] -> START -----------------------------------------");
 		LOG.debug("-- [GiudizioDto] -> REQ: [" + giudizioDto.toString() + "]");
 		GiudizioDto dto = service.save(giudizioDto, sezioneId, ambitoId);
 		LOG.debug("-- [GiudizioDto] -> RES: [" + dto.toString() + "]");
 		LOG.debug("-- [Giudizio, POST] -> END   -----------------------------------------");
-		return new ResponseEntity<GiudizioDto>(dto, HttpStatus.OK);
+		HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/giudizio-api/giudizi/{id}").buildAndExpand(dto.getIdGiudizio()).toUri());
+		return new ResponseEntity<GiudizioDto>(dto, headers, HttpStatus.CREATED);
 	}
 	
 	

@@ -22,80 +22,108 @@ public class GiudizioDto {
 	
 	
 	
+	
 	public Long getIdGiudizio() {
 		return idGiudizio;
 	}
+
 	public void setIdGiudizio(Long idGiudizio) {
 		this.idGiudizio = idGiudizio;
 	}
+
 	public Long getNumeroGiudizio() {
 		return numeroGiudizio;
 	}
+
 	public void setNumeroGiudizio(Long numeroGiudizio) {
 		this.numeroGiudizio = numeroGiudizio;
 	}
+
 	public Date getDataApertura() {
 		return dataApertura;
 	}
+
 	public void setDataApertura(Date dataApertura) {
 		this.dataApertura = dataApertura;
 	}
+
 	public String getDescrizione() {
 		return descrizione;
 	}
+
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
 	public String getNote() {
 		return note;
 	}
+
 	public void setNote(String note) {
 		this.note = note;
 	}
+
 	public SezioneDto getSezione() {
 		return sezione;
 	}
-	public void setSezioneDto(SezioneDto sezione) {
+
+	public void setSezione(SezioneDto sezione) {
 		this.sezione = sezione;
 	}
+
 	public String getTestoQuesito() {
 		return testoQuesito;
 	}
+
 	public void setTestoQuesito(String testoQuesito) {
 		this.testoQuesito = testoQuesito;
 	}
+
 	public String getRiferimentoAtto() {
 		return riferimentoAtto;
 	}
+
 	public void setRiferimentoAtto(String riferimentoAtto) {
 		this.riferimentoAtto = riferimentoAtto;
 	}
+
 	public CategoriaDto getCategoria() {
 		return categoria;
 	}
-	public void setCategoriaDto(CategoriaDto categoria) {
+
+	public void setCategoria(CategoriaDto categoria) {
 		this.categoria = categoria;
 	}
+
 	public TipoDto getTipo() {
 		return tipo;
 	}
-	public void setTipoDto(TipoDto tipo) {
+
+	public void setTipo(TipoDto tipo) {
 		this.tipo = tipo;
 	}
+
 	public TipologiaDto getTipologia() {
 		return tipologia;
 	}
-	public void setTipologiaDto(TipologiaDto tipologia) {
+
+	public void setTipologia(TipologiaDto tipologia) {
 		this.tipologia = tipologia;
 	}
+
 	public List<OggettoDto> getOggetti() {
 		return oggetti;
 	}
-	public void setOggettoDtoList(List<OggettoDto> oggetti) {
+
+	public void setOggetti(List<OggettoDto> oggetti) {
 		this.oggetti = oggetti;
 	}
 
-	
+
+
+
+
+
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("idGiudizio", idGiudizio)

@@ -47,22 +47,22 @@ public class GiudizioAssembler {
 		if ( giudizio.getIdSezione() != null && giudizio.getIdSezione().longValue() != 0 ) {
 			SezioneDto sezioneDto = new SezioneDto();
 			sezioneDto.setIdSezione(giudizio.getIdSezione());
-			dto.setSezioneDto(sezioneDto);
+			dto.setSezione(sezioneDto);
 		}
 		// -- Categoria
 		if ( giudizio.getCategoria() != null ) {
 			CategoriaDto categoriaDto = CategoriaAssembler.assembleDto(giudizio.getCategoria());
-			dto.setCategoriaDto(categoriaDto);
+			dto.setCategoria(categoriaDto);
 		}
 		// -- Tipo
 		if ( giudizio.getTipo() != null ) {
 			TipoDto tipoDto = TipoAssembler.assembleDto(giudizio.getTipo());
-			dto.setTipoDto(tipoDto);
+			dto.setTipo(tipoDto);
 		}
 		// -- Tipologia
 		if ( giudizio.getTipologia() != null ) {
 			TipologiaDto tipologiaDto = TipologiaAssembler.assembleDto(giudizio.getTipologia());
-			dto.setTipologiaDto(tipologiaDto);
+			dto.setTipologia(tipologiaDto);
 		}
 		// -- Lista Oggetti
 		if ( giudizio.getListaOggetti() != null && giudizio.getListaOggetti().size() > 0 ) {
@@ -73,7 +73,7 @@ public class GiudizioAssembler {
 				oggettoDtoList.add(oggettoDto);
 			}
 			
-			dto.setOggettoDtoList(oggettoDtoList);
+			dto.setOggetti(oggettoDtoList);
 		}
 		
 		return dto;
