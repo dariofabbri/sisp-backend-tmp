@@ -14,7 +14,6 @@ public class ValidationUtil {
 	private static final int LENGHT_ZERO = 0;
 	
 	
-	
 	/**
      * Costruttore privato, impedisce l'instanziazione
      */
