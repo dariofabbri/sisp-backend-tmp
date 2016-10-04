@@ -132,7 +132,12 @@ public class ThingService {
 	}
 	
     public boolean isThingExist(Long id) {
-        return findOne(id)!=null;
+    	try{
+    		return findOne(id)!=null;
+    	}
+    	catch(Exception e){
+    		return false;
+    	}
     }
 	
      

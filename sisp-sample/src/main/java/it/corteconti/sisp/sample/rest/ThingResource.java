@@ -95,10 +95,14 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-		ThingDto dto = service.update(thingDto);
-		HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());
-		return new ResponseEntity<ThingDto>(dto, headers, HttpStatus.OK);
+		ThingDto dto = new ThingDto();
+		try{
+			dto = service.update(thingDto);
+		}catch(Exception e){
+			return new ResponseEntity<ThingDto>(thingDto,HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
 	}
 	
 	/**
@@ -120,10 +124,14 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> id: [" + id + "]");
 		
-		ThingDto result = service.patchThingForDescription(id,thingDto.getDescription());
-		HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(result.getId()).toUri());
-		return new ResponseEntity<ThingDto>(result, headers, HttpStatus.OK);
+		ThingDto result = new ThingDto();
+		try{
+			result = service.patchThingForDescription(id,thingDto.getDescription());
+		}catch(Exception e){
+			return new ResponseEntity<ThingDto>(thingDto,HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<ThingDto>(result, HttpStatus.OK);
 	}
 	
 	/**
@@ -138,8 +146,15 @@ public class ThingResource {
 			@ApiParam(value = "Oggetto Thing da cancellare")
 			@PathVariable("id") long id) {
 		
-		LOG.debug("-- Thing -> id: [" + id + "]");		
-		ThingDto dto = service.delete(id);
+		LOG.debug("-- Thing -> id: [" + id + "]");	
+		
+		ThingDto dto = new ThingDto();
+		try{
+			dto = service.delete(id);
+		}catch(Exception e){
+			return new ResponseEntity<ThingDto>(HttpStatus.NOT_FOUND);
+		}
+		
 		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
 	}
 	
