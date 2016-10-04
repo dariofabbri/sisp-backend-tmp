@@ -68,11 +68,6 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-        if (service.isThingExist(thingDto.getId())) {
-        	LOG.debug("-- A Thing with description " + thingDto.getDescription() + " already exist");
-            return new ResponseEntity<ThingDto>(thingDto,HttpStatus.CONFLICT);
-        }
-		
 		ThingDto dto = service.save(thingDto);
 		HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());
@@ -96,12 +91,7 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-		ThingDto dto = new ThingDto();
-		try{
-			dto = service.update(thingDto);
-		}catch(Exception e){
-			return new ResponseEntity<ThingDto>(thingDto,HttpStatus.NOT_FOUND);
-		}
+		ThingDto dto = service.update(thingDto);
 
 		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
 	}
@@ -125,12 +115,7 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> id: [" + id + "]");
 		
-		ThingDto result = new ThingDto();
-		try{
-			result = service.patchThingForDescription(id,thingDto.getDescription());
-		}catch(Exception e){
-			return new ResponseEntity<ThingDto>(thingDto,HttpStatus.NOT_FOUND);
-		}
+		ThingDto result = service.patchThingForDescription(id,thingDto.getDescription());
 		
 		return new ResponseEntity<ThingDto>(result, HttpStatus.OK);
 	}
@@ -149,14 +134,9 @@ public class ThingResource {
 		
 		LOG.debug("-- Thing -> id: [" + id + "]");	
 		
-		ThingDto dto = new ThingDto();
-		try{
-			dto = service.delete(id);
-		}catch(Exception e){
-			return new ResponseEntity<ThingDto>(HttpStatus.NOT_FOUND);
-		}
+		ThingDto dto = service.delete(id);
 		
-		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
+		return new ResponseEntity<ThingDto>(HttpStatus.NO_CONTENT);
 	}
 	
 	
