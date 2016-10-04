@@ -64,7 +64,7 @@ public class ThingService {
 	 * Richiamato dalla PUT
 	 * @param thingDto
 	 */
-	public void update(ThingDto thingDto) {
+	public ThingDto update(ThingDto thingDto) {
 		
 		if (thingDto == null || thingDto.getId() == null) {
 			throw new ResourceNotFoundException(
@@ -80,6 +80,8 @@ public class ThingService {
 			thingDb.setDescription(tmp.getDescription());
 		if (tmp.getLastUpdate() != null)
 			thingDb.setLastUpdate(tmp.getLastUpdate());
+		
+		return ThingAssembler.assembleDto(thingDb);
 	}
 	
 	/**

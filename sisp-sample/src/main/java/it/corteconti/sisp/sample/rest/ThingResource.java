@@ -83,14 +83,17 @@ public class ThingResource {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità modificata"), })
 	public ResponseEntity<ThingDto> update(
 			@ApiParam(value = "Oggetto Thing da modificare")
-			@RequestBody ThingDto thingDto) {
+			@RequestBody ThingDto thingDto,
+			UriComponentsBuilder ucBuilder) {
 		
 		LOG.debug("-- Thing -> id: [" + thingDto.getId() + "]");
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-		service.update(thingDto);
-		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
+		ThingDto dto = service.update(thingDto);
+		HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());
+		return new ResponseEntity<ThingDto>(dto, headers, HttpStatus.OK);
 	}
 	
 	/**
@@ -105,14 +108,17 @@ public class ThingResource {
 			@ApiParam(value = "description")
 			@RequestBody ThingDto thingDto,
 			@ApiParam(value = "id")
-			@PathVariable("id") Long id) {
+			@PathVariable("id") Long id,
+			UriComponentsBuilder ucBuilder) {
 		
 		
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> id: [" + id + "]");
 		
 		ThingDto result = service.patchThingForDescription(id,thingDto.getDescription());
-		return new ResponseEntity<ThingDto>(result, HttpStatus.OK);
+		HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(result.getId()).toUri());
+		return new ResponseEntity<ThingDto>(result, headers, HttpStatus.OK);
 	}
 	
 	/**
