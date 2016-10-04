@@ -116,6 +116,10 @@ public class ThingService {
 		
 	}
 	
+    public boolean isThingExist(Long id) {
+        return findOne(id)!=null;
+    }
+	
      
 	
 	
