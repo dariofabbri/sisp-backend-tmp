@@ -20,7 +20,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.dto.ThingDto;
 import it.corteconti.sisp.sample.service.ThingService;
 
@@ -134,7 +133,7 @@ public class ThingResource {
 		
 		LOG.debug("-- Thing -> id: [" + id + "]");	
 		
-		ThingDto dto = service.delete(id);
+		service.delete(id);
 		
 		return new ResponseEntity<ThingDto>(HttpStatus.NO_CONTENT);
 	}
