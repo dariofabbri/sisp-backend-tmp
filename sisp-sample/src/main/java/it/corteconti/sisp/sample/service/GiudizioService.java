@@ -31,7 +31,7 @@ import it.corteconti.sisp.sample.model.Sezione;
  */
 @Service
 @Transactional
-public class GiudizioService {
+public class GiudizioService extends GiudizioValidationService {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(GiudizioService.class);
 
@@ -78,25 +78,28 @@ public class GiudizioService {
 	
 	/**
 	 * Esegue la creazione dell'entità Giudizio
-	 * @param dto 
+	 * @param dto 		dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 * @param idSezione	id dell'entità Sezione
 	 * @param idAmbito	id dell'entità Ambito
 	 * @return			dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
 	public GiudizioDto save(GiudizioDto dto, Long idSezione, String idAmbito) {
 		
-		// -- TODO IMPLEMENTARE VALIDAZIONE !!!
-		
+		// -- Validazione INPUT/BUSINESS
+		this.validationInput(dto);
+		this.validationBusiness(dto, idSezione, idAmbito);
 		
 		/* Recupero del NUMERO in base alla Sezione
 		 * NUMERO -> 'VALORE_CONTATORE' (Tabella 'CONTATORI')
 		 */
 		Long numero;
 		Sezione sezione = this.sezioneRepository.findOne(idSezione);
+		// logging
 		LOG.debug("-- [Sezione] -> [" + sezione.toString() + "]");
 		
 		Contatore contatore = sezione.getContatori().get(0);
 		numero = contatore.getValoreContatore();
+		// logging
 		LOG.debug("-- [Contatore] -> valore Db [" + numero + "]");
 		numero++;
 		
