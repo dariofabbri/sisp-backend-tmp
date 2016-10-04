@@ -3,6 +3,7 @@ package it.corteconti.sisp.sample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan(basePackages = "it.corteconti.sisp")
 @EnableSwagger2
 @EnableCircuitBreaker
-public class Application {
+public class Application extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
 

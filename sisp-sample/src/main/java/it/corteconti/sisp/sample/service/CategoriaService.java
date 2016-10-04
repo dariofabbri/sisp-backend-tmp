@@ -66,7 +66,7 @@ public class CategoriaService {
 		
 		SezioneDto sezioneDto = sezioniService.findSezioniById(sezioneId);
 
-		Categoria categoria = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAooAndIdCategoria(ambitoId, ""+sezioneDto.getIdSezione(), categoriaId);
+		Categoria categoria = categoriaRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAooAndIdCategoria(ambitoId, ""+sezioneDto.getLivelloSezione(), categoriaId);
 		
 		if (categoria == null ) {
 			LOG.debug("Categorie non trovate.");
