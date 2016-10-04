@@ -3,6 +3,7 @@ package it.corteconti.sisp.sample.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.dto.ThingDto;
 import it.corteconti.sisp.sample.service.ThingService;
 
@@ -58,13 +61,16 @@ public class ThingResource {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità creata"), })
 	public ResponseEntity<ThingDto> save(
 			@ApiParam(value = "Oggetto Thing da creare")
-			@RequestBody ThingDto thingDto) {
+			@RequestBody ThingDto thingDto,
+			UriComponentsBuilder ucBuilder) {
 		
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-		service.save(thingDto);
-		return new ResponseEntity<ThingDto>(thingDto, HttpStatus.OK);
+		ThingDto dto = service.save(thingDto);
+		HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());
+		return new ResponseEntity<ThingDto>(dto, headers, HttpStatus.CREATED);
 	}
 	
 	/**
@@ -122,8 +128,8 @@ public class ThingResource {
 			@PathVariable("id") long id) {
 		
 		LOG.debug("-- Thing -> id: [" + id + "]");		
-		service.delete(id);
-		return new ResponseEntity<ThingDto>(HttpStatus.OK);
+		ThingDto dto = service.delete(id);
+		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
 	}
 	
 	

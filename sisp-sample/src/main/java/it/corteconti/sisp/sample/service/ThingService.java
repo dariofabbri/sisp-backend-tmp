@@ -47,7 +47,7 @@ public class ThingService {
 	 * Richiamato dalla POST
 	 * @param thingDto
 	 */
-	public void save(ThingDto thingDto) {
+	public ThingDto save(ThingDto thingDto) {
 		
 		if (thingDto == null) {
 			throw new ResourceNotFoundException(
@@ -56,6 +56,8 @@ public class ThingService {
 		
 		Thing thing = this.repository.save(ThingAssembler.disassembleDto(thingDto));
 		thingDto.setId(thing.getId());
+		
+		return thingDto;
 	}
 	
 	/**
@@ -84,7 +86,7 @@ public class ThingService {
 	 * Richiamato dalla DELETE
 	 * @param thingDto
 	 */
-	public void delete(Long id) {
+	public ThingDto delete(Long id) {
 		
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(id);
@@ -94,6 +96,7 @@ public class ThingService {
 		}
 		// -- Delete
 		this.repository.delete(thingDb);
+		return ThingAssembler.assembleDto(thingDb);
 	}
 	/**
 	 * service per il HTTP method patch
