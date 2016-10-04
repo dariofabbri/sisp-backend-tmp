@@ -85,7 +85,8 @@ public class GiudizioService extends GiudizioValidationService {
 	 */
 	public GiudizioDto save(GiudizioDto dto, Long idSezione, String idAmbito) {
 		
-		// -- Validazione INPUT/BUSINESS
+		// -- Validazione REQUEST/INPUT/BUSINESS
+		//this.validationRequest(dto, idSezione, idAmbito);
 		this.validationInput(dto);
 		this.validationBusiness(dto, idSezione, idAmbito);
 		

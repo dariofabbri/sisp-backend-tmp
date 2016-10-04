@@ -32,13 +32,55 @@ public class GiudizioValidationService {
 	
 	
 	// -- Costanti
+	//private static final String MSG_ERR_VALID_REQUEST = "Errore validazione request";
 	private static final String MSG_ERR_VALID_INPUT = "Errore validazione di input";
 	private static final String MSG_ERR_VALID_BUSINESS = "Errore validazione di business";
+	//private static final String MSG_ERR_VALID_REQUEST_DTO_GIUDIZIO = "Oggetto Giudizio non presente nella request";
+	//private static final String MSG_ERR_VALID_REQUEST_ID_SEZIONE = "Id Sezione non presente nella request";
+	//private static final String MSG_ERR_VALID_REQUEST_ID_AMBITO = "Id Ambito non presente nella request";
 	private static final String MSG_ERR_VALID_INPUT_DATA_APERTURA_OBLIGATORY = "La Data Apertura è obbligatoria";
+	private static final String MSG_ERR_VALID_INPUT_DATA_APERTURA_INVALID = "La Data Apertura non è valida";
 	private static final String MSG_ERR_VALID_INPUT_ID_CATEGORIA_OBLIGATORY = "L'Id Categoria è obbligatorio";
 	private static final String MSG_ERR_VALID_INPUT_ID_TIPO_OBLIGATORY = "L'Id Tipo è obbligatorio";
 	private static final String MSG_ERR_VALID_BUSINESS_COUNT_CATEGORIA_TIPO_TIPOLOGIA = "Non è possibile creare il giudizio: categoria, tipo, tipologia non permessi";
 	
+	
+//	/**
+//	 * Esegue la validazione della REQUEST
+//	 * @param dto		dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+//	 * @param idSezione	id dell'entità Sezione
+//	 * @param idAmbito	id dell'entità Ambito
+//	 */
+//	protected void validationRequest(GiudizioDto dto, Long idSezione, String idAmbito) {
+//		
+//		boolean isvalid = true;
+//		// -- Lista messaggi errori validazione request
+//		List<String> errorList = new ArrayList<String>();
+//		
+//		if ( dto == null ) {
+//			errorList.add(MSG_ERR_VALID_REQUEST_DTO_GIUDIZIO);
+//			isvalid = false;
+//		}
+//		
+//		if ( ValidationUtil.isNullOrZero(idSezione) ) {
+//			errorList.add(MSG_ERR_VALID_REQUEST_ID_SEZIONE);
+//			isvalid = false;
+//		}
+//		
+//		if ( ValidationUtil.isBlankOrNullOrZero(idAmbito) ) {
+//			errorList.add(MSG_ERR_VALID_REQUEST_ID_AMBITO);
+//			isvalid = false;
+//		}
+//		
+//		
+//		// -- Controllo finale validazione
+//		if ( !isvalid ) {
+//			LOG.debug("-- Errore Validazione REQUEST.");
+//			ValidationException ve = new ValidationException(MSG_ERR_VALID_REQUEST);
+//			ve.setValidationErrors(errorList);
+//			throw ve;
+//		}
+//	}
 	
 	/**
 	 * Esegue la validazione di input per la POST
@@ -47,7 +89,7 @@ public class GiudizioValidationService {
 	protected void validationInput(GiudizioDto dto) {
 		
 		boolean isvalid = true;
-		// -- Lista messaggi errori validazione
+		// -- Lista messaggi errori validazione input
 		List<String> errorList = new ArrayList<String>();
 		
 		// -- Data Apertura obbligatoria
@@ -56,7 +98,11 @@ public class GiudizioValidationService {
 			isvalid = false;
 			
 		} else {
-			// -- TODO VERIFICA VALIDITA' DELLA DATA ????
+			// -- Verifica validità della data inserita
+			if ( !ValidationUtil.isValidDate(dto.getDataApertura()) ) {
+				errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_INVALID);
+				isvalid = false;
+			}
 		}
 			
 		// -- Id Categoria obbligatorio
@@ -89,7 +135,7 @@ public class GiudizioValidationService {
 	protected void validationBusiness(GiudizioDto dto, Long idSezione, String idAmbito) {
 		
 		boolean isvalid = true;
-		// -- Lista messaggi errori validazione
+		// -- Lista messaggi errori validazione business
 		List<String> errorList = new ArrayList<String>();
 		
 		// -- Recupero livello AOO dalla Sezione

@@ -118,12 +118,9 @@ public class GiudizioDto {
 	public void setOggetti(List<OggettoDto> oggetti) {
 		this.oggetti = oggetti;
 	}
-
-
-
-
-
-
+	
+	
+	
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("idGiudizio", idGiudizio)
@@ -136,7 +133,7 @@ public class GiudizioDto {
 				.append("idSezione", sezione.getIdSezione())
 				.append("idCategoria", categoria.getIdCategoria())
 				.append("idTipo", tipo.getIdTipo())
-				.append("idTipologia", tipologia.getIdTipologia())
+				.append("idTipologia", (tipologia == null ? "" : tipologia.getIdTipologia()))
 				.append("size oggettoDtoList", oggetti.size())
 				.toString();
 	}

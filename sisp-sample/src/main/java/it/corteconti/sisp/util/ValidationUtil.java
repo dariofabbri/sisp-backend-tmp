@@ -1,6 +1,9 @@
 package it.corteconti.sisp.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Helper per le validazioni
@@ -81,6 +84,22 @@ public class ValidationUtil {
 	 */
 	public static boolean isNullOrZero(Long arg0) {
 		return arg0 == null || arg0.toString().equals(STRING_ZERO);
+	}
+	
+	/**
+	 * Verifica la validità della data
+	 * @param arg0	La data nel formato <em>java.util.Date</em>
+	 * @return		<code>boolean</code> Ritorna <em>true</em> se la data è valida
+	 */
+	public static boolean isValidDate(Date arg0) {
+		String data = DateUtil.dateFormat(arg0, DateUtil.DATE_FORMAT_STANDARD);
+		SimpleDateFormat df = new SimpleDateFormat(DateUtil.DATE_FORMAT_STANDARD);
+		try {
+			df.parse(data);
+			return true;
+		} catch (ParseException e) {
+			return false;
+		}
 	}
 	
 

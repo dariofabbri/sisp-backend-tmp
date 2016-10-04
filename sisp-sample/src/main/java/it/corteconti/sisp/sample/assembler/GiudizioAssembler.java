@@ -14,6 +14,7 @@ import it.corteconti.sisp.sample.model.Giudizio;
 import it.corteconti.sisp.sample.model.Oggetto;
 import it.corteconti.sisp.sample.model.Tipo;
 import it.corteconti.sisp.sample.model.Tipologia;
+import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Assembler Entità <em>it.corteconti.sisp.sample.model.Giudizio</em>
@@ -36,13 +37,13 @@ public class GiudizioAssembler {
 			dto.setNumeroGiudizio(giudizio.getNumero());
 		if ( giudizio.getDataApertura() != null )
 			dto.setDataApertura(giudizio.getDataApertura());
-		if ( giudizio.getDescrizione() != null && !giudizio.getDescrizione().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getDescrizione()) )
 			dto.setDescrizione(giudizio.getDescrizione());
-		if ( giudizio.getNote() != null && !giudizio.getNote().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getNote()) )
 			dto.setNote(giudizio.getNote());
-		if ( giudizio.getTestoQuesito() != null && !giudizio.getTestoQuesito().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getTestoQuesito()) )
 			dto.setTestoQuesito(giudizio.getTestoQuesito());
-		if ( giudizio.getRiferimentoAtto() != null && !giudizio.getRiferimentoAtto().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getRiferimentoAtto()) )
 			dto.setRiferimentoAtto(giudizio.getRiferimentoAtto());
 		if ( giudizio.getIdSezione() != null && giudizio.getIdSezione().longValue() != 0 ) {
 			SezioneDto sezioneDto = new SezioneDto();
@@ -50,17 +51,17 @@ public class GiudizioAssembler {
 			dto.setSezione(sezioneDto);
 		}
 		// -- Categoria
-		if ( giudizio.getCategoria() != null ) {
+		if ( giudizio.getCategoria() != null && !ValidationUtil.isBlankOrNullOrZero(giudizio.getCategoria().getCodiceCategoria()) ) {
 			CategoriaDto categoriaDto = CategoriaAssembler.assembleDto(giudizio.getCategoria());
 			dto.setCategoria(categoriaDto);
 		}
 		// -- Tipo
-		if ( giudizio.getTipo() != null ) {
+		if ( giudizio.getTipo() != null && !ValidationUtil.isBlankOrNullOrZero(giudizio.getTipo().getCodiceTipo()) ) {
 			TipoDto tipoDto = TipoAssembler.assembleDto(giudizio.getTipo());
 			dto.setTipo(tipoDto);
 		}
 		// -- Tipologia
-		if ( giudizio.getTipologia() != null ) {
+		if ( giudizio.getTipologia() != null && !ValidationUtil.isBlankOrNullOrZero(giudizio.getTipologia().getCodiceTipologia()) ) {
 			TipologiaDto tipologiaDto = TipologiaAssembler.assembleDto(giudizio.getTipologia());
 			dto.setTipologia(tipologiaDto);
 		}
@@ -95,28 +96,28 @@ public class GiudizioAssembler {
 			giudizio.setNumero(dto.getNumeroGiudizio());
 		if ( dto.getDataApertura() != null )
 			giudizio.setDataApertura(dto.getDataApertura());
-		if ( dto.getDescrizione() != null && !dto.getDescrizione().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(dto.getDescrizione()) )
 			giudizio.setDescrizione(dto.getDescrizione());
-		if ( dto.getNote() != null && !dto.getNote().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(dto.getNote()) )
 			giudizio.setNote(dto.getNote());
-		if ( dto.getTestoQuesito() != null && !dto.getTestoQuesito().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(dto.getTestoQuesito()) )
 			giudizio.setTestoQuesito(dto.getTestoQuesito());
-		if ( dto.getRiferimentoAtto() != null && !dto.getRiferimentoAtto().equals("") )
+		if ( !ValidationUtil.isBlankOrNull(dto.getRiferimentoAtto()) )
 			giudizio.setRiferimentoAtto(dto.getRiferimentoAtto());
 		if ( dto.getSezione().getIdSezione() != null && dto.getSezione().getIdSezione().longValue() != 0 )
 			giudizio.setIdSezione(dto.getSezione().getIdSezione());
 		// -- Categoria
-		if ( dto.getCategoria() != null ) {
+		if ( dto.getCategoria() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
 			Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoria());
 			giudizio.setCategoria(categoria);
 		}
 		// -- Tipo
-		if ( dto.getTipo() != null ) {
+		if ( dto.getTipo() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
 			Tipo tipo = TipoAssembler.disassembleDto(dto.getTipo());
 			giudizio.setTipo(tipo);
 		}
 		// -- Tipologia
-		if ( dto.getTipologia() != null ) {
+		if ( dto.getTipologia() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
 			Tipologia tipologia = TipologiaAssembler.disassembleDto(dto.getTipologia());
 			giudizio.setTipologia(tipologia);
 		}
