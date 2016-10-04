@@ -106,13 +106,13 @@ public class GiudizioValidationService {
 		}
 			
 		// -- Id Categoria obbligatorio
-		if ( ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
+		if ( dto.getCategoria() == null || ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
 			errorList.add(MSG_ERR_VALID_INPUT_ID_CATEGORIA_OBLIGATORY);
 			isvalid = false;
 		}
 		
 		// -- Id Tipo obbligatorio
-		if ( ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
+		if ( dto.getTipo() == null || ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
 			errorList.add(MSG_ERR_VALID_INPUT_ID_TIPO_OBLIGATORY);
 			isvalid = false;
 		}

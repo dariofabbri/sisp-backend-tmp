@@ -81,9 +81,9 @@ public class Giudizio {
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
 				.append("idSezione", idSezione)
-				.append("idCategoria", categoria.getCodiceCategoria())
-				.append("idTipo", tipo.getCodiceTipo())
-				.append("idTipologia", tipologia.getCodiceTipologia())
+				.append("idCategoria", (categoria == null ? "" : categoria.getCodiceCategoria()) )
+				.append("idTipo", (tipo == null ? "" : tipo.getCodiceTipo()) )
+				.append("idTipologia", (tipologia == null ? "" : tipologia.getCodiceTipologia()))
 				.append("size listaOggetti", listaOggetti.size())
 				.toString();
 	}

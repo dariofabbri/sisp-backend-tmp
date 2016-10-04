@@ -130,9 +130,9 @@ public class GiudizioDto {
 				.append("note", note)
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", sezione.getIdSezione())
-				.append("idCategoria", categoria.getIdCategoria())
-				.append("idTipo", tipo.getIdTipo())
+				.append("idSezione", (sezione == null ? "" : sezione.getIdSezione()) )
+				.append("idCategoria", (categoria == null ? "" : categoria.getIdCategoria()) )
+				.append("idTipo", (tipo == null ? "" : tipo.getIdTipo()) )
 				.append("idTipologia", (tipologia == null ? "" : tipologia.getIdTipologia()))
 				.append("size oggettoDtoList", oggetti.size())
 				.toString();
