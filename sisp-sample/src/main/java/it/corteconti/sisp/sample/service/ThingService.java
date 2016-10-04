@@ -75,6 +75,13 @@ public class ThingService {
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(tmp.getId());
 		
+		// -- controllo esistenza entità
+		if(thingDb == null) {
+			LOG.debug("Nessun oggetto trovato.");
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Thing {0} not found.", thingDto.getId()));
+		}
+		
 		// -- Update
 		if (tmp.getDescription() != null && !tmp.getDescription().equals(""))
 			thingDb.setDescription(tmp.getDescription());
@@ -110,6 +117,14 @@ public class ThingService {
 	public ThingDto patchThingForDescription(Long id, String description) {
 		
 		Thing thingDb = this.repository.findOne(id);
+		
+		// -- controllo esistenza entità
+		if(thingDb == null) {
+			LOG.debug("Nessun oggetto trovato.");
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Thing {0} not found.", id));
+		}
+		
 		thingDb.setDescription(description);
 		
 		return ThingAssembler.assembleDto(thingDb);
