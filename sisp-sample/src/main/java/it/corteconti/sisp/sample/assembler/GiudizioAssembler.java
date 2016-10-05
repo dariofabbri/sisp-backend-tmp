@@ -31,20 +31,27 @@ public class GiudizioAssembler {
 		
 		GiudizioDto dto = new GiudizioDto();
 		
-		if ( giudizio.getId() != null && giudizio.getId().longValue() != 0 )
+		if ( giudizio.getId() != null && giudizio.getId().longValue() != 0 ) {
 			dto.setIdGiudizio(giudizio.getId());
-		if ( giudizio.getNumero() != null && giudizio.getNumero().longValue() != 0 )
+		}
+		if ( giudizio.getNumero() != null && giudizio.getNumero().longValue() != 0 ) {
 			dto.setNumeroGiudizio(giudizio.getNumero());
-		if ( giudizio.getDataApertura() != null )
+		}
+		if ( giudizio.getDataApertura() != null ) {
 			dto.setDataApertura(giudizio.getDataApertura());
-		if ( !ValidationUtil.isBlankOrNull(giudizio.getDescrizione()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getDescrizione()) ) {
 			dto.setDescrizione(giudizio.getDescrizione());
-		if ( !ValidationUtil.isBlankOrNull(giudizio.getNote()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getNote()) ) {
 			dto.setNote(giudizio.getNote());
-		if ( !ValidationUtil.isBlankOrNull(giudizio.getTestoQuesito()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getTestoQuesito()) ) {
 			dto.setTestoQuesito(giudizio.getTestoQuesito());
-		if ( !ValidationUtil.isBlankOrNull(giudizio.getRiferimentoAtto()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(giudizio.getRiferimentoAtto()) ) {
 			dto.setRiferimentoAtto(giudizio.getRiferimentoAtto());
+		}
 		if ( giudizio.getIdSezione() != null && giudizio.getIdSezione().longValue() != 0 ) {
 			SezioneDto sezioneDto = new SezioneDto();
 			sezioneDto.setIdSezione(giudizio.getIdSezione());
@@ -90,22 +97,30 @@ public class GiudizioAssembler {
 		
 		Giudizio giudizio = new Giudizio();
 		
-		if ( dto.getIdGiudizio() != null && dto.getIdGiudizio().longValue() != 0 )
+		if ( dto.getIdGiudizio() != null && dto.getIdGiudizio().longValue() != 0 ) {
 			giudizio.setId(dto.getIdGiudizio());
-		if ( dto.getNumeroGiudizio() != null && dto.getNumeroGiudizio().longValue() != 0 )
+		}
+		if ( dto.getNumeroGiudizio() != null && dto.getNumeroGiudizio().longValue() != 0 ) {
 			giudizio.setNumero(dto.getNumeroGiudizio());
-		if ( dto.getDataApertura() != null )
+		}
+		if ( dto.getDataApertura() != null ) {
 			giudizio.setDataApertura(dto.getDataApertura());
-		if ( !ValidationUtil.isBlankOrNull(dto.getDescrizione()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(dto.getDescrizione()) ) {
 			giudizio.setDescrizione(dto.getDescrizione());
-		if ( !ValidationUtil.isBlankOrNull(dto.getNote()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(dto.getNote()) ) {
 			giudizio.setNote(dto.getNote());
-		if ( !ValidationUtil.isBlankOrNull(dto.getTestoQuesito()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(dto.getTestoQuesito()) ) {
 			giudizio.setTestoQuesito(dto.getTestoQuesito());
-		if ( !ValidationUtil.isBlankOrNull(dto.getRiferimentoAtto()) )
+		}
+		if ( !ValidationUtil.isBlankOrNull(dto.getRiferimentoAtto()) ) {
 			giudizio.setRiferimentoAtto(dto.getRiferimentoAtto());
-		if ( dto.getSezione().getIdSezione() != null && dto.getSezione().getIdSezione().longValue() != 0 )
+		}
+		if ( dto.getSezione().getIdSezione() != null && dto.getSezione().getIdSezione().longValue() != 0 ) {
 			giudizio.setIdSezione(dto.getSezione().getIdSezione());
+		}
 		// -- Categoria
 		if ( dto.getCategoria() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
 			Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoria());

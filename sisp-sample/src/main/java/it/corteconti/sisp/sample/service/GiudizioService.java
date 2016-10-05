@@ -114,13 +114,18 @@ public class GiudizioService extends GiudizioValidationService {
 		giudizio.setNumero(numero);
 		// -- Id Sezione
 		giudizio.setIdSezione(idSezione);
+		
 		// -- Tipologiche
-		if ( giudizio.getCategoria() != null && giudizio.getCategoria().getCodiceCategoria() != null )
+		if ( giudizio.getCategoria() != null && giudizio.getCategoria().getCodiceCategoria() != null ) {
 			giudizio.setCategoria(this.categoriaRepository.findOne(giudizio.getCategoria().getCodiceCategoria()));
-		if ( giudizio.getTipo() != null && giudizio.getTipo().getCodiceTipo() != null )
+		}
+		if ( giudizio.getTipo() != null && giudizio.getTipo().getCodiceTipo() != null ) {
 			giudizio.setTipo(this.tipoRepository.findOne(giudizio.getTipo().getCodiceTipo()));
-		if ( giudizio.getTipologia() != null && giudizio.getTipologia().getCodiceTipologia() != null )
+		}
+		if ( giudizio.getTipologia() != null && giudizio.getTipologia().getCodiceTipologia() != null ) {
 			giudizio.setTipologia(this.tipologiaRepository.findOne(giudizio.getTipologia().getCodiceTipologia()));
+		}
+		
 		// -- Lista Oggetto
 		List<Oggetto> ret = new ArrayList<Oggetto>();
 		if ( giudizio.getListaOggetti() != null && giudizio.getListaOggetti().size() > 0 ) {
