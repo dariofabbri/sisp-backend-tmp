@@ -48,7 +48,7 @@ public class ThingResource {
 			@PathVariable("id") Long id) {
 		
 		ThingDto thing = service.findOne(id);
-		return new ResponseEntity<ThingDto>(thing, HttpStatus.OK);
+		return new ResponseEntity<>(thing, HttpStatus.OK);
 	}
 	
 	/**
@@ -69,13 +69,13 @@ public class ThingResource {
 		
         if (service.isThingExist(thingDto.getId())) {
         	LOG.debug("-- A Thing with description " + thingDto.getDescription() + " already exist");
-            return new ResponseEntity<ThingDto>(thingDto,HttpStatus.CONFLICT);
+            return new ResponseEntity<>(thingDto,HttpStatus.CONFLICT);
         }
 		
 		ThingDto dto = service.save(thingDto);
 		HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());
-		return new ResponseEntity<ThingDto>(dto, headers, HttpStatus.CREATED);
+		return new ResponseEntity<>(dto, headers, HttpStatus.CREATED);
 	}
 	
 	/**
@@ -88,8 +88,7 @@ public class ThingResource {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità modificata"), })
 	public ResponseEntity<ThingDto> update(
 			@ApiParam(value = "Oggetto Thing da modificare")
-			@RequestBody ThingDto thingDto,
-			UriComponentsBuilder ucBuilder) {
+			@RequestBody ThingDto thingDto) {
 		
 		LOG.debug("-- Thing -> id: [" + thingDto.getId() + "]");
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
@@ -97,7 +96,7 @@ public class ThingResource {
 		
 		ThingDto dto = service.update(thingDto);
 
-		return new ResponseEntity<ThingDto>(dto, HttpStatus.OK);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 	
 	/**
@@ -112,8 +111,7 @@ public class ThingResource {
 			@ApiParam(value = "description")
 			@RequestBody ThingDto thingDto,
 			@ApiParam(value = "id")
-			@PathVariable("id") Long id,
-			UriComponentsBuilder ucBuilder) {
+			@PathVariable("id") Long id) {
 		
 		
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
@@ -121,7 +119,7 @@ public class ThingResource {
 		
 		ThingDto result = service.patchThingForDescription(id,thingDto.getDescription());
 		
-		return new ResponseEntity<ThingDto>(result, HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 	/**
@@ -140,7 +138,7 @@ public class ThingResource {
 		
 		service.delete(id);
 		
-		return new ResponseEntity<ThingDto>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 	

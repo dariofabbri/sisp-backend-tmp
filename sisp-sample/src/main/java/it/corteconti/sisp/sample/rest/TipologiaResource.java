@@ -68,7 +68,7 @@ public class TipologiaResource {
 				ambitoId, 
 				categoriaId, 
 				tipoId);
-		return new ResponseEntity<List<TipologiaDto>>(listaTipologia, HttpStatus.OK);
+		return new ResponseEntity<>(listaTipologia, HttpStatus.OK);
 
 	}
 	
@@ -106,6 +106,6 @@ public class TipologiaResource {
 		LOG.debug("-- Tipologia -> tipologiaId:[" + tipologiaId + "]");
 
 		TipologiaDto tipologia = tipologiaService.getTipologia(sezioneId, ambitoId, categoriaId, tipoId, tipologiaId);
-		return new ResponseEntity<TipologiaDto>(tipologia, HttpStatus.OK);
+		return new ResponseEntity<>(tipologia, HttpStatus.OK);
 	}
 }

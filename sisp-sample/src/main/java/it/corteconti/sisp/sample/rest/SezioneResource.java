@@ -50,6 +50,6 @@ public class SezioneResource {
 		LOG.debug("-- Sezione -> sezioneId: 	[" + sezioneId + "]");
 		
 		SezioneDto thing = service.findSezioniById(sezioneId);
-		return new ResponseEntity<SezioneDto>(thing, HttpStatus.OK);
+		return new ResponseEntity<>(thing, HttpStatus.OK);
 	}
 }
