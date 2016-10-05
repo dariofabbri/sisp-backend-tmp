@@ -22,6 +22,8 @@ public class Tipo {
 	@Column(name="DESCRIZIONE_TIPO")
 	private String descrizioneTipo;
 	
+	@Column(name="ORDINE_TIPO")
+	private Long ordineTipo;
 	
 	public String getCodiceTipo() {
 		return codiceTipo;
@@ -39,6 +41,14 @@ public class Tipo {
 		this.descrizioneTipo = descrizioneTipo;
 	}
 	
+	public Long getOrdineTipo() {
+		return ordineTipo;
+	}
+
+	public void setOrdineTipo(Long ordineTipo) {
+		this.ordineTipo = ordineTipo;
+	}
+
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
