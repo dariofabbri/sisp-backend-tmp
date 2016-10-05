@@ -13,6 +13,7 @@ import it.corteconti.sisp.sample.dao.ThingRepository;
 import it.corteconti.sisp.sample.dto.ThingDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Thing;
+import it.corteconti.sisp.util.ValidationUtil;
 
 @Service
 @Transactional
@@ -83,7 +84,8 @@ public class ThingService {
 		}
 		
 		// -- Update
-		if (tmp.getDescription() != null && !tmp.getDescription().equals(""))
+		//if (tmp.getDescription() != null && !tmp.getDescription().equals(""))
+		if(!ValidationUtil.isBlankOrNull(tmp.getDescription()))
 			thingDb.setDescription(tmp.getDescription());
 		if (tmp.getLastUpdate() != null)
 			thingDb.setLastUpdate(tmp.getLastUpdate());
