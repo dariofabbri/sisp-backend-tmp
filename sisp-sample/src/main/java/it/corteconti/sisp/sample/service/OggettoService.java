@@ -38,7 +38,7 @@ public class OggettoService {
 	 */
 	public List<OggettoDto> findOggettoBySezione(Long sezioneId) {
 		
-		List<OggettoDto> listaOggettiDto = new ArrayList<OggettoDto>();
+		List<OggettoDto> listaOggettiDto = new ArrayList<>();
 		
 		List<Oggetto> listaOggetti = oggettoRepository.findListOggettoByIdSezione(sezioneId);
 		

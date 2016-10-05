@@ -9,6 +9,10 @@ import it.corteconti.sisp.sample.model.Oggetto;
  */
 public class OggettoAssembler {
 	
+	private OggettoAssembler() {
+		
+	}
+	
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
 	 * @param oggetto	Entità <em>it.corteconti.sisp.sample.model.Oggetto</em>

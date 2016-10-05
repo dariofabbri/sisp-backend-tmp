@@ -22,6 +22,7 @@ public class Categoria {
 	@Column(name="DESCRIZIONE_CATEGORIA")
 	private String descrizioneCategoria;
 	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("codiceCategoria", codiceCategoria)

@@ -54,7 +54,7 @@ public class OggettoResource {
 		LOG.debug("-- Oggetto -> sezioneId: [" + sezioneId + "]");
 
 		List<OggettoDto> listaOggetti = oggettoService.findOggettoBySezione(sezioneId);
-		return new ResponseEntity<List<OggettoDto>>(listaOggetti, HttpStatus.OK);
+		return new ResponseEntity<>(listaOggetti, HttpStatus.OK);
 
 	}
 	
@@ -78,7 +78,7 @@ public class OggettoResource {
 		LOG.debug("-- Oggetto -> idOggetto: [" + idOggetto + "]");		
 
 		OggettoDto oggetto = oggettoService.findOggettoBySezioneAndIdOggetto(sezioneId,idOggetto);
-		return new ResponseEntity<OggettoDto>(oggetto, HttpStatus.OK);
+		return new ResponseEntity<>(oggetto, HttpStatus.OK);
 
 	}
 

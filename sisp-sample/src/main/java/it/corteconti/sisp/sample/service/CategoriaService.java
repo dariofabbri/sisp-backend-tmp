@@ -45,7 +45,7 @@ public class CategoriaService {
 					MessageFormat.format("Categoria with Ambito {0} and Sezione {1} not found.", idAmbito, idSezione));
 		}
 		LOG.debug("lista Categoria recuperata, contiene "+ lista.size()+" elementi.");
-		List<CategoriaDto> listaCategorieDto = new ArrayList<CategoriaDto>();
+		List<CategoriaDto> listaCategorieDto = new ArrayList<>();
 		
 		lista.forEach(c -> {
 			CategoriaDto categoriaDto = CategoriaAssembler.assembleDto(c);

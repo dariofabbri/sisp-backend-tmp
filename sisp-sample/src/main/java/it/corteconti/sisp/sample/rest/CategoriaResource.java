@@ -56,7 +56,7 @@ public class CategoriaResource {
 		LOG.debug("-- Categoria -> ambitoId:  [" + ambitoId + "]");
 
 		List<CategoriaDto> listaCategoriaAmbito = categoriaService.findCategorieBySezioneAndAmbito(sezioneId, ambitoId);
-		return new ResponseEntity<List<CategoriaDto>>(listaCategoriaAmbito, HttpStatus.OK);
+		return new ResponseEntity<>(listaCategoriaAmbito, HttpStatus.OK);
 	}
 
 	/**
@@ -82,6 +82,6 @@ public class CategoriaResource {
 		LOG.debug("-- Categoria -> categoriaId:  [" + categoriaId + "]");		
 
 		CategoriaDto categoriaDto =  categoriaService.findByCategorieBySezioneAndAmbitoAndCategoria(sezioneId, ambitoId, categoriaId);
-		return new ResponseEntity<CategoriaDto>(categoriaDto, HttpStatus.OK);
+		return new ResponseEntity<>(categoriaDto, HttpStatus.OK);
 	}
 }
