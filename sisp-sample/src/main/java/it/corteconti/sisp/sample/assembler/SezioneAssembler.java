@@ -8,6 +8,10 @@ import it.corteconti.sisp.sample.model.Sezione;
  * @version 1.0
  */
 public class SezioneAssembler {
+	
+	private SezioneAssembler(){
+		
+	}
 
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>

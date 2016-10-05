@@ -73,7 +73,7 @@ public class ThingService {
 		
 		if (thingDto == null || thingDto.getId() == null) {
 			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} uneditable, not found", thingDto.getId() ));
+					MessageFormat.format("{0} uneditable, not found", Thing.class.getName() ));
 		}
 		
 		Thing tmp = ThingAssembler.disassembleDto(thingDto);

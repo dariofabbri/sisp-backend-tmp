@@ -38,6 +38,7 @@ public class SezioneDto {
 		this.livelloSezione = livelloSezione;
 	}
 
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", idSezione)

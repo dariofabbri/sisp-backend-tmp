@@ -9,6 +9,10 @@ import it.corteconti.sisp.sample.model.Tipologia;
  */
 public class TipologiaAssembler {
 
+	private TipologiaAssembler(){
+		
+	}
+	
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 * @param tipologia	Entità <em>it.corteconti.sisp.sample.model.Tipologia</em>
