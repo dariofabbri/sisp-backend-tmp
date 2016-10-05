@@ -22,12 +22,8 @@ public class Tipo {
 	@Column(name="DESCRIZIONE_TIPO")
 	private String descrizioneTipo;
 	
-	public String toString() {
-		return new ToStringBuilder(this)
-				.append("codiceTipo", codiceTipo)
-				.append("descrizioneTipo", descrizioneTipo)
-				.toString();
-	}
+	@Column(name="ORDINE_TIPO")
+	private Long ordineTipo;
 	
 	
 	public String getCodiceTipo() {
@@ -45,6 +41,25 @@ public class Tipo {
 	public void setDescrizioneTipo(String descrizioneTipo) {
 		this.descrizioneTipo = descrizioneTipo;
 	}
+	
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("codiceTipo", codiceTipo)
+				.append("descrizioneTipo", descrizioneTipo)
+				.toString();
+	}
 
+
+	public Long getOrdineTipo() {
+		return ordineTipo;
+	}
+
+
+	public void setOrdineTipo(Long ordineTipo) {
+		this.ordineTipo = ordineTipo;
+	}
+
+	
 	
 }
