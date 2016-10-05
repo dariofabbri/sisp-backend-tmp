@@ -15,6 +15,10 @@ import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Thing;
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Service Entità <em>it.corteconti.sisp.sample.model.Thing</em> 
+ * @version 1.0
+ */
 @Service
 @Transactional
 public class ThingService {
@@ -84,7 +88,6 @@ public class ThingService {
 		}
 		
 		// -- Update
-		//if (tmp.getDescription() != null && !tmp.getDescription().equals(""))
 		if(!ValidationUtil.isBlankOrNull(tmp.getDescription()))
 			thingDb.setDescription(tmp.getDescription());
 		if (tmp.getLastUpdate() != null)
@@ -109,13 +112,13 @@ public class ThingService {
 		this.repository.delete(thingDb);
 		return ThingAssembler.assembleDto(thingDb);
 	}
+	
 	/**
 	 * service per il HTTP method patch
 	 * @param id
 	 * @param description
 	 * @return
 	 */
-
 	public ThingDto patchThingForDescription(Long id, String description) {
 		
 		Thing thingDb = this.repository.findOne(id);
@@ -133,6 +136,12 @@ public class ThingService {
 		
 	}
 	
+	/**
+	 * controllo esistenza entità Thing
+	 * @param id	id dell'entità Thing
+	 * @param description
+	 * @return boolean : true se l'entità esiste , false se l'entità non esiste
+	 */
     public boolean isThingExist(Long id) {
     	try{
     		return findOne(id)!=null;

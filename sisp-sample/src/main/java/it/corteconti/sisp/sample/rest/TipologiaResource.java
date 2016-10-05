@@ -74,11 +74,11 @@ public class TipologiaResource {
 	
 	/**
 	 * Ritorna una stringa JSON che rappresenta un oggetto Tipologia
-	 * @param sezioneId
-	 * @param ambitoId
-	 * @param categoriaId
-	 * @param tipoId
-	 * @param tipologiaId 
+	 * @param sezioneId		id dell'entità Sezione
+	 * @param ambitoId		id dell'entità Ambito
+	 * @param categoriaId	id dell'entità Categoria
+	 * @param tipoId		id dell'entità Tipo
+	 * @param tipologiaId 	id dell'entità Tipologia
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", 

@@ -2,6 +2,12 @@ package it.corteconti.sisp.sample.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * 
+ * <p>Dto che rappresenta un oggetto di tipo Sezione<p>
+ * @version 1.0
+ *
+ */
 public class SezioneDto {
 
 	private Long idSezione;

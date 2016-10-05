@@ -23,7 +23,6 @@ import it.corteconti.sisp.sample.service.SezioneService;
  * Rest Entità <em>it.corteconti.sisp.sample.model.Sezione</em>
  * @version 1.0
  */
-
 @RestController
 @RequestMapping(
 		value = "/giudizio-api",
@@ -38,7 +37,7 @@ public class SezioneResource {
 	
 	/**
 	 * Ritorna una stringa JSON che rappresenta un oggetto Sezione
-	 * @param sezioneId
+	 * @param sezioneId		id dell'entità Sezione
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)

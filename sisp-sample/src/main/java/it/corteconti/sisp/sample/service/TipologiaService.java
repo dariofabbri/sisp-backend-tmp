@@ -50,7 +50,6 @@ public class TipologiaService {
 		List<Tipologia> lista = tipologiaRepository.getTipologie(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
 		
 		// -- Verifica valorizzazione della lista		
-		//if (lista == null || lista.isEmpty()) {
 		if (ValidationUtil.isNullOrEmpty(lista)) {
 			// logging		
 			LOG.debug("Tipologie non trovate.");
