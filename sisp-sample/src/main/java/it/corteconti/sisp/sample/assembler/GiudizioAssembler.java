@@ -105,15 +105,11 @@ public class GiudizioAssembler {
 			giudizio.setIdSezione(dto.getSezione().getIdSezione());
 		}
 		// -- Categoria (Obbligatorio)
-		if ( !ValidationUtil.isNull(dto.getCategoria()) && !ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
-			Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoria());
-			giudizio.setCategoria(categoria);
-		}
+		Categoria categoria = CategoriaAssembler.disassembleDto(dto.getCategoria());
+		giudizio.setCategoria(categoria);
 		// -- Tipo (Obbligatorio)
-		if ( !ValidationUtil.isNull(dto.getTipo()) && !ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
-			Tipo tipo = TipoAssembler.disassembleDto(dto.getTipo());
-			giudizio.setTipo(tipo);
-		}
+		Tipo tipo = TipoAssembler.disassembleDto(dto.getTipo());
+		giudizio.setTipo(tipo);
 		// -- Tipologia
 		if ( !ValidationUtil.isNull(dto.getTipologia()) && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
 			Tipologia tipologia = TipologiaAssembler.disassembleDto(dto.getTipologia());
