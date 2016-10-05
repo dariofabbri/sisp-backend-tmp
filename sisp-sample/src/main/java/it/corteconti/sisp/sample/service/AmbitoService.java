@@ -15,6 +15,7 @@ import it.corteconti.sisp.sample.dao.AmbitoRepository;
 import it.corteconti.sisp.sample.dto.AmbitoDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Ambito;
+import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Ambito</em>
@@ -43,7 +44,8 @@ public class AmbitoService {
 		List<Ambito> lista = (List<Ambito>) ambitoRepository.findAll();
 		
 		// -- Verifica valorizzazione della lista
-		if (lista == null || lista.isEmpty()) {
+		//if (lista == null || lista.isEmpty()) {
+		if (ValidationUtil.isNullOrEmpty(lista)) {
 			// logging
 			LOG.debug("Ambiti non trovate.");
 			throw new ResourceNotFoundException(
