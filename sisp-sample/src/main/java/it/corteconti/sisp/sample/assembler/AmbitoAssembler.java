@@ -9,6 +9,10 @@ import it.corteconti.sisp.sample.model.Ambito;
  */
 public class AmbitoAssembler {
 	
+	private AmbitoAssembler(){
+		
+	}
+	
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.AmbitoDto</em>
 	 * @param categoria	Entità <em>it.corteconti.sisp.sample.model.Ambito</em>

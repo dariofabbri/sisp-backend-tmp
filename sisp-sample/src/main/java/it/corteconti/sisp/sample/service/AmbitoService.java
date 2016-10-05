@@ -44,7 +44,6 @@ public class AmbitoService {
 		List<Ambito> lista = (List<Ambito>) ambitoRepository.findAll();
 		
 		// -- Verifica valorizzazione della lista
-		//if (lista == null || lista.isEmpty()) {
 		if (ValidationUtil.isNullOrEmpty(lista)) {
 			// logging
 			LOG.debug("Ambiti non trovate.");
@@ -56,7 +55,7 @@ public class AmbitoService {
 		LOG.debug("lista Ambito recuperata, contiene "+ lista.size()+" elementi.");
 		
 		// -- Lista di ritorno
-		List<AmbitoDto> listaAmbitiDto = new ArrayList<AmbitoDto>();
+		List<AmbitoDto> listaAmbitiDto = new ArrayList<>();
 		
 		// -- Assembler, Ambito -> AmbitoDto
 		lista.forEach(a -> {

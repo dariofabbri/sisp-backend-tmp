@@ -47,7 +47,7 @@ public class AmbitoResource {
 	public ResponseEntity<List<AmbitoDto>> getAmbiti() {
 		
 		List<AmbitoDto> listaAmbiti = ambitoService.getAmbiti();
-		return new ResponseEntity<List<AmbitoDto>>(listaAmbiti, HttpStatus.OK);
+		return new ResponseEntity<>(listaAmbiti, HttpStatus.OK);
 	}
 	
 	/**
@@ -65,6 +65,6 @@ public class AmbitoResource {
 		LOG.debug("-- Ambito -> ambitoId:  [" + ambitoId + "]");
 		
 		AmbitoDto dto = ambitoService.getAmbito(ambitoId);
-		return new ResponseEntity<AmbitoDto>(dto, HttpStatus.OK);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 }
