@@ -73,8 +73,8 @@ public class GiudizioAssembler {
 			dto.setTipologia(tipologiaDto);
 		}
 		// -- Lista Oggetti
-		if ( giudizio.getListaOggetti() != null && giudizio.getListaOggetti().size() > 0 ) {
-			List<OggettoDto> oggettoDtoList = new ArrayList<OggettoDto>();
+		if ( giudizio.getListaOggetti() != null && !giudizio.getListaOggetti().isEmpty() ) {
+			List<OggettoDto> oggettoDtoList = new ArrayList<>();
 			
 			for ( Oggetto oggetto : giudizio.getListaOggetti() ) {
 				OggettoDto oggettoDto = OggettoAssembler.assembleDto(oggetto);
@@ -137,8 +137,8 @@ public class GiudizioAssembler {
 			giudizio.setTipologia(tipologia);
 		}
 		// -- Lista Oggetti
-		if ( dto.getOggetti() != null && dto.getOggetti().size() > 0 ) {
-			List<Oggetto> oggettoList = new ArrayList<Oggetto>();
+		if ( dto.getOggetti() != null && !dto.getOggetti().isEmpty() ) {
+			List<Oggetto> oggettoList = new ArrayList<>();
 			
 			for ( OggettoDto oggettoDto : dto.getOggetti() ) {
 				Oggetto oggetto = OggettoAssembler.disassembleDto(oggettoDto);
