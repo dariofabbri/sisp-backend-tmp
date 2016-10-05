@@ -24,6 +24,7 @@ import it.corteconti.sisp.sample.model.Contatore;
 import it.corteconti.sisp.sample.model.Giudizio;
 import it.corteconti.sisp.sample.model.Oggetto;
 import it.corteconti.sisp.sample.model.Sezione;
+import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Giudizio</em> 
@@ -85,8 +86,7 @@ public class GiudizioService extends GiudizioValidationService {
 	 */
 	public GiudizioDto save(GiudizioDto dto, Long idSezione, String idAmbito) {
 		
-		// -- Validazione REQUEST/INPUT/BUSINESS
-		//this.validationRequest(dto, idSezione, idAmbito);
+		// -- Validazione INPUT/BUSINESS
 		this.validationInput(dto);
 		this.validationBusiness(dto, idSezione, idAmbito);
 		
@@ -116,19 +116,19 @@ public class GiudizioService extends GiudizioValidationService {
 		giudizio.setIdSezione(idSezione);
 		
 		// -- Tipologiche
-		if ( giudizio.getCategoria() != null && giudizio.getCategoria().getCodiceCategoria() != null ) {
+		if ( !ValidationUtil.isNull(giudizio.getCategoria()) && !ValidationUtil.isBlankOrNullOrZero(giudizio.getCategoria().getCodiceCategoria()) ) {
 			giudizio.setCategoria(this.categoriaRepository.findOne(giudizio.getCategoria().getCodiceCategoria()));
 		}
-		if ( giudizio.getTipo() != null && giudizio.getTipo().getCodiceTipo() != null ) {
+		if ( !ValidationUtil.isNull(giudizio.getTipo()) && !ValidationUtil.isBlankOrNullOrZero(giudizio.getTipo().getCodiceTipo()) ) {
 			giudizio.setTipo(this.tipoRepository.findOne(giudizio.getTipo().getCodiceTipo()));
 		}
-		if ( giudizio.getTipologia() != null && giudizio.getTipologia().getCodiceTipologia() != null ) {
+		if ( !ValidationUtil.isNull(giudizio.getTipologia()) && !ValidationUtil.isBlankOrNullOrZero(giudizio.getTipologia().getCodiceTipologia()) ) {
 			giudizio.setTipologia(this.tipologiaRepository.findOne(giudizio.getTipologia().getCodiceTipologia()));
 		}
 		
 		// -- Lista Oggetto
-		List<Oggetto> ret = new ArrayList<Oggetto>();
-		if ( giudizio.getListaOggetti() != null && giudizio.getListaOggetti().size() > 0 ) {
+		List<Oggetto> ret = new ArrayList<>();
+		if ( !ValidationUtil.isNullOrEmpty(giudizio.getListaOggetti()) ) {
 			
 			for ( Oggetto oggetto : giudizio.getListaOggetti() ) {
 				oggetto = this.oggettoRepository.findOne(oggetto.getCodiceOggetto());

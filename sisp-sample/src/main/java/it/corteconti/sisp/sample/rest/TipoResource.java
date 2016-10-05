@@ -60,7 +60,7 @@ public class TipoResource {
 		LOG.debug("-- Tipo -> categoriaId:[" + categoriaId + "]");		
 		
 		List<TipoDto> listaTipi = tipoService.findTipiBySezioneAndAmbitoAndCategoria(sezioneId, ambitoId, categoriaId);
-		return new ResponseEntity<List<TipoDto>>(listaTipi, HttpStatus.OK);
+		return new ResponseEntity<>(listaTipi, HttpStatus.OK);
 	}
 	
 	/**
@@ -90,6 +90,6 @@ public class TipoResource {
 		LOG.debug("-- Tipo -> tipoId:     [" + tipoId + "]");		
 		
 		TipoDto dto = tipoService.getTipiBySezioneAndAmbitoAndCategoriaAndTipo(sezioneId, ambitoId, categoriaId, tipoId);
-		return new ResponseEntity<TipoDto>(dto, HttpStatus.OK);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 }

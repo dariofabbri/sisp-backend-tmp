@@ -39,11 +39,11 @@ public class GiudizioResource {
 	@Autowired
 	private GiudizioService service;
 	
-//	/**
-//	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
-//	 * @param idGiudizio id dell'entità Giudizio
-//	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
-//	 */	
+	/**
+	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
+	 * @param idGiudizio id dell'entità Giudizio
+	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
@@ -52,7 +52,7 @@ public class GiudizioResource {
 			@PathVariable("id") Long idGiudizio) {
 		
 		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
-		return new ResponseEntity<GiudizioDto>(giudizio, HttpStatus.OK);
+		return new ResponseEntity<>(giudizio, HttpStatus.OK);
 	}
 	
 	
@@ -82,7 +82,7 @@ public class GiudizioResource {
 		LOG.debug("-- [Giudizio, POST] -> END   -----------------------------------------");
 		HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/giudizio-api/giudizi/{id}").buildAndExpand(dto.getIdGiudizio()).toUri());
-		return new ResponseEntity<GiudizioDto>(dto, headers, HttpStatus.CREATED);
+		return new ResponseEntity<>(dto, headers, HttpStatus.CREATED);
 	}
 	
 	
