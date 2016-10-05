@@ -51,7 +51,7 @@ public class GiudizioValidationService {
 		
 		boolean isvalid = true;
 		// -- Lista messaggi errori validazione input
-		List<String> errorList = new ArrayList<String>();
+		List<String> errorList = new ArrayList<>();
 		
 		// -- Data Apertura obbligatoria
 		if ( dto.getDataApertura() == null ) {
@@ -104,12 +104,12 @@ public class GiudizioValidationService {
 		
 		boolean isvalid = true;
 		// -- Lista messaggi errori validazione business
-		List<String> errorList = new ArrayList<String>();
+		List<String> errorList = new ArrayList<>();
 		
 		// -- Recupero livello AOO dalla Sezione
 		Sezione sezione = this.sezioneRepository.findOne(idSezione);
 		// -- COUNT 'CategoriaTipoTipologia' in base alla presenza dell'Id Tipologia
-		int count = 0;
+		int count;
 		if ( dto.getTipologia() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
 			// -- Id Tipologia presente
 			count = this.categoriaTipoTipologiaRepository.countByTipoAndCategoriaAndAmbitoAndTipologiaAndLivelloAoo(

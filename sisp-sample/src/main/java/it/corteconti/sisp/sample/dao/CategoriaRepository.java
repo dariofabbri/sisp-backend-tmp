@@ -22,7 +22,7 @@ public interface CategoriaRepository extends CrudRepository<Categoria, String> {
 	 * @return <em>java.util.List<it.corteconti.sisp.sample.model.Categoria></em>
 	 */
 	
-	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2")
+	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2 ORDER BY ctt.categoria.ordineCategoria ASC")
 	public List<Categoria> findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAoo(String codiceAmbito, String codiceLivelloAoo);
 	
 	/**
@@ -33,7 +33,7 @@ public interface CategoriaRepository extends CrudRepository<Categoria, String> {
 	 * @return <em>it.corteconti.sisp.sample.model.Categoria</em>
 	 */
 	
-	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2 AND ctt.categoria.codiceCategoria=?3")
+	@Query("SELECT DISTINCT ctt.categoria FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.codiceLivelloAoo=?2 AND ctt.categoria.codiceCategoria=?3 ORDER BY ctt.categoria.ordineCategoria ASC")
 	public Categoria findFromCategoriaTipoTipologiaByIdAmbitoAndLivelloAooAndIdCategoria(String codiceAmbito, String codiceLivelloAoo, String categoriaId);
 	
 }

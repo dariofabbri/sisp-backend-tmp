@@ -22,6 +22,9 @@ public class Categoria {
 	@Column(name="DESCRIZIONE_CATEGORIA")
 	private String descrizioneCategoria;
 	
+	@Column(name="ORDINE_CATEGORIA")
+	private Long ordineCategoria;
+	
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
@@ -44,6 +47,14 @@ public class Categoria {
 
 	public void setDescrizioneCategoria(String descrizioneCategoria) {
 		this.descrizioneCategoria = descrizioneCategoria;
+	}
+
+	public Long getOrdineCategoria() {
+		return ordineCategoria;
+	}
+
+	public void setOrdineCategoria(Long ordineCategoria) {
+		this.ordineCategoria = ordineCategoria;
 	}
 	
 	

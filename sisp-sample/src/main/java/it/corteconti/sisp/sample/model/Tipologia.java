@@ -22,7 +22,7 @@ public class Tipologia {
 	
 	@Column(name="DESCRIZIONE_TIPOLOGIA")
 	private String descrizioneTipologia;
-	
+
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("codiceTipologia", codiceTipologia)
@@ -46,6 +46,5 @@ public class Tipologia {
 	public void setDescrizioneTipologia(String descrizioneTipologia) {
 		this.descrizioneTipologia = descrizioneTipologia;
 	}
-
 	
 }

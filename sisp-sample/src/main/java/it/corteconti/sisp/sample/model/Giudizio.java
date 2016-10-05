@@ -69,25 +69,9 @@ public class Giudizio {
 	        joinColumns = @JoinColumn(name = "ID_GIUDIZIO", referencedColumnName = "ID_GIUDIZIO"),
 	        inverseJoinColumns = @JoinColumn(name = "CODICE_OGGETTO", referencedColumnName = "CODICE_OGGETTO"))
 	private List<Oggetto> listaOggetti;
+	 
+	 
 	
-	
-	public String toString() {
-		return new ToStringBuilder(this)
-				.append("id", id)
-				.append("numero", numero)
-				.append("dataApertura", dataApertura)
-				.append("descrizione", descrizione)
-				.append("note", note)
-				.append("testoQuesito", testoQuesito)
-				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", idSezione)
-				.append("idCategoria", (categoria == null ? "" : categoria.getCodiceCategoria()) )
-				.append("idTipo", (tipo == null ? "" : tipo.getCodiceTipo()) )
-				.append("idTipologia", (tipologia == null ? "" : tipologia.getCodiceTipologia()))
-				.append("size listaOggetti", listaOggetti.size())
-				.toString();
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -182,6 +166,24 @@ public class Giudizio {
 
 	public void setTipologia(Tipologia tipologia) {
 		this.tipologia = tipologia;
+	}
+	
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("id", id)
+				.append("numero", numero)
+				.append("dataApertura", dataApertura)
+				.append("descrizione", descrizione)
+				.append("note", note)
+				.append("testoQuesito", testoQuesito)
+				.append("riferimentoAtto", riferimentoAtto)
+				.append("idSezione", idSezione)
+				.append("idCategoria", categoria == null ? "" : categoria.getCodiceCategoria())
+				.append("idTipo", tipo == null ? "" : tipo.getCodiceTipo())
+				.append("idTipologia", tipologia == null ? "" : tipologia.getCodiceTipologia())
+				.append("size listaOggetti", listaOggetti.size())
+				.toString();
 	}
 	
 	

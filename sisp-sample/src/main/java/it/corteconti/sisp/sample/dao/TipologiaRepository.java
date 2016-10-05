@@ -21,7 +21,7 @@ public interface TipologiaRepository extends CrudRepository<Tipologia, String> {
 	 * @param codiceTipo 			id dell'entità Tipo
 	 * @return listaTipologie		<em>java.util.List<it.corteconti.sisp.sample.model.Tipologia></em>
 	 */
-	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 ")
+	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 ORDER BY ctt.tipologia.descrizioneTipologia ASC")
 	public List<Tipologia> getTipologie(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo);
 	
 	/**
@@ -33,7 +33,7 @@ public interface TipologiaRepository extends CrudRepository<Tipologia, String> {
 	 * @param codiceTipologia 		id dell'entità Tipologia
 	 * @return tipologia			<em>it.corteconti.sisp.sample.model.Tipologia</em>
 	 */
-	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 AND ctt.tipologia.codiceTipologia=?5")
+	@Query("SELECT DISTINCT ctt.tipologia FROM CategoriaTipoTipologia ctt WHERE ctt.codiceLivelloAoo=?1 AND ctt.ambito.codiceAmbito=?2 AND ctt.categoria.codiceCategoria=?3 AND ctt.tipo.codiceTipo=?4 AND ctt.tipologia.codiceTipologia=?5 ORDER BY ctt.tipologia.descrizioneTipologia ASC")
 	public Tipologia getTipologia(String codiceLivelloAoo, String codiceAmbito, String codiceCategoria, String codiceTipo, String codiceTipologia);
 
 }

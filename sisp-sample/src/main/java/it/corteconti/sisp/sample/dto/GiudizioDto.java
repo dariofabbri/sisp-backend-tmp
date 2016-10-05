@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import it.corteconti.sisp.util.ValidationUtil;
+
 public class GiudizioDto {
 
 	private Long idGiudizio;
@@ -130,11 +132,11 @@ public class GiudizioDto {
 				.append("note", note)
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", sezione == null ? "" : sezione.getIdSezione())
-				.append("idCategoria", categoria == null ? "" : categoria.getIdCategoria())
-				.append("idTipo", tipo == null ? "" : tipo.getIdTipo() )
-				.append("idTipologia", tipologia == null ? "" : tipologia.getIdTipologia())
-				.append("size oggetti", oggetti.size())
+				.append("idSezione", sezione)
+				.append("idCategoria", categoria)
+				.append("idTipo", tipo )
+				.append("idTipologia", tipologia)
+				.append("size oggetti", ValidationUtil.isNull(oggetti) ? "null" : oggetti.size() )
 				.toString();
 	}
 	

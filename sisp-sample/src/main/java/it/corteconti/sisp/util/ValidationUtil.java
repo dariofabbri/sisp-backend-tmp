@@ -52,6 +52,15 @@ public class ValidationUtil {
 	}
 	
 	/**
+	 * Verifica se un oggetto è <em>null</em>
+	 * @param arg0	L'oggetto passato in input
+	 * @return		<code>boolean</code> Ritorna <em>true</em> se l'oggetto è <em>null</em>
+	 */
+	public static boolean isNull(Object arg0) {
+		return arg0 == null;
+	}
+	
+	/**
 	 * Verifica se una <em>collection</em> è <em>null</em> o vuota
 	 * @param arg0	La <em>collection</em> passata in input.
 	 * @return		<code>boolean</code> Ritorna <em>true</em> se la <em>collection</em> di oggetti è <em>null</em> o vuota

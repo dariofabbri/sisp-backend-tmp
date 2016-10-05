@@ -9,8 +9,9 @@ public class ThingDto {
 	private Long id;
 	private String description;
 	private Date lastUpdate;
-
-	public ThingDto() {
+	
+	public ThingDto(){
+		//costruttore default
 	}
 
 	public ThingDto(Long id, String description, Date lastUpdate) {
@@ -43,6 +44,7 @@ public class ThingDto {
 		this.lastUpdate = lastUpdate;
 	}
 
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", id)
