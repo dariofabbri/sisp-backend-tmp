@@ -16,6 +16,7 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
+import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Tipo</em>
@@ -48,7 +49,7 @@ public class TipoService {
 		List<Tipo> lista = tipoRepository.findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(idAmbito, 
 				idCategoria, ""+sezDto.getLivelloSezione());
 		// -- Verifica valorizzazione della lista
-		if (lista == null || lista.isEmpty()) {
+		if ( ValidationUtil.isNullOrEmpty(lista) ) {
 			// logging
 			LOG.debug("-- Tipi non trovati.");
 			throw new ResourceNotFoundException(
@@ -57,7 +58,7 @@ public class TipoService {
 		// logging
 		LOG.debug("-- lista, size [" + lista.size() + "]");
 		// -- Lista di ritorno
-		List<TipoDto> dtoList = new ArrayList<TipoDto>();
+		List<TipoDto> dtoList = new ArrayList<>();
 		
 		lista.forEach(t -> {
 			// -- Assembler, Tipo -> TipoDto

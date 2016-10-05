@@ -109,7 +109,7 @@ public class GiudizioValidationService {
 		// -- Recupero livello AOO dalla Sezione
 		Sezione sezione = this.sezioneRepository.findOne(idSezione);
 		// -- COUNT 'CategoriaTipoTipologia' in base alla presenza dell'Id Tipologia
-		int count = 0;
+		int count;
 		if ( dto.getTipologia() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
 			// -- Id Tipologia presente
 			count = this.categoriaTipoTipologiaRepository.countByTipoAndCategoriaAndAmbitoAndTipologiaAndLivelloAoo(
