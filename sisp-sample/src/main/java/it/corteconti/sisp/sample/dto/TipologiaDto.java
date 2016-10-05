@@ -1,5 +1,11 @@
 package it.corteconti.sisp.sample.dto;
 
+/**
+ * 
+ * <p>Dto che rappresenta un oggetto di tipo Tipologia<p>
+ * @version 1.0
+ *
+ */
 public class TipologiaDto {
 
 	private String idTipologia;

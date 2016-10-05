@@ -16,12 +16,12 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipologia;
+import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Tipologia</em> 
  * @version 1.0
  */
-
 @Service
 @Transactional
 public class TipologiaService {
@@ -50,7 +50,8 @@ public class TipologiaService {
 		List<Tipologia> lista = tipologiaRepository.getTipologie(""+sezDto.getLivelloSezione(), idAmbito, idCategoria, idTipo);
 		
 		// -- Verifica valorizzazione della lista		
-		if (lista == null || lista.isEmpty()) {
+		//if (lista == null || lista.isEmpty()) {
+		if (ValidationUtil.isNullOrEmpty(lista)) {
 			// logging		
 			LOG.debug("Tipologie non trovate.");
 			throw new ResourceNotFoundException(
