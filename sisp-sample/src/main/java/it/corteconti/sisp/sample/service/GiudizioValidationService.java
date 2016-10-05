@@ -13,6 +13,7 @@ import it.corteconti.sisp.sample.dao.SezioneRepository;
 import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.exception.ValidationException;
 import it.corteconti.sisp.sample.model.Sezione;
+import it.corteconti.sisp.util.DateValidationUtil;
 import it.corteconti.sisp.util.ValidationUtil;
 
 /**
@@ -60,13 +61,13 @@ public class GiudizioValidationService {
 			
 		} else {
 			// -- Verifica validità della data inserita
-			if ( !ValidationUtil.isValidDate(dto.getDataApertura()) ) {
+			if ( !DateValidationUtil.isValidDate(dto.getDataApertura()) ) {
 				errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_INVALID);
 				isvalid = false;
 				
 			} else {
 				// -- Verifica che la data non sia futura alla data odierna
-				if ( ValidationUtil.isFutureDate(dto.getDataApertura())) {
+				if ( DateValidationUtil.isFutureDate(dto.getDataApertura())) {
 					errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_FUTURE);
 					isvalid = false;
 				}
