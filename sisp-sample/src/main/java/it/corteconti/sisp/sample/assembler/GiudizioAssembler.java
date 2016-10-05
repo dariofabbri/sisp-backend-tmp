@@ -21,6 +21,14 @@ import it.corteconti.sisp.util.ValidationUtil;
  * @version 1.0
  */
 public class GiudizioAssembler {
+	
+	
+	/**
+     * Costruttore privato, impedisce l'instanziazione
+     */
+	private GiudizioAssembler() {}
+	
+	
 
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>

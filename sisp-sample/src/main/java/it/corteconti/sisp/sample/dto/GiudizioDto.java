@@ -120,7 +120,7 @@ public class GiudizioDto {
 	}
 	
 	
-	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("idGiudizio", idGiudizio)
@@ -130,11 +130,11 @@ public class GiudizioDto {
 				.append("note", note)
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", (sezione == null ? "" : sezione.getIdSezione()) )
-				.append("idCategoria", (categoria == null ? "" : categoria.getIdCategoria()) )
-				.append("idTipo", (tipo == null ? "" : tipo.getIdTipo()) )
-				.append("idTipologia", (tipologia == null ? "" : tipologia.getIdTipologia()))
-				.append("size oggettoDtoList", oggetti.size())
+				.append("idSezione", sezione == null ? "" : sezione.getIdSezione())
+				.append("idCategoria", categoria == null ? "" : categoria.getIdCategoria())
+				.append("idTipo", tipo == null ? "" : tipo.getIdTipo() )
+				.append("idTipologia", tipologia == null ? "" : tipologia.getIdTipologia())
+				.append("size oggetti", oggetti.size())
 				.toString();
 	}
 	

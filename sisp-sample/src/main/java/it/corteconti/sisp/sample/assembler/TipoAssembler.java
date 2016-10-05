@@ -9,6 +9,14 @@ import it.corteconti.sisp.sample.model.Tipo;
  */
 public class TipoAssembler {
 	
+	
+	/**
+     * Costruttore privato, impedisce l'instanziazione
+     */
+	private TipoAssembler() {}
+	
+	
+	
 	/**
 	 * Ritorna un dto <em>it.corteconti.sisp.sample.dto.TipoDto</em>
 	 * @param tipo	Entità <em>it.corteconti.sisp.sample.model.Tipo</em>
