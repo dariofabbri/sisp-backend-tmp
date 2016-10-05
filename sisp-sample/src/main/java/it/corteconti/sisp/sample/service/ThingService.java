@@ -39,7 +39,7 @@ public class ThingService {
 		Thing thing = this.repository.findOne(id);
 		LOG.debug(MessageFormat.format("Trovato il seguente thing: {0}", thing));
 		
-		if(thing == null) {
+		if(ValidationUtil.isNull(thing)) {
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Thing {0} not found.", id));
@@ -54,7 +54,7 @@ public class ThingService {
 	 */
 	public ThingDto save(ThingDto thingDto) {
 		
-		if (thingDto == null) {
+		if(ValidationUtil.isNull(thingDto)) {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Non è possibile salvare l'oggetto {0}", Thing.class.getName() ));
 		}
@@ -71,7 +71,7 @@ public class ThingService {
 	 */
 	public ThingDto update(ThingDto thingDto) {
 		
-		if (thingDto == null || thingDto.getId() == null) {
+		if(ValidationUtil.isNull(thingDto) || ValidationUtil.isBlankOrNull(thingDto.getId().toString())) {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("{0} uneditable, not found", Thing.class.getName() ));
 		}
@@ -81,7 +81,7 @@ public class ThingService {
 		Thing thingDb = this.repository.findOne(tmp.getId());
 		
 		// -- controllo esistenza entità
-		if(thingDb == null) {
+		if(ValidationUtil.isNull(thingDb)) {
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Thing {0} not found.", thingDto.getId()));
@@ -90,7 +90,7 @@ public class ThingService {
 		// -- Update
 		if(!ValidationUtil.isBlankOrNull(tmp.getDescription()))
 			thingDb.setDescription(tmp.getDescription());
-		if (tmp.getLastUpdate() != null)
+		if(tmp.getLastUpdate() != null)
 			thingDb.setLastUpdate(tmp.getLastUpdate());
 		
 		return ThingAssembler.assembleDto(thingDb);
@@ -104,9 +104,9 @@ public class ThingService {
 		
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(id);
-		if (thingDb == null || thingDb.getId() == null) {
+		if(ValidationUtil.isNull(thingDb) || ValidationUtil.isBlankOrNull(thingDb.getId().toString())) {
 			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} uneditable, not found", id ));
+					MessageFormat.format("Thing {0} not found", id ));
 		}
 		// -- Delete
 		this.repository.delete(thingDb);
@@ -124,7 +124,7 @@ public class ThingService {
 		Thing thingDb = this.repository.findOne(id);
 		
 		// -- controllo esistenza entità
-		if(thingDb == null) {
+		if(ValidationUtil.isNull(thingDb)) {
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Thing {0} not found.", id));
@@ -150,14 +150,5 @@ public class ThingService {
     		return false;
     	}
     }
-	
-     
-	
-	
-//	public ThingDto findOneFallback(Long id) {
-//		
-//		LOG.info("Circuit breaker: findOneFallback");
-//		
-//		throw new RuntimeException("Circuit breaker");
-//	}
+    
 }

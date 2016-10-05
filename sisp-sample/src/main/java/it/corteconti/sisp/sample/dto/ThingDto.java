@@ -1,7 +1,6 @@
 package it.corteconti.sisp.sample.dto;
 
 import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class ThingDto {
@@ -11,7 +10,9 @@ public class ThingDto {
 	private Date lastUpdate;
 	
 	public ThingDto(){
+		/*
 		//costruttore default
+		 */
 	}
 
 	public ThingDto(Long id, String description, Date lastUpdate) {

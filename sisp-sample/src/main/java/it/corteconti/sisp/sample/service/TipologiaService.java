@@ -61,7 +61,7 @@ public class TipologiaService {
 		LOG.debug(MessageFormat.format("Numero tipologie trovate: {0}", lista.size() ));
 		
 		// -- Lista di ritorno
-		List<TipologiaDto> listaTipologieDto = new ArrayList<TipologiaDto>();
+		List<TipologiaDto> listaTipologieDto = new ArrayList<>();
 		
 		// -- Assembler, Tipologia -> TipologiaDto
 		lista.forEach(t -> {
