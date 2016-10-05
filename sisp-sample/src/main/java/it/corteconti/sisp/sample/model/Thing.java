@@ -54,6 +54,7 @@ public class Thing {
 		this.lastUpdate = lastUpdate;
 	}
 	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", id)

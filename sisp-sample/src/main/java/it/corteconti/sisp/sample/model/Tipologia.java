@@ -23,6 +23,7 @@ public class Tipologia {
 	@Column(name="DESCRIZIONE_TIPOLOGIA")
 	private String descrizioneTipologia;
 
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("codiceTipologia", codiceTipologia)

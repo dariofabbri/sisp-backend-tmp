@@ -1,4 +1,7 @@
 package it.corteconti.sisp.sample.dto;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 /**
  * 
  * <p>Dto che rappresenta un oggetto di tipo Ambito<p>
@@ -21,6 +24,14 @@ public class AmbitoDto {
 	}
 	public void setDescrizioneAmbito(String descrizioneAmbito) {
 		this.descrizioneAmbito = descrizioneAmbito;
+	}
+	
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("codiceAmbito", codiceAmbito)
+				.append("descrizioneAmbito", descrizioneAmbito)
+				.toString();
 	}
 	
 	

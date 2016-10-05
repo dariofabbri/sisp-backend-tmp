@@ -34,7 +34,7 @@ public class Contatore {
              inverseJoinColumns = { @JoinColumn(name = "CODICE_SEZIONE") })
     private List<Sezione> sezioni;
 	
-	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("codiceContatore", codiceContatore)

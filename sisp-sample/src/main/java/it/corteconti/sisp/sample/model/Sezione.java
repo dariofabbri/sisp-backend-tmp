@@ -34,6 +34,7 @@ public class Sezione {
 	@ManyToMany(mappedBy = "sezioni")
 	private List<Contatore> contatori;
 	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", id)

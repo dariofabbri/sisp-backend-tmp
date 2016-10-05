@@ -44,6 +44,7 @@ public class CategoriaTipoTipologia {
 	@JoinColumn(name="CODICE_AMBITO")
 	private Ambito ambito;	
 	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("id", id)

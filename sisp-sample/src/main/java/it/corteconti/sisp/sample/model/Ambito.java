@@ -22,6 +22,7 @@ public class Ambito {
 	@Column(name="DESCRIZIONE_AMBITO")
 	private String descrizioneAmbito;
 	
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("codiceAmbito", codiceAmbito)
