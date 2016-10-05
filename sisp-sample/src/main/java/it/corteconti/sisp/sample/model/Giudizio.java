@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import it.corteconti.sisp.util.ValidationUtil;
+
 /**
  * Entità relativa alla tabella <em>GIUDIZIO</em>
  * @versione 1.0
@@ -179,10 +181,10 @@ public class Giudizio {
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
 				.append("idSezione", idSezione)
-				.append("idCategoria", categoria == null ? "" : categoria.getCodiceCategoria())
-				.append("idTipo", tipo == null ? "" : tipo.getCodiceTipo())
-				.append("idTipologia", tipologia == null ? "" : tipologia.getCodiceTipologia())
-				.append("size listaOggetti", listaOggetti.size())
+				.append("categoria", categoria)
+				.append("tipo", tipo)
+				.append("tipologia", tipologia)
+				.append("size listaOggetti", ValidationUtil.isNull(listaOggetti) ? "null" : listaOggetti.size())
 				.toString();
 	}
 	

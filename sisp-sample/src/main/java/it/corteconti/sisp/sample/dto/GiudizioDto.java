@@ -7,6 +7,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Dto relativo alla tabella <em>GIUDIZIO</em>
+ * @versione 1.0
+ */
 public class GiudizioDto {
 
 	private Long idGiudizio;
@@ -132,10 +136,10 @@ public class GiudizioDto {
 				.append("note", note)
 				.append("testoQuesito", testoQuesito)
 				.append("riferimentoAtto", riferimentoAtto)
-				.append("idSezione", sezione)
+				.append("sezione", sezione)
 				.append("idCategoria", categoria)
-				.append("idTipo", tipo )
-				.append("idTipologia", tipologia)
+				.append("tipo", tipo )
+				.append("tipologia", tipologia)
 				.append("size oggetti", ValidationUtil.isNull(oggetti) ? "null" : oggetti.size() )
 				.toString();
 	}
