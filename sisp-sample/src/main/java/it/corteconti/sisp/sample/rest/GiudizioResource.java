@@ -44,16 +44,16 @@ public class GiudizioResource {
 //	 * @param idGiudizio id dell'entità Giudizio
 //	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 //	 */	
-//	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-//	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
-//	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
-//	public ResponseEntity<GiudizioDto> getGiudizio(
-//			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
-//			@PathVariable("id") Long idGiudizio) {
-//		
-//		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
-//		return new ResponseEntity<GiudizioDto>(giudizio, HttpStatus.OK);
-//	}
+	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
+	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
+	public ResponseEntity<GiudizioDto> getGiudizio(
+			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
+			@PathVariable("id") Long idGiudizio) {
+		
+		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
+		return new ResponseEntity<GiudizioDto>(giudizio, HttpStatus.OK);
+	}
 	
 	
 	/**
