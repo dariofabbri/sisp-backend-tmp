@@ -1,4 +1,4 @@
-package it.corteconti.sisp.sample.service;
+package it.corteconti.sisp.sample.service.validation;
 
 import java.util.ArrayList;
 import java.util.List;
