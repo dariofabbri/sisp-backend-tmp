@@ -37,13 +37,10 @@ public class ThingService {
 	public ThingDto findOne(Long id) {
 		
 		Thing thing = this.repository.findOne(id);
-		LOG.debug(MessageFormat.format("Trovato il seguente thing: {0}", thing));
 		
-		if(ValidationUtil.isNull(thing)) {
-			LOG.debug("Nessun oggetto trovato.");
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} not found.", id));
-		}
+		this.controlloEsistenzaEntita(thing, String.valueOf(id));
+
+		LOG.debug(MessageFormat.format("Trovato il seguente thing: {0}", thing));
 		
 		return ThingAssembler.assembleDto(thing);
 	}
@@ -53,11 +50,6 @@ public class ThingService {
 	 * @param thingDto
 	 */
 	public ThingDto save(ThingDto thingDto) {
-		
-		if(ValidationUtil.isNull(thingDto)) {
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Non è possibile salvare l'oggetto {0}", Thing.class.getName() ));
-		}
 		
 		Thing thing = this.repository.save(ThingAssembler.disassembleDto(thingDto));
 		thingDto.setId(thing.getId());
@@ -71,27 +63,21 @@ public class ThingService {
 	 */
 	public ThingDto update(ThingDto thingDto) {
 		
-		if(ValidationUtil.isNull(thingDto) || ValidationUtil.isBlankOrNull(thingDto.getId().toString())) {
-			throw new ResourceNotFoundException(
-					MessageFormat.format("{0} uneditable, not found", Thing.class.getName() ));
-		}
-		
 		Thing tmp = ThingAssembler.disassembleDto(thingDto);
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(tmp.getId());
 		
 		// -- controllo esistenza entità
-		if(ValidationUtil.isNull(thingDb)) {
-			LOG.debug("Nessun oggetto trovato.");
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} not found.", thingDto.getId()));
-		}
+		this.controlloEsistenzaEntita(thingDb, String.valueOf(thingDto.getId()));
 		
 		// -- Update
-		if(!ValidationUtil.isBlankOrNull(tmp.getDescription()))
+		if(!ValidationUtil.isBlankOrNull(tmp.getDescription())){
 			thingDb.setDescription(tmp.getDescription());
-		if(tmp.getLastUpdate() != null)
+		}
+			
+		if(tmp.getLastUpdate() != null){
 			thingDb.setLastUpdate(tmp.getLastUpdate());
+		}
 		
 		return ThingAssembler.assembleDto(thingDb);
 	}
@@ -104,10 +90,8 @@ public class ThingService {
 		
 		// -- Recupero entità
 		Thing thingDb = this.repository.findOne(id);
-		if(ValidationUtil.isNull(thingDb) || ValidationUtil.isBlankOrNull(thingDb.getId().toString())) {
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} not found", id ));
-		}
+		this.controlloEsistenzaEntita(thingDb, String.valueOf(id));
+		
 		// -- Delete
 		this.repository.delete(thingDb);
 		return ThingAssembler.assembleDto(thingDb);
@@ -124,11 +108,7 @@ public class ThingService {
 		Thing thingDb = this.repository.findOne(id);
 		
 		// -- controllo esistenza entità
-		if(ValidationUtil.isNull(thingDb)) {
-			LOG.debug("Nessun oggetto trovato.");
-			throw new ResourceNotFoundException(
-					MessageFormat.format("Thing {0} not found.", id));
-		}
+		this.controlloEsistenzaEntita(thingDb, String.valueOf(id));
 		
 		thingDb.setDescription(description);
 		
@@ -147,8 +127,17 @@ public class ThingService {
     		return findOne(id)!=null;
     	}
     	catch(Exception e){
+    		LOG.debug(MessageFormat.format("thing con id {0} non trovato , l'entità può essere creata", id));
     		return false;
     	}
+    }
+    
+    public void controlloEsistenzaEntita(Object obj,String id){
+		if(ValidationUtil.isNull(obj)) {
+			LOG.debug("Nessun oggetto trovato.");
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Thing {0} not found.", id));
+		}
     }
     
 }
