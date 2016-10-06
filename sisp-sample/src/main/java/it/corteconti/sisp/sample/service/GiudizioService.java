@@ -63,10 +63,10 @@ public class GiudizioService extends GiudizioValidationService {
 		// -- Recupero entità Giudizio a fronte dell'id			
 		Giudizio giudizio = this.giudizioRepository.findOne(id);
 		
-		// -- Verifica valorizzazione oggetto
-		if(giudizio == null) {
+		// -- Verifica valorizzazione entità
+		if ( giudizio == null ) {
 			// logging	
-			LOG.debug("Nessun oggetto trovato.");
+			LOG.debug(MessageFormat.format("Nessun entità Giudizio trovata per Id {0}.", id));
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Giudizio {0} not found.", id));
 		}
@@ -74,12 +74,36 @@ public class GiudizioService extends GiudizioValidationService {
 		// logging	
 		LOG.debug(MessageFormat.format("Trovato il seguente giudizio: {0}", giudizio.getDescrizione()));
 		
-		// -- Assembler, Giudizio -> GiudizioDto			
+		// -- Assembler, Giudizio -> GiudizioDto
 		return GiudizioAssembler.assembleDto(giudizio);
 	}
 	
 	/**
-	 * Esegue la creazione dell'entità Giudizio
+	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em></p>
+	 * @param numero		contatore
+	 * @param idTipo		id dell'entità Tipo
+	 * @param idCategoria	id dell'entità Categoria
+	 * @return				<em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */
+	public GiudizioDto getByNumeroAndTipoAndCategoria(Long numero, String idTipo, String idCategoria) {
+		
+		// -- Recupero Giudizio in base a NUMERO-TIPO-CATEGORIA
+		Giudizio giudizio = this.giudizioRepository.getByNumeroAndTipoAndCategoria(numero, idTipo, idCategoria);
+		
+		// -- Verifica valorizzazione entità
+		if ( giudizio == null ) {
+			// logging	
+			LOG.debug(MessageFormat.format("Nessun entità Giudizio trovata per Numero {0}, Tipo {1}, Categoria {2}.", numero, idTipo, idCategoria));
+			throw new ResourceNotFoundException(
+					MessageFormat.format("Giudizio with Numero {0} and Tipo {1} and Categoria {2} not found.", numero, idTipo, idCategoria));
+		}
+		
+		// -- Assembler, Giudizio -> GiudizioDto
+		return GiudizioAssembler.assembleDto(giudizio);
+	}
+	
+	/**
+	 * <p>Esegue la creazione dell'entità Giudizio</p>
 	 * @param dto 		dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 * @param idSezione	id dell'entità Sezione
 	 * @param idAmbito	id dell'entità Ambito

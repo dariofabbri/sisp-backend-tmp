@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -41,17 +42,44 @@ public class GiudizioResource {
 	
 	/**
 	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
-	 * @param idGiudizio id dell'entità Giudizio
-	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 * @param idGiudizio	id dell'entità Giudizio
+	 * @return 				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Giudizio"), })
+	@ApiOperation(value = "Giudizio per Id", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { 
+			@ApiResponse(code = 200, message = "OK") }
+	)
 	public ResponseEntity<GiudizioDto> getGiudizio(
-			@ApiParam(value = "Specifica l'id dell'entità da ritornare")
+			@ApiParam(value = "Specifica l'id dell'entità da ritornare", required = true)
 			@PathVariable("id") Long idGiudizio) {
 		
 		GiudizioDto giudizio = service.getGiudizio(idGiudizio);
+		return new ResponseEntity<>(giudizio, HttpStatus.OK);
+	}
+	
+	
+	/**
+	 * Ritorna una stringa JSON che rappresenta un oggetto Giudizio
+	 * @param numero		contatore
+	 * @param tipoId		id dell'entità Tipo
+	 * @param categoriaId	id dell'entità Categoria
+	 * @return				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 */
+	@RequestMapping(value = "/giudizi", method = RequestMethod.GET)
+	@ApiOperation(value = "Giudizio per numero, idTipo, idCategoria", notes = "Dato numero, idTipo, idCategoria restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiResponses(value = { 
+			@ApiResponse(code = 200, message = "OK") }
+	)
+	public ResponseEntity<GiudizioDto> getGiudizioByNumeroAndTipoAndCategoria(
+			@ApiParam(value = "Specifica il contatore", required = true)
+			@RequestParam("numero") Long numero,
+			@ApiParam(value = "Specifica l'id dell'entità tipo", required = true)
+			@RequestParam("tipoId") String tipoId,
+			@ApiParam(value = "Specifica l'id dell'entità categoria", required = true)
+			@RequestParam("categoriaId") String categoriaId) {
+		
+		GiudizioDto giudizio = service.getByNumeroAndTipoAndCategoria(numero, tipoId, categoriaId);
 		return new ResponseEntity<>(giudizio, HttpStatus.OK);
 	}
 	
@@ -61,7 +89,7 @@ public class GiudizioResource {
 	 * @param sezioneId		id dell'entità Sezione
 	 * @param ambitoId		id dell'entità Ambito
 	 * @param giudizioDto	dto Giudizio
-	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
+	 * @return 				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/giudizi", method = RequestMethod.POST)
 	@ApiOperation(value = "Inserimento di un nuovo Giudizio", notes = "Creazione entità Giudizio", response = GiudizioDto.class)
