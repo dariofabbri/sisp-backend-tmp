@@ -27,7 +27,7 @@ public class SezioneRepositoryTest {
     }
 
     @Test
-    public void getSezioneRepository() throws Exception {
+    public void getSezioneRepositoryTest() throws Exception {
         Sezione s = repository.findOne(id);
         assertTrue(s != null && s.getId().longValue() == id.longValue());
     }

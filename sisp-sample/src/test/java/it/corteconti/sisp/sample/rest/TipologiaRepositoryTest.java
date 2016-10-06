@@ -44,13 +44,13 @@ public class TipologiaRepositoryTest {
 
     @Test
     @SuppressWarnings("rawtypes")
-    public void getTipologieRepository() throws Exception {
+    public void getTipologieRepositoryTest() throws Exception {
         List tipologie = repository.getTipologie(aooSezione, idAmbito, idCategoria, idTipo);
         assertTrue(!ValidationUtil.isNull(tipologie) && tipologie.size()>0);
     }
     
     @Test
-    public void getTipologiaRepository() throws Exception {
+    public void getTipologiaRepositoryTest() throws Exception {
         Tipologia tipologia = repository.getTipologia(aooSezione, idAmbito, idCategoria, idTipo,idTipologia);
         assertTrue(tipologia != null && tipologia.getCodiceTipologia().equalsIgnoreCase(idTipologia));
     }
