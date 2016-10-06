@@ -67,11 +67,6 @@ public class ThingResource {
 		LOG.debug("-- Thing -> description: [" + thingDto.getDescription() + "]");
 		LOG.debug("-- Thing -> last update: [" + thingDto.getLastUpdate() + "]");
 		
-        if (service.isThingExist(thingDto.getId())) {
-        	LOG.debug("-- A Thing with description " + thingDto.getDescription() + " already exist");
-            return new ResponseEntity<>(thingDto,HttpStatus.CONFLICT);
-        }
-		
 		ThingDto dto = service.save(thingDto);
 		HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/v1/things/thing/{id}").buildAndExpand(dto.getId()).toUri());

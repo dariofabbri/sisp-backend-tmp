@@ -71,13 +71,10 @@ public class ThingService {
 		this.controlloEsistenzaEntita(thingDb, String.valueOf(thingDto.getId()));
 		
 		// -- Update
-		if(!ValidationUtil.isBlankOrNull(tmp.getDescription())){
-			thingDb.setDescription(tmp.getDescription());
-		}
-			
-		if(tmp.getLastUpdate() != null){
-			thingDb.setLastUpdate(tmp.getLastUpdate());
-		}
+		String description = !ValidationUtil.isBlankOrNull(tmp.getDescription()) ? tmp.getDescription() : thingDb.getDescription() ;
+		thingDb.setDescription(description);
+		java.util.Date lastUpdate = !ValidationUtil.isNull(tmp.getLastUpdate()) ? tmp.getLastUpdate() : thingDb.getLastUpdate() ;
+		thingDb.setLastUpdate(lastUpdate);
 		
 		return ThingAssembler.assembleDto(thingDb);
 	}
@@ -116,22 +113,6 @@ public class ThingService {
 		
 	}
 	
-	/**
-	 * controllo esistenza entità Thing
-	 * @param id	id dell'entità Thing
-	 * @param description
-	 * @return boolean : true se l'entità esiste , false se l'entità non esiste
-	 */
-    public boolean isThingExist(Long id) {
-    	try{
-    		return findOne(id)!=null;
-    	}
-    	catch(Exception e){
-    		LOG.debug(MessageFormat.format("thing con id {0} non trovato , l'entità può essere creata", id));
-    		return false;
-    	}
-    }
-    
     public void controlloEsistenzaEntita(Object obj,String id){
 		if(ValidationUtil.isNull(obj)) {
 			LOG.debug("Nessun oggetto trovato.");
