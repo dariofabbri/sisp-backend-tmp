@@ -70,7 +70,7 @@ public class TipoResourceTest {
      * @throws <em>java.lang.Exception</em>
      */
     @Test
-    public void getGiudizioTest() throws Exception {
+    public void getTipoTest() throws Exception {
     	String url = base.toString();
     	url += this.PATH_REST_GET_TIPO;
     	
