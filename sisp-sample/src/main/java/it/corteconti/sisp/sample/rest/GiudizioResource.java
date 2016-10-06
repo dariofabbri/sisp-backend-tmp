@@ -64,14 +64,18 @@ public class GiudizioResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/giudizi", method = RequestMethod.POST)
-	@ApiOperation(value = "", notes = "Creazione entità Giudizio", response = GiudizioDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità creata"), })
+	@ApiOperation(value = "Inserimento di un nuovo Giudizio", notes = "Creazione entità Giudizio", response = GiudizioDto.class)
+	@ApiResponses(value = { 
+			@ApiResponse(code = 201, message = "Created"),
+			@ApiResponse(code = 400, message = "Bad Request"),
+			@ApiResponse(code = 500, message = "Internal Server Error")}
+	)
 	public ResponseEntity<GiudizioDto> save(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione", required = true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito", required = true)
 			@PathVariable("ambitoId") String ambitoId,
-			@ApiParam(value = "Specifica il dto giudizio")
+			@ApiParam(value = "Specifica il dto giudizio", required = true)
 			@RequestBody GiudizioDto giudizioDto,
 			UriComponentsBuilder ucBuilder) {
 		

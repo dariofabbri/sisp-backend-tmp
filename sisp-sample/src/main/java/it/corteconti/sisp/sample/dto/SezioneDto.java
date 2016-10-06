@@ -2,18 +2,23 @@ package it.corteconti.sisp.sample.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * 
- * <p>Dto che rappresenta un oggetto di tipo Sezione<p>
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+/** 
+ * Dto relativo alla tabella <em>SEZIONI</em>
  * @version 1.0
- *
  */
+@ApiModel
 public class SezioneDto {
 
+	
 	private Long idSezione;
 	private String descrizioneSezione;
 	private Integer livelloSezione;
 
+	
+	@ApiModelProperty(position = 1, required = true)
 	public Long getIdSezione() {
 		return idSezione;
 	}
@@ -22,6 +27,7 @@ public class SezioneDto {
 		this.idSezione = idSezione;
 	}
 
+	@ApiModelProperty(position = 2, required = true)
 	public String getDescrizioneSezione() {
 		return descrizioneSezione;
 	}
@@ -30,6 +36,7 @@ public class SezioneDto {
 		this.descrizioneSezione = descrizioneSezione;
 	}
 
+	@ApiModelProperty(position = 3, required = true)
 	public Integer getLivelloSezione() {
 		return livelloSezione;
 	}
@@ -38,6 +45,7 @@ public class SezioneDto {
 		this.livelloSezione = livelloSezione;
 	}
 
+	
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this)

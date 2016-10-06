@@ -5,14 +5,18 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import it.corteconti.sisp.util.ValidationUtil;
 
 /**
  * Dto relativo alla tabella <em>GIUDIZIO</em>
  * @versione 1.0
  */
+@ApiModel
 public class GiudizioDto {
-
+	
+	
 	private Long idGiudizio;
 	private Long numeroGiudizio;
 	private Date dataApertura;
@@ -28,7 +32,7 @@ public class GiudizioDto {
 	
 	
 	
-	
+	@ApiModelProperty(position = 1, required = true)
 	public Long getIdGiudizio() {
 		return idGiudizio;
 	}
@@ -37,6 +41,7 @@ public class GiudizioDto {
 		this.idGiudizio = idGiudizio;
 	}
 
+	@ApiModelProperty(position = 2, required = true)
 	public Long getNumeroGiudizio() {
 		return numeroGiudizio;
 	}
@@ -44,7 +49,8 @@ public class GiudizioDto {
 	public void setNumeroGiudizio(Long numeroGiudizio) {
 		this.numeroGiudizio = numeroGiudizio;
 	}
-
+	
+	@ApiModelProperty(position = 3, required = true, example = "1476914400000", notes = "data espressa in millisecondi")
 	public Date getDataApertura() {
 		return dataApertura;
 	}
@@ -52,7 +58,8 @@ public class GiudizioDto {
 	public void setDataApertura(Date dataApertura) {
 		this.dataApertura = dataApertura;
 	}
-
+	
+	@ApiModelProperty(position = 4, required = false)
 	public String getDescrizione() {
 		return descrizione;
 	}
@@ -61,6 +68,7 @@ public class GiudizioDto {
 		this.descrizione = descrizione;
 	}
 
+	@ApiModelProperty(position = 5, required = false)
 	public String getNote() {
 		return note;
 	}
@@ -69,6 +77,7 @@ public class GiudizioDto {
 		this.note = note;
 	}
 
+	@ApiModelProperty(position = 6, required = false)
 	public SezioneDto getSezione() {
 		return sezione;
 	}
@@ -77,6 +86,7 @@ public class GiudizioDto {
 		this.sezione = sezione;
 	}
 
+	@ApiModelProperty(position = 7, required = false)
 	public String getTestoQuesito() {
 		return testoQuesito;
 	}
@@ -85,6 +95,7 @@ public class GiudizioDto {
 		this.testoQuesito = testoQuesito;
 	}
 
+	@ApiModelProperty(position = 8, required = false)
 	public String getRiferimentoAtto() {
 		return riferimentoAtto;
 	}
@@ -93,6 +104,7 @@ public class GiudizioDto {
 		this.riferimentoAtto = riferimentoAtto;
 	}
 
+	@ApiModelProperty(position = 9, required = true)
 	public CategoriaDto getCategoria() {
 		return categoria;
 	}
@@ -101,6 +113,7 @@ public class GiudizioDto {
 		this.categoria = categoria;
 	}
 
+	@ApiModelProperty(position = 10, required = true)
 	public TipoDto getTipo() {
 		return tipo;
 	}
@@ -109,6 +122,7 @@ public class GiudizioDto {
 		this.tipo = tipo;
 	}
 
+	@ApiModelProperty(position = 11, required = false)
 	public TipologiaDto getTipologia() {
 		return tipologia;
 	}
@@ -117,6 +131,7 @@ public class GiudizioDto {
 		this.tipologia = tipologia;
 	}
 
+	@ApiModelProperty(position = 12, required = false)
 	public List<OggettoDto> getOggetti() {
 		return oggetti;
 	}
