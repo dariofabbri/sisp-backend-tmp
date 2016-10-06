@@ -45,10 +45,10 @@ public class OggettoResource {
 	 * @return Response HTTP, JSON <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/oggetti", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione ritorna una lista di entità Oggetto.", response = OggettoDto.class, responseContainer="List")
+	@ApiOperation(value = "Oggetti", notes = "Dato idSezione ritorna una lista di entità Oggetto.", response = OggettoDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Oggetto"), })
 	public ResponseEntity<List<OggettoDto>> getOggetti(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required=true)
 			@PathVariable("sezioneId") Long sezioneId){
 		
 		LOG.debug("-- Oggetto -> sezioneId: [" + sezioneId + "]");
@@ -66,12 +66,12 @@ public class OggettoResource {
 	 * @return Response HTTP, JSON <em>it.corteconti.sisp.sample.dto.OggettoDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/oggetti/{idOggetto}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e oggettoId ritorna un entità Oggetto.", response = OggettoDto.class)
+	@ApiOperation(value = "Oggetto", notes = "Dato idSezione e oggettoId ritorna un entità Oggetto.", response = OggettoDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Oggetto"), })
 	public ResponseEntity<OggettoDto> getOggetto(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required=true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id oggetto")
+			@ApiParam(value = "Specifica l'id oggetto",required=true)
 			@PathVariable("idOggetto") Long idOggetto){
 		
 		LOG.debug("-- Oggetto -> sezioneId: [" + sezioneId + "]");

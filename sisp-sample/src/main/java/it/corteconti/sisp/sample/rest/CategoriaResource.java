@@ -44,12 +44,12 @@ public class CategoriaResource {
 	 * @return Response HTTP, JSON <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
+	@ApiOperation(value = "Categorie", notes = "Dato idSezione e idAmbito ritorna una lista di categorie.", response = CategoriaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Categoria"), })
 	public ResponseEntity<List<CategoriaDto>> getCategorie(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required=true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito",required=true)
 			@PathVariable("ambitoId") String ambitoId){
 		
 		LOG.debug("-- Categoria -> sezioneId: [" + sezioneId + "]");
@@ -67,14 +67,14 @@ public class CategoriaResource {
 	 * @return Response HTTP, JSON <em>it.corteconti.sisp.sample.dto.CategoriaDto</em>
 	 */
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione e idAmbito e idCategoria ritorna la categoria selezionata.", response = CategoriaDto.class)
+	@ApiOperation(value = "Categoria", notes = "Dato idSezione e idAmbito e idCategoria ritorna la categoria selezionata.", response = CategoriaDto.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità categoria"), })
 	public ResponseEntity<CategoriaDto> getCategoria(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required=true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito",required=true)
 			@PathVariable("ambitoId") String ambitoId,
-			@ApiParam(value = "Specifica l'id della categoria")
+			@ApiParam(value = "Specifica l'id della categoria",required=true)
 			@PathVariable("categoriaId") String categoriaId){
 		
 		LOG.debug("-- Categoria -> sezioneId:    [" + sezioneId + "]");
