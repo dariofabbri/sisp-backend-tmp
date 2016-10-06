@@ -32,7 +32,7 @@ public class GiudizioDto {
 	
 	
 	
-	@ApiModelProperty(position = 1, required = true)
+	@ApiModelProperty(position = 1, required = false)
 	public Long getIdGiudizio() {
 		return idGiudizio;
 	}
@@ -41,7 +41,7 @@ public class GiudizioDto {
 		this.idGiudizio = idGiudizio;
 	}
 
-	@ApiModelProperty(position = 2, required = true)
+	@ApiModelProperty(position = 2, required = false)
 	public Long getNumeroGiudizio() {
 		return numeroGiudizio;
 	}

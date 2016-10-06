@@ -24,7 +24,7 @@ public class CategoriaDto {
 	public void setIdCategoria(String idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	@ApiModelProperty(position = 2, required = true)
+	@ApiModelProperty(position = 2, required = false)
 	public String getDescrizioneCategoria() {
 		return descrizioneCategoria;
 	}
