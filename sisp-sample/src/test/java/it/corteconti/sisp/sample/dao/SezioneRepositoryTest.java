@@ -1,4 +1,4 @@
-package it.corteconti.sisp.sample.rest;
+package it.corteconti.sisp.sample.dao;
 
 import static org.junit.Assert.assertTrue;
 
