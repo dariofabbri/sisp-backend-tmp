@@ -23,7 +23,7 @@ import it.corteconti.sisp.sample.dto.TipologiaDto;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TipologiaRestTest {
+public class TipologiaResourceTest {
 	
 	@LocalServerPort
     private int port;

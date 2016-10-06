@@ -23,7 +23,7 @@ import it.corteconti.sisp.util.ValidationUtil;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SezioneRestTest {
+public class SezioneResourceTest {
 	
 	@LocalServerPort
     private int port;
