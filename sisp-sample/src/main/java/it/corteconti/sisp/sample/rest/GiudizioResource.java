@@ -46,7 +46,7 @@ public class GiudizioResource {
 	 * @return 				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */	
 	@RequestMapping(value = "/giudizi/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "Giudizio per Id", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiOperation(value = "Giudizio", notes = "Dato idGiudizio, restituisce l'entità Giudizio.", response = GiudizioDto.class)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK") }
 	)
@@ -67,7 +67,7 @@ public class GiudizioResource {
 	 * @return				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
 	@RequestMapping(value = "/giudizi", method = RequestMethod.GET)
-	@ApiOperation(value = "Giudizio per numero, idTipo, idCategoria", notes = "Dato numero, idTipo, idCategoria restituisce l'entità Giudizio.", response = GiudizioDto.class)
+	@ApiOperation(value = "Giudizio per numero, idTipo, idCategoria in query string", notes = "Dato numero, idTipo, idCategoria in query string, restituisce l'entità Giudizio.", response = GiudizioDto.class)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK") }
 	)

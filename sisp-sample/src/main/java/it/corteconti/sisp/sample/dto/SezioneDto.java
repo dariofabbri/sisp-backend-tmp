@@ -18,7 +18,7 @@ public class SezioneDto {
 	private Integer livelloSezione;
 
 	
-	@ApiModelProperty(position = 1, required = true)
+	@ApiModelProperty(position = 1, required = false)
 	public Long getIdSezione() {
 		return idSezione;
 	}
@@ -27,7 +27,7 @@ public class SezioneDto {
 		this.idSezione = idSezione;
 	}
 
-	@ApiModelProperty(position = 2, required = true)
+	@ApiModelProperty(position = 2, required = false)
 	public String getDescrizioneSezione() {
 		return descrizioneSezione;
 	}
@@ -36,7 +36,7 @@ public class SezioneDto {
 		this.descrizioneSezione = descrizioneSezione;
 	}
 
-	@ApiModelProperty(position = 3, required = true)
+	@ApiModelProperty(position = 3, required = false)
 	public Integer getLivelloSezione() {
 		return livelloSezione;
 	}

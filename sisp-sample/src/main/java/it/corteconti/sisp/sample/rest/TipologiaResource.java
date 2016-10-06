@@ -46,7 +46,7 @@ public class TipologiaResource {
 	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie", method = RequestMethod.GET)
-	@ApiOperation(value = "Lista Tipologie", 
+	@ApiOperation(value = "Tipologie", 
 	notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce una lista di entità Tipologia.", 
 	response = TipologiaDto.class, responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Tipologia"),

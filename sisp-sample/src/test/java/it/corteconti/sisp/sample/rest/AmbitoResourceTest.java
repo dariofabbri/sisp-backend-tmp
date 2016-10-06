@@ -14,51 +14,50 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import it.corteconti.sisp.sample.dto.TipologiaDto;
+import it.corteconti.sisp.sample.dto.AmbitoDto;
 
 /**
- * Unit Test REST TIPOLOGIA
+ * Unit Test REST AMBITO
  * @version 1.0
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TipologiaRestTest {
+public class AmbitoResourceTest {
 	
 	@LocalServerPort
     private int port;
 
-    private URL baseTipologia;
-    private URL baseTipologie;
+    private URL baseAmbiti;
+    private URL baseAmbito;
 
     @Autowired
     private TestRestTemplate template;
 
     @Before
     public void setUp() throws Exception {
-        this.baseTipologia = new URL("http://localhost:"+port+"/giudizio-api/sezioni/40/ambiti/3/categorie/3/tipi/90/tipologie/91");
-        this.baseTipologie = new URL("http://localhost:"+port+"/giudizio-api/sezioni/40/ambiti/3/categorie/3/tipi/90/tipologie");
+        this.baseAmbiti = new URL("http://localhost:"+port+"/giudizio-api/ambiti/");
+        this.baseAmbito = new URL("http://localhost:"+port+"/giudizio-api/ambiti/1");
     }
 
     /**
-     * Test metodo <em>getTipologia</em>
+     * Test metodo <em>getAmbito</em>
      * @throws <em>java.lang.Exception</em>
      */
     @Test
-    public void getTipologiaTest() throws Exception {
-        ResponseEntity<TipologiaDto> response = template.getForEntity(baseTipologia.toString(),TipologiaDto.class);
-        TipologiaDto dto = response.getBody();
-        assertTrue(dto!=null);
+    public void getAmbitoTest() throws Exception {
+        ResponseEntity<AmbitoDto> response = template.getForEntity(baseAmbito.toString(),AmbitoDto.class);
+        AmbitoDto dto = response.getBody();
+        assertTrue(dto!=null && dto.getDescrizioneAmbito().equalsIgnoreCase("PENSIONISTICA"));
     }
     
     /**
-     * Test metodo <em>getTipologie</em>
+     * Test metodo <em>getAmbiti</em>
      * @throws <em>java.lang.Exception</em>
      */
     @Test
     @SuppressWarnings("rawtypes")
-    public void getTipologieTest() throws Exception {
-        ResponseEntity<List> response = template.getForEntity(baseTipologie.toString(),List.class);
+    public void getAmbitiTest() throws Exception {
+        ResponseEntity<List> response = template.getForEntity(baseAmbiti.toString(),List.class);
         List dto = response.getBody();
         assertTrue(dto.size()>0);
     }

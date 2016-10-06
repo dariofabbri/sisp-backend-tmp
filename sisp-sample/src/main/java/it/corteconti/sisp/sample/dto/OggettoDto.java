@@ -24,7 +24,7 @@ public class OggettoDto {
 	public void setIdOggetto(Long idOggetto) {
 		this.idOggetto = idOggetto;
 	}
-
+	
 	@ApiModelProperty(position = 2, required = false)
 	public String getDescrizioneOggetto() {
 		return descrizioneOggetto;

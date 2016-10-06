@@ -15,9 +15,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import it.corteconti.sisp.sample.dto.SezioneDto;
-import it.corteconti.sisp.sample.dto.ThingDto;
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Unit Test REST SEZIONI
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SezioneRestTest {
@@ -35,8 +38,12 @@ public class SezioneRestTest {
         this.base = new URL("http://localhost:"+port+"/giudizio-api/sezioni/40");
     }
 
+    /**
+     * Test metodo <em>get</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
-    public void getSezione() throws Exception {
+    public void getSezioneTest() throws Exception {
         ResponseEntity<SezioneDto> response = template.getForEntity(base.toString(),SezioneDto.class);
         SezioneDto dto = response.getBody();
         assertTrue(dto!=null && !ValidationUtil.isBlankOrNull(dto.getDescrizioneSezione()));

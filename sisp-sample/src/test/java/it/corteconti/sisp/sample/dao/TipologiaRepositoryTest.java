@@ -1,4 +1,4 @@
-package it.corteconti.sisp.sample.rest;
+package it.corteconti.sisp.sample.dao;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,18 +9,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-import it.corteconti.sisp.sample.dao.SezioneRepository;
 import it.corteconti.sisp.sample.dao.TipologiaRepository;
-import it.corteconti.sisp.sample.model.Sezione;
 import it.corteconti.sisp.sample.model.Tipologia;
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Unit Test REPOSITORY TIPOLOGIA
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners( { DependencyInjectionTestExecutionListener.class,
@@ -46,13 +47,14 @@ public class TipologiaRepositoryTest {
     }
 
     @Test
-    public void getTipologieRepository() throws Exception {
+    @SuppressWarnings("rawtypes")
+    public void getTipologieRepositoryTest() throws Exception {
         List tipologie = repository.getTipologie(aooSezione, idAmbito, idCategoria, idTipo);
         assertTrue(!ValidationUtil.isNull(tipologie) && tipologie.size()>0);
     }
     
     @Test
-    public void getTipologiaRepository() throws Exception {
+    public void getTipologiaRepositoryTest() throws Exception {
         Tipologia tipologia = repository.getTipologia(aooSezione, idAmbito, idCategoria, idTipo,idTipologia);
         assertTrue(tipologia != null && tipologia.getCodiceTipologia().equalsIgnoreCase(idTipologia));
     }

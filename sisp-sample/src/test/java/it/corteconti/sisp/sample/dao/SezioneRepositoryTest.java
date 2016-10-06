@@ -1,22 +1,21 @@
-package it.corteconti.sisp.sample.rest;
+package it.corteconti.sisp.sample.dao;
 
 import static org.junit.Assert.assertTrue;
-
-import java.net.URL;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import it.corteconti.sisp.sample.dao.SezioneRepository;
-import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.model.Sezione;
-import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Unit Test REPOSITORY SEZIONE
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SezioneRepositoryTest {
@@ -32,7 +31,7 @@ public class SezioneRepositoryTest {
     }
 
     @Test
-    public void getSezioneRepository() throws Exception {
+    public void getSezioneRepositoryTest() throws Exception {
         Sezione s = repository.findOne(id);
         assertTrue(s != null && s.getId().longValue() == id.longValue());
     }

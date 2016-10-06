@@ -42,8 +42,9 @@ public class AmbitoResource {
 	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.AmbitoDto</em>
 	 */
 	@RequestMapping(value = "/ambiti/", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Restituisce la lista di entità Ambito.", response = AmbitoDto.class, responseContainer="List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Ambito"), })
+	@ApiOperation(value = "Ambiti", notes = "Restituisce la lista di entità Ambito.", response = AmbitoDto.class, responseContainer="List")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Ambito"),
+	@ApiResponse(code = 500, message = "Internal Server Error")})
 	public ResponseEntity<List<AmbitoDto>> getAmbiti() {
 		
 		List<AmbitoDto> listaAmbiti = ambitoService.getAmbiti();
@@ -56,10 +57,11 @@ public class AmbitoResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.AmbitoDto</em>
 	 */
 	@RequestMapping(value = "/ambiti/{ambitoId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idAmbito, restituisce l'entità Ambito.", response = AmbitoDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Ambito"), })
+	@ApiOperation(value = "Ambito", notes = "Dato idAmbito, restituisce l'entità Ambito.", response = AmbitoDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Ambito"),
+	@ApiResponse(code = 500, message = "Internal Server Error") })
 	public ResponseEntity<AmbitoDto> getAmbito(
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito",required = true)
 			@PathVariable("ambitoId") String ambitoId) {
 		
 		LOG.debug("-- Ambito -> ambitoId:  [" + ambitoId + "]");
