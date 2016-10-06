@@ -41,10 +41,11 @@ public class SezioneResource {
 	 * @return Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.SezioneDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, restituisce l'entità Sezione.", response = SezioneDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione"), })
+	@ApiOperation(value = "Sezione", notes = "Dato idSezione, restituisce l'entità Sezione.", response = SezioneDto.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Sezione"),
+	@ApiResponse(code = 500, message = "Internal Server Error") })
 	public ResponseEntity<SezioneDto> get(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required = true)
 			@PathVariable("sezioneId") Long sezioneId) {
 		
 		LOG.debug("-- Sezione -> sezioneId: 	[" + sezioneId + "]");

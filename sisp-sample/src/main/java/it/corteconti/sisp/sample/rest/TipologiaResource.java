@@ -46,16 +46,19 @@ public class TipologiaResource {
 	 * @return Response HTTP, stringa JSON che rappresenta una lista di dto <em>it.corteconti.sisp.sample.dto.TipologiaDto</em>
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie", method = RequestMethod.GET)
-	@ApiOperation(value = "", notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce una lista di entità Tipologia.", response = TipologiaDto.class, responseContainer="List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Tipologia"), })
+	@ApiOperation(value = "Lista Tipologie", 
+	notes = "Dato idSezione, idAmbito, idCategoria, idTipo, restituisce una lista di entità Tipologia.", 
+	response = TipologiaDto.class, responseContainer="List")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lista entità Tipologia"),
+	@ApiResponse(code = 500, message = "Internal Server Error") })
 	public ResponseEntity<List<TipologiaDto>> getTipologie(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required = true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito",required = true)
 			@PathVariable("ambitoId") String ambitoId,
-			@ApiParam(value = "Specifica l'id categoria")
+			@ApiParam(value = "Specifica l'id categoria",required = true)
 			@PathVariable("categoriaId") String categoriaId,			
-			@ApiParam(value = "Specifica l'id tipo")
+			@ApiParam(value = "Specifica l'id tipo",required = true)
 			@PathVariable("tipoId") String tipoId){
 		
 		LOG.debug("-- Tipologia -> sezioneId:  [" + sezioneId + "]");
@@ -83,20 +86,21 @@ public class TipologiaResource {
 	 */	
 	@RequestMapping(value = "/sezioni/{sezioneId}/ambiti/{ambitoId}/categorie/{categoriaId}/tipi/{tipoId}/tipologie/{tipologiaId}", 
 			method = RequestMethod.GET)
-	@ApiOperation(value = "", 
+	@ApiOperation(value = "Tipologia", 
 		notes = "Dato idSezione, idAmbito, idCategoria, idTipo, idTipologia, restituisce l'entità Tipologia.", 
 		response = TipologiaDto.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Tipologia"), })
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Entità Tipologia"),
+	@ApiResponse(code = 500, message = "Internal Server Error") })
 	public ResponseEntity<TipologiaDto> getTipologia(
-			@ApiParam(value = "Specifica l'id sezione")
+			@ApiParam(value = "Specifica l'id sezione",required = true)
 			@PathVariable("sezioneId") Long sezioneId,
-			@ApiParam(value = "Specifica l'id ambito")
+			@ApiParam(value = "Specifica l'id ambito",required = true)
 			@PathVariable("ambitoId") String ambitoId,
-			@ApiParam(value = "Specifica l'id categoria")
+			@ApiParam(value = "Specifica l'id categoria",required = true)
 			@PathVariable("categoriaId") String categoriaId,
-			@ApiParam(value = "Specifica l'id tipo")
+			@ApiParam(value = "Specifica l'id tipo",required = true)
 			@PathVariable("tipoId") String tipoId,			
-			@ApiParam(value = "Specifica l'id tipologia")
+			@ApiParam(value = "Specifica l'id tipologia",required = true)
 			@PathVariable("tipologiaId") String tipologiaId) {
 		
 		LOG.debug("-- Tipologia -> sezioneId:  [" + sezioneId + "]");
