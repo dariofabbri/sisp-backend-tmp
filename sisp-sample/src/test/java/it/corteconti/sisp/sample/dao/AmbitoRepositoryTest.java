@@ -13,13 +13,14 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-
 import it.corteconti.sisp.sample.dao.AmbitoRepository;
-import it.corteconti.sisp.sample.dao.TipologiaRepository;
 import it.corteconti.sisp.sample.model.Ambito;
-import it.corteconti.sisp.sample.model.Tipologia;
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Unit Test REPOSITORY AMBITO
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners( { DependencyInjectionTestExecutionListener.class,

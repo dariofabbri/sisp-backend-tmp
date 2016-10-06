@@ -12,6 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import it.corteconti.sisp.sample.dao.SezioneRepository;
 import it.corteconti.sisp.sample.model.Sezione;
 
+/**
+ * Unit Test REPOSITORY SEZIONE
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SezioneRepositoryTest {

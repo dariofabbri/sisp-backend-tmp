@@ -18,6 +18,10 @@ import it.corteconti.sisp.sample.dao.TipologiaRepository;
 import it.corteconti.sisp.sample.model.Tipologia;
 import it.corteconti.sisp.util.ValidationUtil;
 
+/**
+ * Unit Test REPOSITORY TIPOLOGIA
+ * @version 1.0
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners( { DependencyInjectionTestExecutionListener.class,
