@@ -4,7 +4,7 @@
 	<groupId>it.corteconti.sisp</groupId>
 	<artifactId>sisp-sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 
 	<name>sisp-sample</name>
@@ -98,6 +98,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>sisp-sample</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
