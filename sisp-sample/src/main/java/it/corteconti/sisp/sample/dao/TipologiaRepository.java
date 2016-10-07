@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import it.corteconti.sisp.sample.model.Tipo;
 import it.corteconti.sisp.sample.model.Tipologia;
 
 /**
