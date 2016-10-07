@@ -80,15 +80,16 @@ public class GiudizioService extends GiudizioValidationService {
 	
 	/**
 	 * <p>Ritorna un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em></p>
+	 * @param idSezione		id dell'entità Sezione
 	 * @param numero		contatore
 	 * @param idTipo		id dell'entità Tipo
 	 * @param idCategoria	id dell'entità Categoria
 	 * @return				<em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
-	public GiudizioDto getByNumeroAndTipoAndCategoria(Long numero, String idTipo, String idCategoria) {
+	public GiudizioDto getBySezioneAndNumeroAndTipoAndCategoria(Long idSezione, Long numero, String idTipo, String idCategoria) {
 		
 		// -- Recupero Giudizio in base a NUMERO-TIPO-CATEGORIA
-		Giudizio giudizio = this.giudizioRepository.getByNumeroAndTipoAndCategoria(numero, idTipo, idCategoria);
+		Giudizio giudizio = this.giudizioRepository.findByIdSezioneAndNumeroAndTipoCodiceTipoAndCategoriaCodiceCategoria(idSezione, numero, idTipo, idCategoria);
 		
 		// -- Verifica valorizzazione entità
 		if ( giudizio == null ) {

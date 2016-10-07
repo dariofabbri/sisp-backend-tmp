@@ -66,12 +66,14 @@ public class GiudizioResource {
 	 * @param categoriaId	id dell'entità Categoria
 	 * @return				Response HTTP, stringa JSON che rappresenta un dto <em>it.corteconti.sisp.sample.dto.GiudizioDto</em>
 	 */
-	@RequestMapping(value = "/giudizi", method = RequestMethod.GET)
+	@RequestMapping(value = "/sezioni/{sezioneId}/giudizi", method = RequestMethod.GET)
 	@ApiOperation(value = "Giudizio per numero, idTipo, idCategoria in query string", notes = "Dato numero, idTipo, idCategoria in query string, restituisce l'entità Giudizio.", response = GiudizioDto.class)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK") }
 	)
-	public ResponseEntity<GiudizioDto> getGiudizioByNumeroAndTipoAndCategoria(
+	public ResponseEntity<GiudizioDto> getGiudizioBySezioneAndNumeroAndTipoAndCategoria(
+			@ApiParam(value = "Specifica l'id sezione", required = true)
+			@PathVariable("sezioneId") Long sezioneId,
 			@ApiParam(value = "Specifica il contatore", required = true)
 			@RequestParam("numero") Long numero,
 			@ApiParam(value = "Specifica l'id dell'entità tipo", required = true)
@@ -79,7 +81,7 @@ public class GiudizioResource {
 			@ApiParam(value = "Specifica l'id dell'entità categoria", required = true)
 			@RequestParam("categoriaId") String categoriaId) {
 		
-		GiudizioDto giudizio = service.getByNumeroAndTipoAndCategoria(numero, tipoId, categoriaId);
+		GiudizioDto giudizio = service.getBySezioneAndNumeroAndTipoAndCategoria(sezioneId, numero, tipoId, categoriaId);
 		return new ResponseEntity<>(giudizio, HttpStatus.OK);
 	}
 	
