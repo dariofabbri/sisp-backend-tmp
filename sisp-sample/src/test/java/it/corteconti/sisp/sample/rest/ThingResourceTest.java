@@ -74,51 +74,5 @@ public class ThingResourceTest {
     	template.delete(base.toString());
     	
     }
-	
-	@Test
-    public void savePatchDeleteTest()throws Exception {
-    	
-    	this.base = new URL("http://localhost:"+port+"/api/v1/things/thing");
-    	
-    	/*
-    	 * verifico la creazione dell'oggetto thing
-    	 */
-    	ThingDto thingDto = new ThingDto();
-    	thingDto.setDescription("Prova Test");
-    	thingDto.setLastUpdate(new Date());
-    	ThingDto thingDtoOut1 = template.postForObject(base.toString(), thingDto, ThingDto.class);
-    	assertNotNull( thingDtoOut1.getId() );
-    	Long id = thingDtoOut1.getId();
-    	
-    	/*
-    	 * verifico la patch dell'oggetto thing
-    	 */
-    	this.base = new URL("http://localhost:"+port+"/api/v1/things/thing/patch/"+id);
-    	thingDtoOut1.setDescription("prova_test_modificata_2");
-    	thingDtoOut1.setId(null);
-    	thingDtoOut1.setLastUpdate(null);
-    	
-    	RestTemplate restTemplate = new RestTemplate();
-    	HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-    	requestFactory.setConnectTimeout(30000);
-    	requestFactory.setReadTimeout(30000);
-    	restTemplate.setRequestFactory(requestFactory);
-    	TestRestTemplate template2 = new TestRestTemplate(restTemplate);
-    	
-    	// Create HttpEntity
-    	final HttpHeaders header = new HttpHeaders();
-    	header.setContentType(MediaType.APPLICATION_JSON);
-    	final HttpEntity<ThingDto> requestEntity = new HttpEntity<>(thingDtoOut1,header);
-    	ResponseEntity<ThingDto> response = template2.exchange(base.toString(), HttpMethod.PATCH ,requestEntity, ThingDto.class);
-    	assertTrue(response.getBody().getDescription().equals("prova_test_modificata_2"));
-    	
-    	/*
-    	 * verifico la cancellazione dell'oggetto thing
-    	 */
-    	this.base = new URL("http://localhost:"+port+"/api/v1/things/thing/delete/"+id);
-    	template.delete(base.toString());
-    	
-    }
-	
-	
+
 }
