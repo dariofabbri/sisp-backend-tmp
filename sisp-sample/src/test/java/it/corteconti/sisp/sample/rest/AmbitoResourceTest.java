@@ -1,10 +1,8 @@
 package it.corteconti.sisp.sample.rest;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import java.net.URL;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +45,8 @@ public class AmbitoResourceTest {
     public void getAmbitoTest() throws Exception {
         ResponseEntity<AmbitoDto> response = template.getForEntity(baseAmbito.toString(),AmbitoDto.class);
         AmbitoDto dto = response.getBody();
-        assertTrue(dto!=null && dto.getDescrizioneAmbito().equalsIgnoreCase("PENSIONISTICA"));
+        assertNotNull(dto);
+        assertTrue(dto.getDescrizioneAmbito().equalsIgnoreCase("PENSIONISTICA"));
     }
     
     /**
