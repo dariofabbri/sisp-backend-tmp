@@ -33,12 +33,20 @@ public class AmbitoRepositoryTest {
         this.idAmbito = "1";
     }
 
+    /**
+     * Test metodo <em>getAmbiti</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     public void getAmbitiRepositoryTest() throws Exception {
         Iterable<Ambito> ambiti = repository.findAll();
         assertTrue(!ValidationUtil.isNull(ambiti));
     }
     
+    /**
+     * Test metodo <em>getAmbito</em>
+     * @throws <em>java.lang.Exception</em>
+     */    
     @Test
     public void getAmbitoRepositoryTest() throws Exception {
     	Ambito ambito = repository.findOne(idAmbito);

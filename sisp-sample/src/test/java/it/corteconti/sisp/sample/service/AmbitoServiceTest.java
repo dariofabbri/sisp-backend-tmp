@@ -34,6 +34,10 @@ public class AmbitoServiceTest {
         this.idAmbito = "1";
     }
 
+    /**
+     * Test metodo <em>getAmbiti</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @SuppressWarnings("rawtypes")
 	@Test
     public void getAmbitiServiceTest() throws Exception {
@@ -41,6 +45,10 @@ public class AmbitoServiceTest {
         assertTrue(!ValidationUtil.isNull(ambiti));
     }
     
+    /**
+     * Test metodo <em>getAmbito</em>
+     * @throws <em>java.lang.Exception</em>
+     */      
     @Test
     public void getAmbitoServiceTest() throws Exception {
     	AmbitoDto ambito = service.getAmbito(idAmbito);

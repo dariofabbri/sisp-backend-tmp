@@ -30,6 +30,10 @@ public class SezioneRepositoryTest {
         this.id = (long) 1 ;
     }
 
+    /**
+     * Test metodo <em>get</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     public void getSezioneRepositoryTest() throws Exception {
         Sezione s = repository.findOne(id);
