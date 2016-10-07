@@ -75,13 +75,13 @@ public class GiudizioValidationService {
 		}
 			
 		// -- Id Categoria obbligatorio
-		if ( dto.getCategoria() == null || ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
+		if ( ValidationUtil.isNull(dto.getCategoria()) || ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
 			errorList.add(MSG_ERR_VALID_INPUT_ID_CATEGORIA_OBLIGATORY);
 			isvalid = false;
 		}
 		
 		// -- Id Tipo obbligatorio
-		if ( dto.getTipo() == null || ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
+		if ( ValidationUtil.isNull(dto.getTipo()) || ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
 			errorList.add(MSG_ERR_VALID_INPUT_ID_TIPO_OBLIGATORY);
 			isvalid = false;
 		}
@@ -111,7 +111,7 @@ public class GiudizioValidationService {
 		Sezione sezione = this.sezioneRepository.findOne(idSezione);
 		// -- COUNT 'CategoriaTipoTipologia' in base alla presenza dell'Id Tipologia
 		int count;
-		if ( dto.getTipologia() != null && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
+		if ( !ValidationUtil.isNull(dto.getTipologia()) && !ValidationUtil.isBlankOrNullOrZero(dto.getTipologia().getIdTipologia()) ) {
 			// -- Id Tipologia presente
 			count = this.categoriaTipoTipologiaRepository.countByTipoAndCategoriaAndAmbitoAndTipologiaAndLivelloAoo(
 					dto.getTipo().getIdTipo(), dto.getCategoria().getIdCategoria(), 
