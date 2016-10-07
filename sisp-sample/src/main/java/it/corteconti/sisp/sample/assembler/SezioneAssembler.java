@@ -9,8 +9,10 @@ import it.corteconti.sisp.sample.model.Sezione;
  */
 public class SezioneAssembler {
 	
+	/**
+     * Costruttore privato, impedisce l'instanziazione
+     */
 	private SezioneAssembler(){
-		
 	}
 
 	/**

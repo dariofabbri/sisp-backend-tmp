@@ -9,8 +9,10 @@ import it.corteconti.sisp.sample.model.Ambito;
  */
 public class AmbitoAssembler {
 	
+	/**
+     * Costruttore privato, impedisce l'instanziazione
+     */
 	private AmbitoAssembler(){
-		
 	}
 	
 	/**

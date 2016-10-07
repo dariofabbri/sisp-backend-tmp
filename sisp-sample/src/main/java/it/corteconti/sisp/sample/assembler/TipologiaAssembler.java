@@ -9,8 +9,10 @@ import it.corteconti.sisp.sample.model.Tipologia;
  */
 public class TipologiaAssembler {
 
+	/**
+     * Costruttore privato, impedisce l'instanziazione
+     */
 	private TipologiaAssembler(){
-		
 	}
 	
 	/**
