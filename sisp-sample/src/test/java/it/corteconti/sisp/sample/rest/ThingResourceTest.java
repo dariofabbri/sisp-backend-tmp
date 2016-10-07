@@ -14,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
 import it.corteconti.sisp.sample.dto.ThingDto;
 
@@ -30,9 +29,6 @@ public class ThingResourceTest {
     @Autowired
     private TestRestTemplate template;
     
-    @Autowired
-    private RestTemplate template2;
-
     @Test
     public void getTest() throws Exception {
     	
