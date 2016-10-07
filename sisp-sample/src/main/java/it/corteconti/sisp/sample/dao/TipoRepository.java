@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import it.corteconti.sisp.sample.model.Tipo;
 
@@ -20,8 +21,10 @@ public interface TipoRepository extends CrudRepository<Tipo, String> {
 	 * @param codiceLivelloAoo	livello AOO
 	 * @return 					<em>java.util.List<it.corteconti.sisp.sample.model.Tipo></em>
 	 */
-	@Query("SELECT DISTINCT ctt.tipo FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.categoria.codiceCategoria=?2 AND ctt.codiceLivelloAoo=?3 ORDER BY ctt.tipo.ordineTipo ASC")
-	public List<Tipo> findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(String codiceAmbito, String codiceCategoria, String codiceLivelloAoo);
+	@Query("SELECT DISTINCT ctt.tipo FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito = :codiceAmbito AND ctt.categoria.codiceCategoria = :codiceCategoria AND ctt.codiceLivelloAoo = :codiceLivelloAoo ORDER BY ctt.tipo.ordineTipo ASC")
+	public List<Tipo> findFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAoo(@Param("codiceAmbito") String codiceAmbito,
+																						  @Param("codiceCategoria") String codiceCategoria,
+																						  @Param("codiceLivelloAoo") String codiceLivelloAoo);
 	
 	/**
 	 * Ritorna un'entità <em>it.corteconti.sisp.sample.model.Tipo</em>
@@ -31,6 +34,9 @@ public interface TipoRepository extends CrudRepository<Tipo, String> {
 	 * @param codiceTipo		id dell'entità Tipo
 	 * @return 					<em>it.corteconti.sisp.sample.model.Tipo</em>
 	 */
-	@Query("SELECT DISTINCT ctt.tipo FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito=?1 AND ctt.categoria.codiceCategoria=?2 AND ctt.codiceLivelloAoo=?3 AND ctt.tipo.codiceTipo=?4 ORDER BY ctt.tipo.ordineTipo ASC")
-	public Tipo getFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAooAndTipo(String codiceAmbito, String codiceCategoria, String codiceLivelloAoo, String codiceTipo);
+	@Query("SELECT DISTINCT ctt.tipo FROM CategoriaTipoTipologia ctt WHERE ctt.ambito.codiceAmbito = :codiceAmbito AND ctt.categoria.codiceCategoria = :codiceCategoria AND ctt.codiceLivelloAoo = :codiceLivelloAoo AND ctt.tipo.codiceTipo = :codiceTipo ORDER BY ctt.tipo.ordineTipo ASC")
+	public Tipo getFromCategoriaTipoTipologiaByIdAmbitoAndIdCategoriaAndLivelloAooAndTipo(@Param("codiceAmbito") String codiceAmbito,
+																						  @Param("codiceCategoria") String codiceCategoria,
+																						  @Param("codiceLivelloAoo") String codiceLivelloAoo,
+																						  @Param("codiceTipo") String codiceTipo);
 }
