@@ -7,8 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import it.corteconti.sisp.util.ValidationUtil;
-
+import it.corteconti.sisp.sample.util.ValidationUtil;
 /**
  * Dto relativo alla tabella <em>GIUDIZIO</em>
  * @versione 1.0

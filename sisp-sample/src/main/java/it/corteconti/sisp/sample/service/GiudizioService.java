@@ -25,7 +25,7 @@ import it.corteconti.sisp.sample.model.Giudizio;
 import it.corteconti.sisp.sample.model.Oggetto;
 import it.corteconti.sisp.sample.model.Sezione;
 import it.corteconti.sisp.sample.service.validation.GiudizioValidationService;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Giudizio</em> 

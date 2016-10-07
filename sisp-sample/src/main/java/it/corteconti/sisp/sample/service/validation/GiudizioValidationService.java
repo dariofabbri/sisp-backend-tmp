@@ -13,8 +13,8 @@ import it.corteconti.sisp.sample.dao.SezioneRepository;
 import it.corteconti.sisp.sample.dto.GiudizioDto;
 import it.corteconti.sisp.sample.exception.ValidationException;
 import it.corteconti.sisp.sample.model.Sezione;
-import it.corteconti.sisp.util.DateValidationUtil;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.DateValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Service Validation Entità <em>it.corteconti.sisp.sample.model.Giudizio</em> 

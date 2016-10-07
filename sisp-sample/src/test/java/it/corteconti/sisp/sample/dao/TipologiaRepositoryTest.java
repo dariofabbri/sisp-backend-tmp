@@ -16,7 +16,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 
 import it.corteconti.sisp.sample.dao.TipologiaRepository;
 import it.corteconti.sisp.sample.model.Tipologia;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Unit Test REPOSITORY TIPOLOGIA

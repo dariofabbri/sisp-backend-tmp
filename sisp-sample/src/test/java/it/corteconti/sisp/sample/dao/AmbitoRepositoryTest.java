@@ -13,7 +13,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import it.corteconti.sisp.sample.dao.AmbitoRepository;
 import it.corteconti.sisp.sample.model.Ambito;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Unit Test REPOSITORY AMBITO

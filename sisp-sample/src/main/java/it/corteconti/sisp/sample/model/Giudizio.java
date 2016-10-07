@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Entità relativa alla tabella <em>GIUDIZIO</em>

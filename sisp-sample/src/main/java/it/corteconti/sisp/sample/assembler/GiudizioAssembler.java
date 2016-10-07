@@ -14,7 +14,7 @@ import it.corteconti.sisp.sample.model.Giudizio;
 import it.corteconti.sisp.sample.model.Oggetto;
 import it.corteconti.sisp.sample.model.Tipo;
 import it.corteconti.sisp.sample.model.Tipologia;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Assembler Entità <em>it.corteconti.sisp.sample.model.Giudizio</em>

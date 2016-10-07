@@ -13,7 +13,7 @@ import it.corteconti.sisp.sample.dao.ThingRepository;
 import it.corteconti.sisp.sample.dto.ThingDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Thing;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Thing</em> 

@@ -16,7 +16,7 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipologia;
-import it.corteconti.sisp.util.ValidationUtil;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * Service Entità <em>it.corteconti.sisp.sample.model.Tipologia</em> 

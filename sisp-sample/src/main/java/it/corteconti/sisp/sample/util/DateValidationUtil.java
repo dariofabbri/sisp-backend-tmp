@@ -1,4 +1,4 @@
-package it.corteconti.sisp.util;
+package it.corteconti.sisp.sample.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
