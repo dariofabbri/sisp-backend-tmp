@@ -24,8 +24,6 @@ import it.corteconti.sisp.sample.util.ValidationUtil;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestExecutionListeners( { DependencyInjectionTestExecutionListener.class,
-    DirtiesContextTestExecutionListener.class } )
 public class TipologiaRepositoryTest {
 
 	@Autowired
