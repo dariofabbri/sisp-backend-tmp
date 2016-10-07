@@ -45,13 +45,21 @@ public class TipologiaServiceTest {
         this.idTipologia = "91";
     }
 
+    /**
+     * Test metodo <em>getTipologie</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     @SuppressWarnings("rawtypes")
     public void getTipologieServiceTest() throws Exception {
         List tipologie = service.getTipologie(aooSezione, idAmbito, idCategoria, idTipo);
         assertTrue(!ValidationUtil.isNull(tipologie) && tipologie.size()>0);
     }
-    
+
+    /**
+     * Test metodo <em>getTipologia</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     public void getTipologiaServiceTest() throws Exception {
         TipologiaDto tipologia = service.getTipologia(aooSezione, idAmbito, idCategoria, idTipo,idTipologia);

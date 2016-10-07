@@ -44,6 +44,10 @@ public class TipologiaRepositoryTest {
         this.idTipologia = "91";
     }
 
+    /**
+     * Test metodo <em>getTipologie</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     @SuppressWarnings("rawtypes")
     public void getTipologieRepositoryTest() throws Exception {
@@ -51,6 +55,10 @@ public class TipologiaRepositoryTest {
         assertTrue(!ValidationUtil.isNull(tipologie) && tipologie.size()>0);
     }
     
+    /**
+     * Test metodo <em>getTipologia</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     public void getTipologiaRepositoryTest() throws Exception {
         Tipologia tipologia = repository.getTipologia(aooSezione, idAmbito, idCategoria, idTipo,idTipologia);

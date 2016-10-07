@@ -18,7 +18,7 @@ import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
- * Unit Test REST SEZIONI
+ * Unit Test REST SEZIONE
  * @version 1.0
  */
 @RunWith(SpringRunner.class)

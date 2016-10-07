@@ -28,6 +28,10 @@ public class SezioneServiceTest {
         this.id = (long) 1 ;
     }
 
+    /**
+     * Test metodo <em>get</em>
+     * @throws <em>java.lang.Exception</em>
+     */
     @Test
     public void getSezioneServiceTest() throws Exception {
         SezioneDto s = service.findSezioniById(id);
