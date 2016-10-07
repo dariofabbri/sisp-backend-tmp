@@ -115,12 +115,12 @@ public class GiudizioValidationService {
 			// -- Id Tipologia presente
 			count = this.categoriaTipoTipologiaRepository.countByTipoAndCategoriaAndAmbitoAndTipologiaAndLivelloAoo(
 					dto.getTipo().getIdTipo(), dto.getCategoria().getIdCategoria(), 
-					idAmbito, dto.getTipologia().getIdTipologia(), ""+sezione.getLivello()).intValue();
+					idAmbito, dto.getTipologia().getIdTipologia(), ""+sezione.getLivello().intValue());
 			
 		} else {
 			// -- Id Tipologia non presente
 			count = this.categoriaTipoTipologiaRepository.countByTipoAndCategoriaAndAmbitoAndLivelloAoo(
-					dto.getTipo().getIdTipo(), dto.getCategoria().getIdCategoria(), idAmbito, ""+sezione.getLivello()).intValue();
+					dto.getTipo().getIdTipo(), dto.getCategoria().getIdCategoria(), idAmbito, ""+sezione.getLivello().intValue());
 		}
 		
 		/*
