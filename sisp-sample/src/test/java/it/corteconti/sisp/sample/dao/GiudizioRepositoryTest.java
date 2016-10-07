@@ -30,7 +30,7 @@ public class GiudizioRepositoryTest {
     private final String 	ID_CATEGORIA = "1";
     
     /**
-     * Test metodo <em>getGiudizioBySezioneAndNumeroAndTipoAndCategoria</em>
+     * Test metodo <em>findByIdSezioneAndNumeroAndTipoCodiceTipoAndCategoriaCodiceCategoria</em>
      * @throws <em>java.lang.Exception</em>
      */
     @Test

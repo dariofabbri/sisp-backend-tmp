@@ -23,7 +23,7 @@ public class SezioneServiceTest {
 	private final Long id = new Long(1);
 
     /**
-     * Test metodo <em>get</em>
+     * Test metodo <em>findSezioniById</em>
      * @throws <em>java.lang.Exception</em>
      */
     @Test

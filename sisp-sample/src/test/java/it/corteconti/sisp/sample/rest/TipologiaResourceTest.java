@@ -1,10 +1,8 @@
 package it.corteconti.sisp.sample.rest;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import java.net.URL;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import it.corteconti.sisp.sample.dto.TipologiaDto;
 
 /**
@@ -48,7 +45,7 @@ public class TipologiaResourceTest {
     public void getTipologiaTest() throws Exception {
         ResponseEntity<TipologiaDto> response = template.getForEntity(baseTipologia.toString(),TipologiaDto.class);
         TipologiaDto dto = response.getBody();
-        assertTrue(dto!=null);
+        assertNotNull(dto);
     }
     
     /**

@@ -1,9 +1,7 @@
 package it.corteconti.sisp.sample.rest;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import java.net.URL;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.util.ValidationUtil;
 
@@ -46,7 +43,8 @@ public class SezioneResourceTest {
     public void getSezioneTest() throws Exception {
         ResponseEntity<SezioneDto> response = template.getForEntity(base.toString(),SezioneDto.class);
         SezioneDto dto = response.getBody();
-        assertTrue(dto!=null && !ValidationUtil.isBlankOrNull(dto.getDescrizioneSezione()));
+        assertNotNull(dto);
+        assertTrue(!ValidationUtil.isBlankOrNull(dto.getDescrizioneSezione()));
     }
 	
 	
