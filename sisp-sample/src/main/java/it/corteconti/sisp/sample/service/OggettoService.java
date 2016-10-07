@@ -15,6 +15,7 @@ import it.corteconti.sisp.sample.dao.OggettoRepository;
 import it.corteconti.sisp.sample.dto.OggettoDto;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Oggetto;
+import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
  * 
@@ -36,7 +37,7 @@ public class OggettoService {
 	 * @param sezioneId
 	 * @return <em>java.util.List<it.corteconti.sisp.sample.dto.OggettoDto></em>
 	 */
-	public List<OggettoDto> findOggettoBySezione(Long sezioneId) {
+	public List<OggettoDto> findOggettoBySezione( Long sezioneId ) {
 		
 		List<OggettoDto> listaOggettiDto = new ArrayList<>();
 		
@@ -67,9 +68,9 @@ public class OggettoService {
 	 */
 	public OggettoDto findOggettoBySezioneAndIdOggetto(Long sezioneId, Long idOggetto) {
 		
-		Oggetto oggetto = oggettoRepository.findListOggettoByIdSezioneAndIdOggetto(sezioneId,idOggetto);
+		Oggetto oggetto = oggettoRepository.findOggettoByIdSezioneAndIdOggetto(sezioneId,idOggetto);
 		
-		if( oggetto == null || oggetto.getCodiceOggetto() == null) {
+		if( ValidationUtil.isNull(oggetto) || ValidationUtil.isNull(oggetto.getCodiceOggetto()) ) {
 			// logging	
 			LOG.debug("Nessun oggetto trovato.");
 			throw new ResourceNotFoundException(
@@ -78,7 +79,7 @@ public class OggettoService {
 		
 		LOG.debug("Entità Oggetto recuperata, id : "+ oggetto.getCodiceOggetto());
 		
-		return OggettoAssembler.assembleDto(oggetto);
+		return OggettoAssembler.assembleDto( oggetto );
 		
 	}
 

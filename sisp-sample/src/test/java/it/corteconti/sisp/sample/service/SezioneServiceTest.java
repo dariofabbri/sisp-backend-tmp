@@ -1,7 +1,6 @@
 package it.corteconti.sisp.sample.service;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,12 +20,7 @@ public class SezioneServiceTest {
 	@Autowired
 	private SezioneService service;
 
-	private Long id;
-	
-    @Before
-    public void setUp() throws Exception {
-        this.id = (long) 1 ;
-    }
+	private final Long id = new Long(1);
 
     /**
      * Test metodo <em>get</em>
@@ -35,7 +29,8 @@ public class SezioneServiceTest {
     @Test
     public void getSezioneServiceTest() throws Exception {
         SezioneDto s = service.findSezioniById(id);
-        assertTrue(s != null && s.getIdSezione().longValue() == id.longValue());
+        assertNotNull(s);
+        assertTrue(s.getIdSezione().longValue() == id.longValue());
     }
 	
 }
