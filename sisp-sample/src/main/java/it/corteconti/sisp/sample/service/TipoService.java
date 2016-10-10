@@ -14,6 +14,7 @@ import it.corteconti.sisp.sample.assembler.TipoAssembler;
 import it.corteconti.sisp.sample.dao.TipoRepository;
 import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipoDto;
+import it.corteconti.sisp.sample.enumeration.EnSezione;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
 import it.corteconti.sisp.sample.util.ValidationUtil;
@@ -55,6 +56,21 @@ public class TipoService {
 			throw new ResourceNotFoundException(
 					MessageFormat.format("Tipo with Ambito {0} and Sezione {1} and Categoria {2} not found.", idAmbito, idSezione, idCategoria));
 		}
+		
+		//se idSezione = 31 , 32 , 33 ( ovvero si tratta di una sezione centrale di appello , non viene mostrato "MERITO" tra i tipi 
+		List<Tipo> tmp = lista ;
+		if( idSezione == EnSezione.PRIMA_SEZIONE_CENTRALE_DI_APPELLO.getValue().longValue() 	|| 
+			idSezione == EnSezione.SECONDA_SEZIONE_CENTRALE_DI_APPELLO.getValue().longValue() 	||
+			idSezione == EnSezione.TERZA_SEZIONE_CENTRALE_DI_APPELLO.getValue().longValue() )	{
+			for(int i=0 ; i<tmp.size() ; i++){
+				Tipo obj = (Tipo) tmp.get(i);
+				if(obj.getDescrizioneTipo().equalsIgnoreCase("MERITO")){
+					lista.remove(i);
+					break;
+				}
+			}
+		}
+		
 		// logging
 		LOG.debug("-- lista, size [" + lista.size() + "]");
 		// -- Lista di ritorno
