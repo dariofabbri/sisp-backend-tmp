@@ -15,6 +15,7 @@ import it.corteconti.sisp.sample.dao.TipoRepository;
 import it.corteconti.sisp.sample.dto.SezioneDto;
 import it.corteconti.sisp.sample.dto.TipoDto;
 import it.corteconti.sisp.sample.enumeration.EnSezione;
+import it.corteconti.sisp.sample.enumeration.EnTipo;
 import it.corteconti.sisp.sample.exception.ResourceNotFoundException;
 import it.corteconti.sisp.sample.model.Tipo;
 import it.corteconti.sisp.sample.util.ValidationUtil;
@@ -64,7 +65,7 @@ public class TipoService {
 			idSezione == EnSezione.TERZA_SEZIONE_CENTRALE_DI_APPELLO.getValue().longValue() )	{
 			for(int i=0 ; i<tmp.size() ; i++){
 				Tipo obj = (Tipo) tmp.get(i);
-				if(obj.getDescrizioneTipo().equalsIgnoreCase("MERITO")){
+				if(obj.getCodiceTipo().equalsIgnoreCase(EnTipo.MERITO.getValue().toString())){
 					lista.remove(i);
 					break;
 				}
