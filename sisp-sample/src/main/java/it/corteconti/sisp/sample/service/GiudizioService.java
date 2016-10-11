@@ -24,7 +24,7 @@ import it.corteconti.sisp.sample.model.Contatore;
 import it.corteconti.sisp.sample.model.Giudizio;
 import it.corteconti.sisp.sample.model.Oggetto;
 import it.corteconti.sisp.sample.model.Sezione;
-import it.corteconti.sisp.sample.service.validation.GiudizioValidationService;
+import it.corteconti.sisp.sample.service.validator.GiudizioValidatorService;
 import it.corteconti.sisp.sample.util.ValidationUtil;
 
 /**
@@ -33,7 +33,7 @@ import it.corteconti.sisp.sample.util.ValidationUtil;
  */
 @Service
 @Transactional
-public class GiudizioService extends GiudizioValidationService {
+public class GiudizioService extends GiudizioValidatorService {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(GiudizioService.class);
 

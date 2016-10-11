@@ -1,5 +1,6 @@
-package it.corteconti.sisp.sample.service.validation;
+package it.corteconti.sisp.sample.service.validator;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,10 @@ import it.corteconti.sisp.sample.util.ValidationUtil;
  * @version 1.0
  */
 @Service
-public class GiudizioValidationService {
+public class GiudizioValidatorService extends BaseValidatorService {
 	
 	
-	private static final Logger LOG = LoggerFactory.getLogger(GiudizioValidationService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GiudizioValidatorService.class);
 	
 	@Autowired
 	private SezioneRepository sezioneRepository;
@@ -32,15 +33,8 @@ public class GiudizioValidationService {
 	private CategoriaTipoTipologiaRepository categoriaTipoTipologiaRepository;
 	
 	
-	// -- Costanti
-	private static final String MSG_ERR_VALID_INPUT = "Errore validazione di input";
-	private static final String MSG_ERR_VALID_BUSINESS = "Errore validazione di business";
-	private static final String MSG_ERR_VALID_INPUT_DATA_APERTURA_OBLIGATORY = "La Data Apertura è obbligatoria";
-	private static final String MSG_ERR_VALID_INPUT_DATA_APERTURA_INVALID = "La Data Apertura non è valida";
-	private static final String MSG_ERR_VALID_INPUT_DATA_APERTURA_FUTURE = "La Data Apertura è futura rispetto alla data odierna";
-	private static final String MSG_ERR_VALID_INPUT_ID_CATEGORIA_OBLIGATORY = "L'Id Categoria è obbligatorio";
-	private static final String MSG_ERR_VALID_INPUT_ID_TIPO_OBLIGATORY = "L'Id Tipo è obbligatorio";
-	private static final String MSG_ERR_VALID_BUSINESS_COUNT_CATEGORIA_TIPO_TIPOLOGIA = "Non è possibile creare il giudizio: categoria, tipo, tipologia non permessi";
+	// -- Costanti chiavi messaggi errore validazione file properties
+	private static final String KEY_MSG_ERR_VALID_BUSINESS_COUNT_CATEGORIA_TIPO_TIPOLOGIA = "msg.err.valid.business.count.categoria.tipo.tipologia";
 	
 	
 	
@@ -56,19 +50,22 @@ public class GiudizioValidationService {
 		
 		// -- Data Apertura obbligatoria
 		if ( dto.getDataApertura() == null ) {
-			errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_OBLIGATORY);
+			errorList.add(MessageFormat.format(resourceBundle.getString(KEY_MSG_VALIDATION_ERROR_REQUIRED), 
+					(Object[]) new String[] {"Data Apertura"}));
 			isvalid = false;
 			
 		} else {
 			// -- Verifica validità della data inserita
 			if ( !DateValidationUtil.isValidDate(dto.getDataApertura()) ) {
-				errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_INVALID);
+				errorList.add(MessageFormat.format(resourceBundle.getString(KEY_MSG_VALIDATION_ERROR_INVALID_DATE), 
+						(Object[]) new String[] {"Data Apertura"}));
 				isvalid = false;
 				
 			} else {
 				// -- Verifica che la data non sia futura alla data odierna
 				if ( DateValidationUtil.isFutureDate(dto.getDataApertura())) {
-					errorList.add(MSG_ERR_VALID_INPUT_DATA_APERTURA_FUTURE);
+					errorList.add(MessageFormat.format(resourceBundle.getString(KEY_MSG_VALIDATION_ERROR_FUTURE_DATE), 
+							(Object[]) new String[] {"Data Apertura"}));
 					isvalid = false;
 				}
 			}
@@ -76,20 +73,22 @@ public class GiudizioValidationService {
 			
 		// -- Id Categoria obbligatorio
 		if ( ValidationUtil.isNull(dto.getCategoria()) || ValidationUtil.isBlankOrNullOrZero(dto.getCategoria().getIdCategoria()) ) {
-			errorList.add(MSG_ERR_VALID_INPUT_ID_CATEGORIA_OBLIGATORY);
+			errorList.add(MessageFormat.format(resourceBundle.getString(KEY_MSG_VALIDATION_ERROR_REQUIRED), 
+					(Object[]) new String[] {"Id Categoria"}));
 			isvalid = false;
 		}
 		
 		// -- Id Tipo obbligatorio
 		if ( ValidationUtil.isNull(dto.getTipo()) || ValidationUtil.isBlankOrNullOrZero(dto.getTipo().getIdTipo()) ) {
-			errorList.add(MSG_ERR_VALID_INPUT_ID_TIPO_OBLIGATORY);
+			errorList.add(MessageFormat.format(resourceBundle.getString(KEY_MSG_VALIDATION_ERROR_REQUIRED), 
+					(Object[]) new String[] {"Id Tipo"}));
 			isvalid = false;
 		}
 		
 		// -- Controllo finale validazione
 		if ( !isvalid ) {
 			LOG.debug("-- Errore Validazione di INPUT.");
-			ValidationException ve = new ValidationException(MSG_ERR_VALID_INPUT);
+			ValidationException ve = new ValidationException(resourceBundle.getString(KEY_MSG_ERR_VALID_INPUT_DEFAULT));
 			ve.setValidationErrors(errorList);
 			throw ve;
 		}
@@ -128,14 +127,14 @@ public class GiudizioValidationService {
 		 * SE count == 0 errore
 		 */
 		if ( count == 0 ) {
-			errorList.add(MSG_ERR_VALID_BUSINESS_COUNT_CATEGORIA_TIPO_TIPOLOGIA);
+			errorList.add(resourceBundle.getString(KEY_MSG_ERR_VALID_BUSINESS_COUNT_CATEGORIA_TIPO_TIPOLOGIA));
 			isvalid = false;
 		}
 		
 		// -- Controllo finale validazione
 		if ( !isvalid ) {
 			LOG.debug("-- Errore Validazione di BUSINESS.");
-			ValidationException ve = new ValidationException(MSG_ERR_VALID_BUSINESS);
+			ValidationException ve = new ValidationException(resourceBundle.getString(KEY_MSG_ERR_VALID_BUSINESS_DEFAULT));
 			ve.setValidationErrors(errorList);
 			throw ve;
 		}
